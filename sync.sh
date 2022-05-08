@@ -6,7 +6,7 @@ git clone https://github.com/kidonng/sushi $tmp/sushi -b master --depth 1
 cp $tmp/main/bucket/v2ray.json bucket/
 cp $tmp/sushi/bucket/{v2ray-domain-list-community,v2ray-geoip,v2ray-rules-dat}.json bucket/
 
-sed -E -i 's/github\.com\/(.+)\/releases\/download/download.fastgit.org\/\1\/releases\/download/' bucket/v2ray.json
+sed -E -i 's/github\.com\/(.+)\/releases\/download/download.fastgit.org\/\1\/releases\/download/' bucket/{v2ray,v2ray-domain-list-community,v2ray-geoip,v2ray-rules-dat}.json
 sed -E -i 's/sushi\//jade\//' bucket/*
 sed -E -i 's/"v2ray",/"jade\/v2ray",/' bucket/*
 
