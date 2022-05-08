@@ -4,7 +4,7 @@ on:
     - cron: '0 */8 * * *'
 name: Sync_external_manifest
 jobs:
-  Sync_external_manifest:
+  sync:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
