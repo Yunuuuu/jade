@@ -18,3 +18,4 @@ if [[ $(git status --porcelain --untracked-files=no) ]]; then
   git commit -m "Sync"
   git push
 fi
+
