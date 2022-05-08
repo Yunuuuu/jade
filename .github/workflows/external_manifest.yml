@@ -9,3 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: bash sync.sh
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SKIP_UPDATED: '1'
