@@ -12,7 +12,7 @@ sed -E -i 's/"v2ray",/"jade\/v2ray",/' bucket/*
 
 # https://stackoverflow.com/a/25149786
 if [[ $(git status --porcelain --untracked-files=no) ]]; then
-  git add -u
+  git add v2ray.json v2ray-domain-list-community.json v2ray-geoip.json v2ray-rules-dat.json
   git config user.name "github-actions[bot]"
   git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
   git commit -m "Sync"
