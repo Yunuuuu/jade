@@ -1,10 +1,10 @@
-name: Sync
 on:
   workflow_dispatch:
   schedule:
     - cron: '0 */8 * * *'
+name: Sync_external_manifest
 jobs:
-  sync:
+  Sync_external_manifest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
