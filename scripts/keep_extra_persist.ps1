@@ -1,6 +1,7 @@
 # \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\"
 param(
-    [string]$extra_persist = $(throw "Parameter missing: -extra_persist extra_persist")
+    [string]$extra_persist = $(throw "Parameter missing: -extra_persist extra_persist"),
+    [string]$name = $(Split-Path -Path $extra_persist -Leaf)
 )
 
 function is_directory([String] $path) {
@@ -18,7 +19,7 @@ write-host "Persisting $extra_persist"
 $source = $extra_persist.TrimEnd("/").TrimEnd("\\")
 
 $source = fullpath "$source"
-$target = fullpath "$persist_dir\$(Split-Path -Path $extra_persist -Leaf)"
+$target = fullpath "$persist_dir\$name"
 
 # if we have had persist data in the store, just create link and go
 if (Test-Path $target) {
