@@ -1,17 +1,21 @@
 {
-    "version": "202205102212",
+    "version": "202205072211",
     "description": "Enhanced ruleset for V2Ray (unofficial)",
     "homepage": "https://github.com/Loyalsoldier/v2ray-rules-dat",
     "license": "GPL-3.0-only",
     "depends": "jade/v2ray",
-    "url": "https://download.fastgit.org/Loyalsoldier/v2ray-rules-dat/releases/download/202205102212/rules.zip",
-    "hash": "d6bcf99bcc3b68f434d804de3bd2fdc78db9116e09c42028229548ce108ec90e",
+    "url": "https://download.fastgit.org/Loyalsoldier/v2ray-rules-dat/releases/download/202205072211/rules.zip",
+    "hash": "3bd43cb54f19f0432a7d47d09eb25d1f95c2683e967d8d6b2226b6e8d9532f82",
     "installer": {
         "script": [
-            "if (-not (Test-Path \"$persist_dir\\v2ray-rules-dat\")) {",
-            "    Copy-Item \"$(appdir v2ray $global)\\current\\geoip.dat\" -Destination \"$dir\\geoip.dat.bak\"",
-            "    Copy-Item \"$(appdir v2ray $global)\\current\\geosite.dat\" -Destination \"$dir\\geosite.dat.bak\"",
+            "function BackUp([String] $file) {",
+            "    if (Test-Path \"$(appdir v2ray $global)\\current\\$file\") {",
+            "        Write-Host \"Backup $file\"",
+            "        Copy-Item \"$(appdir v2ray $global)\\current\\$file\" -Destination \"$(appdir v2ray $global)\\current\\$file.bak\"",
+            "    }",
             "}",
+            "BackUp 'geoip.dat'",
+            "BackUp 'geosite.dat'",
             "function LinkFile([String] $file, [String] $source = $file) {",
             "    Write-Host \"Creating hardlink for $file\"",
             "    New-Item -Force -ItemType HardLink -Path \"$(appdir v2ray $global)\\current\" -Name $file -Target \"$dir\\$source\" | Out-Null",
@@ -22,14 +26,16 @@
     },
     "uninstaller": {
         "script": [
-            "Copy-Item \"$dir\\geoip.dat.bak\" -Destination \"$(appdir v2ray $global)\\current\\geoip.dat\" -Force",
-            "Copy-Item \"$dir\\geosite.dat.bak\" -Destination \"$(appdir v2ray $global)\\current\\geosite.dat\" -Force"
+            "function Restore([String] $file) {",
+            "    if (Test-Path \"$(appdir v2ray $global)\\current\\$file.bak\") {",
+            "        Copy-Item \"$(appdir v2ray $global)\\current\\$file.bak\" -Destination \"$(appdir v2ray $global)\\current\\$file\" -Force",
+            "        Remove-Item -Path \"$(appdir v2ray $global)\\current\\$file.bak\" -Force",
+            "    }",
+            "}",
+            "Restore \"geoip.dat\"",
+            "Restore \"geosite.dat\""
         ]
     },
-    "persist": [
-        "geoip.dat.bak",
-        "geosite.dat.bak"
-    ],
     "checkver": "github",
     "autoupdate": {
         "url": "https://download.fastgit.org/Loyalsoldier/v2ray-rules-dat/releases/download/$version/rules.zip",
