@@ -7,7 +7,7 @@ function is_directory([String] $path) {
     return (Test-Path $path) -and (Get-Item $path) -is [System.IO.DirectoryInfo]
 }
 
-function ensure($dir) { if (!(test-path $dir)) { new-item -type directory $dir > $null }; resolve-path $dir }
+function ensure($dir) { if (!(test-path $dir)) { new-item -type directory $dir }; resolve-path $dir }
 function fullpath($path) {
     # should be ~ rooted
     $executionContext.sessionState.path.getUnresolvedProviderPathFromPSPath($path)
