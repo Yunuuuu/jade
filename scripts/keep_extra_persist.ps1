@@ -1,6 +1,7 @@
 # \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\"
 param(
-    [string]$extra_persist = $(throw "Parameter missing: -extra_persist extra_persist")
+    [string]$extra_persist = $(throw "Parameter missing: -extra_persist extra_persist"),
+    [string]$persist_dir = $(throw "Parameter missing: -persist_dir persist_dir")
 )
 
 function is_directory([String] $path) {
