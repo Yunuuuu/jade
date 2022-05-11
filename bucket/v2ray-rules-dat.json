@@ -9,7 +9,7 @@
     "installer": {
         "script": [
             "function BackUp([String] $file) {",
-            "    if (Test-Path \"$(appdir v2ray $global)\\current\\$file\") {",
+            "    if (-not (Test-Path \"$(appdir v2ray $global)\\current\\$file.bak\")) {",
             "        Write-Host \"Backup $file\"",
             "        Copy-Item \"$(appdir v2ray $global)\\current\\$file\" -Destination \"$(appdir v2ray $global)\\current\\$file.bak\"",
             "    }",

@@ -8,9 +8,13 @@
     "hash": "973eff54187e6ea815907a79a7a1a05987791cc1697f962b0dfa1f4e48214a9a",
     "installer": {
         "script": [
-            "if (-not (Test-Path \"$persist_dir\\v2ray-geoip\")) {",
-            "    Copy-Item \"$(appdir v2ray $global)\\current\\geoip.dat\" -Destination \"$dir\\geoip.dat.bak\"",
+            "function BackUp([String] $file) {",
+            "    if (-not (Test-Path \"$(appdir v2ray $global)\\current\\$file.bak\")) {",
+            "        Write-Host \"Backup $file\"",
+            "        Copy-Item \"$(appdir v2ray $global)\\current\\$file\" -Destination \"$(appdir v2ray $global)\\current\\$file.bak\"",
+            "    }",
             "}",
+            "BackUp 'geoip.dat'",
             "function LinkFile([String] $file, [String] $source = $file) {",
             "    Write-Host \"Creating hardlink for $file\"",
             "    New-Item -Force -ItemType HardLink -Path \"$(appdir v2ray $global)\\current\" -Name $file -Target \"$dir\\$source\" | Out-Null",
@@ -19,9 +23,16 @@
         ]
     },
     "uninstaller": {
-        "script": "Copy-Item \"$dir\\geoip.dat.bak\" -Destination \"$(appdir v2ray $global)\\current\\geoip.dat\" -Force"
+        "script": [
+            "function Restore([String] $file) {",
+            "    if (Test-Path \"$(appdir v2ray $global)\\current\\$file.bak\") {",
+            "        Copy-Item \"$(appdir v2ray $global)\\current\\$file.bak\" -Destination \"$(appdir v2ray $global)\\current\\$file\" -Force",
+            "        Remove-Item -Path \"$(appdir v2ray $global)\\current\\$file.bak\" -Force",
+            "    }",
+            "}",
+            "Restore \"geoip.dat\""
+        ]
     },
-    "persist": "geoip.dat.bak",
     "checkver": "github",
     "autoupdate": {
         "url": "https://download.fastgit.org/v2ray/geoip/releases/download/$version/geoip.dat",
