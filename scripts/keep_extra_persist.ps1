@@ -7,7 +7,7 @@ function is_directory([String] $path) {
     return (Test-Path $path) -and (Get-Item $path) -is [System.IO.DirectoryInfo]
 }
 
-function ensure($dir) { if (!(test-path $dir)) { new-item -type directory $dir }; resolve-path $dir }
+function ensure($dir) { if (!(test-path $dir)) { new-item -type directory $dir > $null }; resolve-path $dir }
 function fullpath($path) {
     # should be ~ rooted
     $executionContext.sessionState.path.getUnresolvedProviderPathFromPSPath($path)
@@ -44,9 +44,9 @@ if (Test-Path $target) {
 # create link
 if (is_directory $target) {
     # target is a directory, create junction
-    New-Item -Path $source -ItemType Junction -Value $target | Out-Null
+    New-Item -Path $source -ItemType Junction -Target $target | Out-Null
     attrib $source +R /L
 } else {
     # target is a file, create hard link
-    New-Item -Path $source -ItemType HardLink -Value $target | Out-Null
+    New-Item -Path $source -ItemType HardLink -Target $target | Out-Null
 }
