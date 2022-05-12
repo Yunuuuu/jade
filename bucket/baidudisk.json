@@ -16,15 +16,18 @@
         ]
     ],
     "post_install": [
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Baidu\"",
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Baidu\\BaiduYunKernel\"",
         "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\BaiduYunGuanjia\"",
         "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\BaiduYunKernel\""
     ],
     "uninstaller": {
         "script": [
-            "Remove-Item \"${env:APPDATA}\\Baidu\" -Force -Recurse",
+            "Remove-Item \"${env:APPDATA}\\Baidu\\BaiduYunKernel\" -Force -Recurse",
             "Remove-Item \"${env:APPDATA}\\BaiduYunGuanjia\" -Force -Recurse",
-            "Remove-Item \"${env:APPDATA}\\BaiduYunKernel\" -Force -Recurse"
+            "Remove-Item \"${env:APPDATA}\\BaiduYunKernel\" -Force -Recurse",
+            "if (Test-Path -Path \"${env:APPDATA}\\Baidu\\*\") {",
+            "    Remove-Item \"${env:APPDATA}\\Baidu\" -Force -Recurse",
+            "}"
         ]
     },
     "persist": "users",
