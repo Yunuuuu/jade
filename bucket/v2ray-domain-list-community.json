@@ -33,7 +33,9 @@
             "Restore \"geosite.dat\""
         ]
     },
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/v2fly/domain-list-community"
+    },
     "autoupdate": {
         "url": "https://download.fastgit.org/v2fly/domain-list-community/releases/download/$version/dlc.dat",
         "hash": {

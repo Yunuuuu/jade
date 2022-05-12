@@ -33,7 +33,9 @@
             "Restore \"geoip.dat\""
         ]
     },
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/v2ray/geoip"
+    },
     "autoupdate": {
         "url": "https://download.fastgit.org/v2ray/geoip/releases/download/$version/geoip.dat",
         "hash": {

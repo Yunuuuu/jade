@@ -23,7 +23,9 @@
         "wxray.exe"
     ],
     "persist": "config.json",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/XTLS/Xray-core"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {

@@ -36,7 +36,9 @@
             "Restore \"geosite.dat\""
         ]
     },
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/Loyalsoldier/v2ray-rules-dat"
+    },
     "autoupdate": {
         "url": "https://download.fastgit.org/Loyalsoldier/v2ray-rules-dat/releases/download/$version/rules.zip",
         "hash": {
