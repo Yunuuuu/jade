@@ -18,7 +18,10 @@
         "    Set-Content \"$dir\\config.json\" '{}' -Encoding 'Ascii'",
         "}"
     ],
-    "bin": "xray.exe",
+    "bin": [
+        "xray.exe",
+        "wxray.exe"
+    ],
     "persist": "config.json",
     "checkver": "github",
     "autoupdate": {
