@@ -1,13 +1,12 @@
 {
-    "version": "3.4.5.27",
+    "version": "3.4.5",
     "description": "Instant messaging app by Tencent",
     "homepage": "https://pc.weixin.qq.com/",
     "license": {
         "identifier": "EULA",
         "url": "https://weixin.qq.com/cgi-bin/readtemplate?lang=zh_CN&t=weixin_agreement&s=default"
     },
-    "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatSetup_3.4.5.27.exe#/dl.7z",
-    "hash": "006206b1714a5d32432d346d676ac007961dfa138047de4491e039c20084328c",
+    "url": "https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe#/dl.7z",
     "installer": {
         "script": [
             "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
@@ -17,7 +16,8 @@
     },
     "post_install": [
         "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Tencent\\WeChat\"",
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Tencent\\WeChatApp\""
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Tencent\\WeChatApp\"",
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\WeChat Files\""
     ],
     "shortcuts": [
         [
@@ -29,6 +29,7 @@
         "script": [
             "Remove-Item \"${env:APPDATA}\\Tencent\\WeChat\" -Force -Recurse",
             "Remove-Item \"${env:APPDATA}\\Tencent\\WeChatApp\" -Force -Recurse",
+            "Remove-Item \"${env:APPDATA}\\WeChat Files\" -Force -Recurse",
             "if (Test-Path \"$bucketsdir\\jade\\scripts\\wechat-uninstall-context.reg\") {",
             "    reg import \"$bucketsdir\\jade\\scripts\\wechat-uninstall-context.reg\"",
             "}",
@@ -38,10 +39,10 @@
         ]
     },
     "checkver": {
-        "url": "https://pc.qq.com/detail/8/detail_11488.html",
-        "regex": "WeChatSetup_([\\d.]+)\\.exe"
+        "url": "https://pc.weixin.qq.com/",
+        "regex": "(\\d\\.\\d\\.\\d)"
     },
     "autoupdate": {
-        "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatSetup_$version.exe#/dl.7z"
+        "url": "https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe#/dl.7z"
     }
 }
