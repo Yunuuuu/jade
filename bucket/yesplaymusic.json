@@ -35,6 +35,9 @@
             "64bit": {
                 "url": "https://github.com/qier222/YesPlayMusic/releases/download/v$version/YesPlayMusic-$version.exe#/dl.7z" 
             }
+        },
+        "hash": {
+            "mode": "download"
         }
     }
 }

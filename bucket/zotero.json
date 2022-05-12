@@ -28,6 +28,9 @@
         "xpath": "/updates/update/@appVersion"
     },
     "autoupdate": {
-        "url": "https://download.zotero.org/client/release/$version/Zotero-$version_setup.exe#/dl.7z"
+        "url": "https://download.zotero.org/client/release/$version/Zotero-$version_setup.exe#/dl.7z",
+        "hash": {
+            "mode": "download"
+        }
     }
 }

@@ -34,6 +34,9 @@
             "32bit": {
                 "url": "https://download.fastgit.org/XTLS/Xray-core/releases/download/v$version/Xray-windows-32.zip"
             }
+        },
+        "hash": {
+            "mode": "download"
         }
     }
 }
