@@ -17,7 +17,7 @@
     "post_install": [
         "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Tencent\\WeChat\"",
         "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Tencent\\WeChatApp\"",
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\WeChat Files\""
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:USERPROFILE}\\Documents\\WeChat Files\""
     ],
     "shortcuts": [
         [
@@ -29,7 +29,7 @@
         "script": [
             "Remove-Item \"${env:APPDATA}\\Tencent\\WeChat\" -Force -Recurse",
             "Remove-Item \"${env:APPDATA}\\Tencent\\WeChatApp\" -Force -Recurse",
-            "Remove-Item \"${env:APPDATA}\\WeChat Files\" -Force -Recurse",
+            "Remove-Item \"${env:USERPROFILE}\\Documents\\WeChat Files\" -Force -Recurse",
             "if (Test-Path \"$bucketsdir\\jade\\scripts\\wechat-uninstall-context.reg\") {",
             "    reg import \"$bucketsdir\\jade\\scripts\\wechat-uninstall-context.reg\"",
             "}",
