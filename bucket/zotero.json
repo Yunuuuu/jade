@@ -6,16 +6,16 @@
     "url": "https://download.zotero.org/client/release/6.0.7/Zotero-6.0.7_setup.exe#/dl.7z",
     "hash": "291ca1182e668292bc908c3df8526d7f972d553c788802def1299ee5eda83faf",
     "extract_dir": "core",
+    "post_install": [
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Zotero\"",
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:LOCALAPPDATA}\\Zotero\""
+    ],
     "bin": "zotero.exe",
     "shortcuts": [
         [
             "zotero.exe",
             "Zotero"
         ]
-    ],
-    "post_install": [
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Zotero\"",
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:LOCALAPPDATA}\\Zotero\""
     ],
     "uninstaller": {
         "script": [

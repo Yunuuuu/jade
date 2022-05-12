@@ -9,17 +9,18 @@
     "url": "http://wppkg.baidupcs.com/issue/netdisk/yunguanjia/BaiduNetdisk_new_7.16.0.6.exe#/dl.7z",
     "hash": "53beeabe0425e49f6192cf7039247184eaada27ea1d79f5ced0af8df6e057474",
     "pre_install": "Remove-Item -R -Path \"$dir\\`$TEMP\",\"$dir\\`$PLUGINSDIR\"",
+    "post_install": [
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Baidu\\BaiduYunKernel\" -name \"\\Baidu\\BaiduYunKernel\"",
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\BaiduYunGuanjia\"",
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\BaiduYunKernel\""
+    ],
     "shortcuts": [
         [
             "BaiduNetdisk.exe",
             "Baidu Netdisk"
         ]
     ],
-    "post_install": [
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Baidu\\BaiduYunKernel\" -name \"\\Baidu\\BaiduYunKernel\"",
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\BaiduYunGuanjia\"",
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\BaiduYunKernel\""
-    ],
+    "persist": "users",
     "uninstaller": {
         "script": [
             "Remove-Item \"${env:APPDATA}\\Baidu\\BaiduYunKernel\" -Force -Recurse",
@@ -30,7 +31,6 @@
             "}"
         ]
     },
-    "persist": "users",
     "checkver": {
         "url": "http://pan.baidu.com/disk/cmsdata?do=client",
         "regex": "\\\\/yunguanjia\\\\/(?<name>Baidu[\\w]+_)(\\d+\\.\\d+\\.\\d+\\.\\d+)\\.exe"

@@ -13,14 +13,14 @@
         "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" | Out-Null",
         "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"   
     ],
+    "post_install": [
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\yesplaymusic\""
+    ],
     "shortcuts": [
         [
             "YesPlayMusic.exe",
             "YesPlayMusic"
         ]
-    ],
-    "post_install": [
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\yesplaymusic\""
     ],
     "uninstaller": {
         "script": [

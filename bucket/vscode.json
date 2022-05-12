@@ -19,13 +19,6 @@
             "hash": "74063992ff794786fd21902e8785fa83e9628337c403bc71cb19493441eadc2a"
         }
     },
-    "env_add_path": "bin",
-    "shortcuts": [
-        [
-            "code.exe",
-            "Visual Studio Code"
-        ]
-    ],
     "post_install": [
         "$dirpath = \"$dir\".Replace('\\', '\\\\')",
         "$exepath = \"$dir\\Code.exe\".Replace('\\', '\\\\')",
@@ -49,6 +42,13 @@
         "    Copy-Item \"$env:AppData\\Code\" \"$dir\\data\\user-data\" -Recurse",
         "}",
         "reg import \"$dir\\install-context.reg\""
+    ],
+    "env_add_path": "bin",
+    "shortcuts": [
+        [
+            "code.exe",
+            "Visual Studio Code"
+        ]
     ],
     "persist": "data",
     "uninstaller": {
