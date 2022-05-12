@@ -1,0 +1,41 @@
+{
+    "version": "7.16.0.6",
+    "description": "baidu net disk client",
+    "homepage": "http://pan.baidu.com/",
+    "license": {
+        "identifier": "Unknown",
+        "url": "http://pan.baidu.com/disk/duty/"
+    },
+    "url": "http://wppkg.baidupcs.com/issue/netdisk/yunguanjia/BaiduNetdisk_new_7.16.0.6.exe#/dl.7z",
+    "hash": "53beeabe0425e49f6192cf7039247184eaada27ea1d79f5ced0af8df6e057474",
+    "pre_install": "Remove-Item -R -Path \"$dir\\`$TEMP\",\"$dir\\`$PLUGINSDIR\"",
+    "shortcuts": [
+        [
+            "BaiduNetdisk.exe",
+            "Baidu Netdisk"
+        ]
+    ],
+    "post_install": [
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Baidu\"",
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\BaiduYunGuanjia\"",
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\BaiduYunKernel\""
+    ],
+    "uninstaller": {
+        "script": [
+            "Remove-Item \"${env:APPDATA}\\Baidu\" -Force -Recurse",
+            "Remove-Item \"${env:APPDATA}\\BaiduYunGuanjia\" -Force -Recurse",
+            "Remove-Item \"${env:APPDATA}\\BaiduYunKernel\" -Force -Recurse"
+        ]
+    },
+    "persist": "users",
+    "checkver": {
+        "url": "http://pan.baidu.com/disk/cmsdata?do=client",
+        "regex": "\\\\/yunguanjia\\\\/(?<name>Baidu[\\w]+_)(\\d+\\.\\d+\\.\\d+\\.\\d+)\\.exe"
+    },
+    "autoupdate": {
+        "url": "http://wppkg.baidupcs.com/issue/netdisk/yunguanjia/$matchName$version.exe#/dl.7z",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}
