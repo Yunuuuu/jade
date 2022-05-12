@@ -1,0 +1,6 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\SOFTWARE\Tencent\WeChat]
+"FileSavePath"="$persist_dir"
+[HKEY_CURRENT_USER\SOFTWARE\Tencent\bugReport\WechatWindows]
+"InstallDir"="$wechat"
