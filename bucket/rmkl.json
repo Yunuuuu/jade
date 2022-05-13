@@ -77,7 +77,7 @@
             "   Remove-Item \"$dir\\bin\\R,*.exe\" -Force",
             "}",
             "Copy-Item \"$dir\\bin\\R.exe\" \"$dir\\bin\\Rscript.exe\"",
-            "$mkl_path = \"$bucketsdir\\r-scoop\\mro_mkl\\4.0.2\"",
+            "$mkl_path = \"$bucketsdir\\jade\\scripts\\mro\"",
             "function BackUp([String] $file) {",
             "   if (-not (Test-Path -Path \"$dir\\bin\\x64\\$file.bak\")) {",
             "       Write-Host \"Backup $file\"",
@@ -88,12 +88,12 @@
             "BackUp 'Rlapack.dll'",
             "function InstallFile([String] $file) {",
             "    Write-Host \"Installing $file\"",
-            "    Copy-Item \"$mkl_path\\$file\" -Destination \"$dir\\bin\\x64\\$file\" -Force ",
+            "    Copy-Item \"$mkl_path\\4.0.2\\$file\" -Destination \"$dir\\bin\\x64\\$file\" -Force ",
             "}",
             "InstallFile 'libiomp5md.dll'",
             "InstallFile 'Rblas.dll'",
             "InstallFile 'Rlapack.dll'",
-            "Expand-Archive -Path \"$bucketsdir\\r-scoop\\mro_mkl\\mro_pkgs.zip\" -DestinationPath \"$dir\\library\" -Force"
+            "Expand-Archive -Path \"$mkl_path\\mro_pkgs.zip\" -DestinationPath \"$dir\\library\" -Force"
         ]
     },
     "post_install": [
