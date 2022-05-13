@@ -86,8 +86,8 @@
         "   [IO.File]::WriteAllLines(\"$dir\\etc\\Renviron.site\", $pathenv)",
         "}",
         "if ($version_cur -lt $version_40) {",
-        "   $pathenv = 'R_USER=\"${USERPROFILE}/Documents\"'",
-        "   [IO.File]::WriteAllLines(\"$dir\\etc\\Renviron.site\", $pathenv)",
+        "   $ruserenv = 'R_USER=\"${USERPROFILE}/Documents\"'",
+        "   [IO.File]::WriteAllLines(\"$dir\\etc\\Renviron.site\", $ruserenv)",
         "}"
     ],
     "checkver": {
