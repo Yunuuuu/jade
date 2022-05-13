@@ -26,7 +26,7 @@
     "uninstaller": {
         "script": [
             "Remove-Item \"${env:APPDATA}\\RStudio\" -Force -Recurse",
-            "Remove-Item \"${env:LOCALAPPDATA}\\RStudio\" -Force -Recurse",
+            "Remove-Item \"${env:LOCALAPPDATA}\\RStudio\" -Force -Recurse"
         ]
     },
     "checkver": {
