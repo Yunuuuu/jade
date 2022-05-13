@@ -1,0 +1,44 @@
+{
+    "version": "4.0.2",
+    "description": "Linking Intel's Math Kernel Library (MKL) to R on Windows.",
+    "homepage": "https://github.com/Yunuuuu/r-scoop",
+    "license": "GPL-3.0-only",
+    "depends": [
+        "r"
+    ],
+    "url": "https://github.com/Yunuuuu/r-scoop/raw/main/mro_mkl/4.0.2.zip",
+    "installer": {
+        "script": [
+            "function BackUp([String] $file) {",
+            "   if (-not (Test-Path -Path \"$(appdir r $global)\\current\\bin\\x64\\$file.bak\")) {",
+            "       Write-Host \"Backup $file\"",
+            "       Copy-Item \"$(appdir r $global)\\current\\bin\\x64\\$file\" -Destination \"$(appdir r $global)\\current\\bin\\x64\\$file.bak\"",
+            "   }",
+            "}",
+            "BackUp 'Rblas.dll'",
+            "BackUp 'Rlapack.dll'",
+            "function InstallFile([String] $file) {",
+            "    Write-Host \"Installing $file\"",
+            "    Copy-Item \"$dir\\$file\" -Destination \"$(appdir r $global)\\current\\bin\\x64\\$file\" -Force ",
+            "}",
+            "InstallFile 'libiomp5md.dll'",
+            "InstallFile 'Rblas.dll'",
+            "InstallFile 'Rlapack.dll'"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "function Undo([String] $file) {",
+            "   if (Test-Path -Path \"$(appdir r $global)\\current\\bin\\x64\\$file.bak\") {",
+            "       Copy-Item \"$(appdir r $global)\\current\\bin\\x64\\$file.bak\" -Destination \"$(appdir r $global)\\current\\bin\\x64\\$file\" -Force",
+            "       Remove-Item -Path \"$(appdir r $global)\\current\\bin\\x64\\$file.bak\" -Force",
+            "   }",
+            "}",
+            "if (Test-Path -Path \"$(appdir r $global)\\current\\bin\\x64\\libiomp5md.dll\") {",
+            "    Remove-Item -Path \"$(appdir r $global)\\current\\bin\\x64\\libiomp5md.dll\" -Force",
+            "}",
+            "Undo 'Rblas.dll'",
+            "Undo 'Rlapack.dll'"
+        ]
+    }
+}
