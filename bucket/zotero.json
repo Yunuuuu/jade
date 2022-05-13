@@ -8,7 +8,8 @@
     "extract_dir": "core",
     "post_install": [
         "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Zotero\" -name \"Roaming\"",
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:LOCALAPPDATA}\\Zotero\" -name \"Local\""
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:LOCALAPPDATA}\\Zotero\" -name \"Local\"",
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:USERPROFILE}\\Zotero\""
     ],
     "bin": "zotero.exe",
     "shortcuts": [
