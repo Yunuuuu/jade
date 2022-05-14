@@ -4,7 +4,7 @@
     "homepage": "https://www.rstudio.com/products/rstudio/",
     "license": "AGPL-3.0-only",
     "notes": "For 32bit, please install 'versions/rstudio11",
-    "depends": "r",
+    "depends": "jade/r",
     "architecture": {
         "64bit": {
             "url": "https://download1.rstudio.org/desktop/windows/RStudio-2022.02.2-485.exe#/dl.7z",
