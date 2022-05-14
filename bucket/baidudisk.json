@@ -26,7 +26,7 @@
             "Remove-Item \"${env:APPDATA}\\Baidu\\BaiduYunKernel\" -Force -Recurse",
             "Remove-Item \"${env:APPDATA}\\BaiduYunGuanjia\" -Force -Recurse",
             "Remove-Item \"${env:APPDATA}\\BaiduYunKernel\" -Force -Recurse",
-            "if (Test-Path -Path \"${env:APPDATA}\\Baidu\\*\") {",
+            "if (-not (Test-Path -Path \"${env:APPDATA}\\Baidu\\*\")) {",
             "    Remove-Item \"${env:APPDATA}\\Baidu\" -Force -Recurse",
             "}"
         ]

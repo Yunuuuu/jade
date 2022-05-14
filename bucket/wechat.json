@@ -33,7 +33,7 @@
             "if (Test-Path \"$bucketsdir\\jade\\scripts\\wechat\\wechat-uninstall-context.reg\") {",
             "    reg import \"$bucketsdir\\jade\\scripts\\wechat\\wechat-uninstall-context.reg\"",
             "}",
-            "if (Test-Path -Path \"${env:APPDATA}\\Tencent\\*\") {",
+            "if (-not (Test-Path -Path \"${env:APPDATA}\\Tencent\\*\")) {",
             "    Remove-Item \"${env:APPDATA}\\Tencent\" -Force -Recurse",
             "}"
         ]
