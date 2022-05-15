@@ -28,11 +28,11 @@
     "shortcuts": [
         [
             "mingw64.exe",
-            "Rtools42 64-bit"
+            "Rtools42/Rtools42 64-bit"
         ],
         [
             "ucrt64.exe",
-            "Rtools42 64-bit UCRT"
+            "Rtools42/Rtools42 64-bit UCRT"
         ]
     ],
     "checkver": {
