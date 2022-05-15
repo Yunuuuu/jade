@@ -40,7 +40,7 @@
     },
     "checkver": {
         "url": "https://pc.weixin.qq.com/",
-        "regex": "(\\d\\.\\d\\.\\d)"
+        "regex": "(\\d+\\.\\d+\\.\\d+)"
     },
     "autoupdate": {
         "url": "https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe#/dl.7z",
