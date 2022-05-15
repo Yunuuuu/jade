@@ -19,7 +19,9 @@
     "shortcuts": [
         [
             "YesPlayMusic.exe",
-            "YesPlayMusic"
+            "YesPlayMusic",
+            "",
+            "\"$bucketsdir\\jade\\scripts\\yesplaymusic\\02.png\""
         ]
     ],
     "uninstaller": {
