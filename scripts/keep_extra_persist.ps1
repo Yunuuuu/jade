@@ -14,6 +14,11 @@ function fullpath($path) {
     $executionContext.sessionState.path.getUnresolvedProviderPathFromPSPath($path)
 }
 
+function checkLinktype($dir) {
+    $linktype = (Get-Item -Path $dir -Force).LinkType
+    ($linktype -eq "Junction") -or ($linktype -eq "HardLink")
+}
+
 write-host "Persisting $extra_persist"
 
 $source = $extra_persist.TrimEnd("/").TrimEnd("\\")
@@ -25,7 +30,13 @@ $target = fullpath "$persist_dir\$name"
 if (Test-Path $target) {
     # if there is also a source data, rename it (to keep a original backup)
     if (Test-Path $source) {
-        Move-Item -Force $source "$source.original"
+
+        if (checkLinktype $source) {
+            Remove-Item -Path $source -Force -Recurse
+        } else {
+            Move-Item -Force $source "$source.original"
+        }
+
     }
     # we don't have persist data in the store, move the source to target, then create link
 } elseif (Test-Path $source) {
