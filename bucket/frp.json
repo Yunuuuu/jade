@@ -15,6 +15,9 @@
             "extract_dir": "frp_0.42.0_windows_386"
         }
     },
+    "pre_install": [
+        "Remove-Item \"$dir\\systemd\" -Recurse"
+    ],
     "bin": [
         "frpc.exe",
         "frps.exe"
