@@ -14,7 +14,7 @@ function fullpath($path) {
     $executionContext.sessionState.path.getUnresolvedProviderPathFromPSPath($path)
 }
 
-function checkLinktype($dir) {
+function is_link($dir) {
     $linktype = (Get-Item -Path $dir -Force).LinkType
     ($linktype -eq "Junction") -or ($linktype -eq "HardLink")
 }
@@ -31,7 +31,7 @@ if (Test-Path $target) {
     # if there is also a source data, rename it (to keep a original backup)
     if (Test-Path $source) {
 
-        if (checkLinktype $source) {
+        if (is_link $source) {
             Remove-Item -Path $source -Force -Recurse
         } else {
             Move-Item -Force $source "$source.original"
