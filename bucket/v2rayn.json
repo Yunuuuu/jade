@@ -35,13 +35,6 @@
         "    }",
         "}"
     ],
-    "uninstaller": {
-        "script": [
-            "if (Test-Path \"$dir\\guiNConfig.json\") {",
-            "    Copy-Item \"$dir\\guiNConfig.json\" \"$persist_dir\\\" | Out-Null",
-            "}"
-        ]
-    },
     "bin": "v2rayN.exe",
     "shortcuts": [
         [
@@ -49,6 +42,13 @@
             "v2rayN"
         ]
     ],
+    "uninstaller": {
+        "script": [
+            "if (Test-Path \"$dir\\guiNConfig.json\") {",
+            "    Copy-Item \"$dir\\guiNConfig.json\" \"$persist_dir\\\" | Out-Null",
+            "}"
+        ]
+    },
     "checkver": "github",
     "autoupdate": {
         "url": "https://github.com/2dust/v2rayN/releases/download/$version/v2rayN.zip",
