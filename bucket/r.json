@@ -88,8 +88,20 @@
         "if ($version_cur -lt $version_40) {",
         "   $ruserenv = 'R_USER=\"${USERPROFILE}/Documents\"'",
         "   [IO.File]::WriteAllLines(\"$dir\\etc\\Renviron.site\", $ruserenv)",
-        "}"
+        "}",
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:LOCALAPPDATA}\\R\" -name \"Local\""
     ],
+    "uninstaller": {
+        "script": [
+            "function is_link($dir) {",
+            "    $linktype = (Get-Item -Path $dir -Force).LinkType",
+            "    ($linktype -eq \"Junction\") -or ($linktype -eq \"HardLink\")",
+            "}",
+            "if (is_link \"${env:LOCALAPPDATA}\\R\") {",
+            "    Remove-Item \"${env:LOCALAPPDATA}\\R\" -Force -Recurse",
+            "}"
+        ]
+    },
     "checkver": {
         "url": "https://cran.r-project.org/bin/windows/base/",
         "regex": "R-([\\d.]+)"
