@@ -119,6 +119,17 @@
         "}'",
         "[IO.File]::AppendAllText(\"$dir\\etc\\Rprofile.site\", $message_rmkl)"
     ],
+    "uninstaller": {
+        "script": [
+            "function is_link($dir) {",
+            "    $linktype = (Get-Item -Path $dir -Force).LinkType",
+            "    ($linktype -eq \"Junction\") -or ($linktype -eq \"HardLink\")",
+            "}",
+            "if (is_link \"${env:LOCALAPPDATA}\\R\") {",
+            "    Remove-Item \"${env:LOCALAPPDATA}\\R\" -Force -Recurse",
+            "}"
+        ]
+    },
     "checkver": {
         "url": "https://cran.r-project.org/bin/windows/base/",
         "regex": "R-([\\d.]+)"

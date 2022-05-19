@@ -23,9 +23,19 @@
     "persist": "users",
     "uninstaller": {
         "script": [
-            "Remove-Item \"${env:APPDATA}\\Baidu\\BaiduYunKernel\" -Force -Recurse",
-            "Remove-Item \"${env:APPDATA}\\BaiduYunGuanjia\" -Force -Recurse",
-            "Remove-Item \"${env:APPDATA}\\BaiduYunKernel\" -Force -Recurse",
+            "function is_link($dir) {",
+            "    $linktype = (Get-Item -Path $dir -Force).LinkType",
+            "    ($linktype -eq \"Junction\") -or ($linktype -eq \"HardLink\")",
+            "}",
+            "if (is_link \"${env:APPDATA}\\Baidu\\BaiduYunKernel\") {",
+            "    Remove-Item \"${env:APPDATA}\\Baidu\\BaiduYunKernel\" -Force -Recurse",
+            "}",
+            "if (is_link \"${env:APPDATA}\\BaiduYunGuanjia\") {",
+            "    Remove-Item \"${env:APPDATA}\\BaiduYunGuanjia\" -Force -Recurse",
+            "}",
+            "if (is_link \"${env:APPDATA}\\BaiduYunKernel\") {",
+            "    Remove-Item \"${env:APPDATA}\\BaiduYunKernel\" -Force -Recurse",
+            "}",
             "if (-not (Test-Path -Path \"${env:APPDATA}\\Baidu\\*\")) {",
             "    Remove-Item \"${env:APPDATA}\\Baidu\" -Force -Recurse",
             "}"

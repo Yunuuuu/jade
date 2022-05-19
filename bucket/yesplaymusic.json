@@ -27,7 +27,13 @@
     ],
     "uninstaller": {
         "script": [
-            "Remove-Item \"${env:APPDATA}\\yesplaymusic\" -Force -Recurse"
+            "function is_link($dir) {",
+            "    $linktype = (Get-Item -Path $dir -Force).LinkType",
+            "    ($linktype -eq \"Junction\") -or ($linktype -eq \"HardLink\")",
+            "}",
+            "if (is_link \"${env:APPDATA}\\yesplaymusic\") {",
+            "    Remove-Item \"${env:APPDATA}\\yesplaymusic\" -Force -Recurse",
+            "}"
         ]
     },
     "checkver": {

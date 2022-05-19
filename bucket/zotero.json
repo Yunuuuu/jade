@@ -20,8 +20,16 @@
     ],
     "uninstaller": {
         "script": [
-            "Remove-Item \"${env:APPDATA}\\Zotero\" -Force -Recurse",
-            "Remove-Item \"${env:LOCALAPPDATA}\\Zotero\" -Force -Recurse"
+            "function is_link($dir) {",
+            "    $linktype = (Get-Item -Path $dir -Force).LinkType",
+            "    ($linktype -eq \"Junction\") -or ($linktype -eq \"HardLink\")",
+            "}",
+            "if (is_link \"${env:APPDATA}\\Zotero\") {",
+            "    Remove-Item \"${env:APPDATA}\\Zotero\" -Force -Recurse",
+            "}",
+            "if (is_link \"${env:LOCALAPPDATA}\\Zotero\") {",
+            "    Remove-Item \"${env:LOCALAPPDATA}\\Zotero\" -Force -Recurse",
+            "}"
         ]
     },
     "checkver": {

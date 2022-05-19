@@ -25,8 +25,16 @@
     ],
     "uninstaller": {
         "script": [
-            "Remove-Item \"${env:APPDATA}\\RStudio\" -Force -Recurse",
-            "Remove-Item \"${env:LOCALAPPDATA}\\RStudio\" -Force -Recurse"
+            "function is_link($dir) {",
+            "    $linktype = (Get-Item -Path $dir -Force).LinkType",
+            "    ($linktype -eq \"Junction\") -or ($linktype -eq \"HardLink\")",
+            "}",
+            "if (is_link \"${env:APPDATA}\\RStudio\") {",
+            "    Remove-Item \"${env:APPDATA}\\RStudio\" -Force -Recurse",
+            "}",
+            "if (is_link \"${env:LOCALAPPDATA}\\RStudio\") {",
+            "    Remove-Item \"${env:LOCALAPPDATA}\\RStudio\" -Force -Recurse",
+            "}"
         ]
     },
     "checkver": {
