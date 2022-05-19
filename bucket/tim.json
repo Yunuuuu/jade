@@ -1,0 +1,68 @@
+{
+    "version": "3.3.9.22051",
+    "description": "tencent TIM, lightweight alternative to QQ",
+    "homepage": "https://tim.qq.com/",
+    "license": {
+        "identifier": "Unknown",
+        "url": "https://tim.qq.com/support.html"
+    },
+    "url": "http://dldir1.qq.com/qqfile/qq/TIM3.3.9/TIM3.3.9.22051.exe#/TimSetup.exe",
+    "hash": "d9ba543a674573d460446749a9864b6e0c9002c9ee552796de112a90a002735b",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "    New-Item -Path \"$persist_dir\" -ItemType Directory | Out-Null",
+        "}"
+    ],
+    "installer": {
+        "script": [
+            "Start-Process -Wait -WindowStyle Hidden cmd \"/c call `\"$dir\\TimSetup.exe`\" -s\" -Verb RunAs",
+            "Remove-Item \"$dir\\TimSetup.exe\""
+        ]
+    },
+    "post_install": [
+        "Copy-Item -Path \"C:\\Program Files (x86)\\Tencent\\TIM\\TIMUninst.exe\" \"$dir\\TIMUninst.exe\"",
+        "'DeskUpdate', 'IM', 'libsdk', 'Logs', 'QQ', 'QQTempSys', 'QQDoctor', 'Tencentdl', 'TIM', 'TXSSO', 'Users' | ForEach-Object {",
+        "    & \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Tencent\\$_\" -name \"Roaming\\$_\"",
+        "}",
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:LOCALAPPDATA}\\Tencent\\MiniBrowser\" -name \"Local\\MiniBrowser\"",
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:USERPROFILE}\\Documents\\Tencent Files\"",
+        "Remove-Item \"C:\\Users\\Public\\Desktop\\TIM.lnk\""
+    ],
+    "uninstaller": {
+        "script": [
+            "Start-Process -Wait -WindowStyle Hidden cmd \"/c call `\"$dir\\TIMUninst.exe`\" -s\" -Verb RunAs",
+            "function is_link($dir) {",
+            "    $linktype = (Get-Item -Path $dir -Force).LinkType",
+            "    ($linktype -eq \"Junction\") -or ($linktype -eq \"HardLink\")",
+            "}",
+            "'DeskUpdate', 'IM', 'libsdk', 'Logs', 'QQ', 'QQTempSys', 'QQDoctor', 'Tencentdl', 'TIM', 'TXSSO', 'Users' | ForEach-Object {",
+            "    if (is_link \"${env:APPDATA}\\Tencent\\$_\") {",
+            "        Remove-Item \"${env:APPDATA}\\Tencent\\$_\" -Force -Recurse",
+            "    }",
+            "}",
+            "if (is_link \"${env:LOCALAPPDATA}\\Tencent\\MiniBrowser\") {",
+            "    Remove-Item \"${env:LOCALAPPDATA}\\Tencent\\MiniBrowser\" -Force -Recurse",
+            "}",
+            "if (is_link \"${env:USERPROFILE}\\Documents\\Tencent Files\") {",
+            "    Remove-Item \"${env:USERPROFILE}\\Documents\\Tencent Files\" -Force -Recurse",
+            "}",
+            "if (-not (Test-Path -Path \"${env:APPDATA}\\Tencent\\*\")) {",
+            "    Remove-Item \"${env:APPDATA}\\Tencent\" -Force -Recurse",
+            "}",
+            "if (-not (Test-Path -Path \"${env:LOCALAPPDATA}\\Tencent\\*\")) {",
+            "    Remove-Item \"${env:LOCALAPPDATA}\\Tencent\" -Force -Recurse",
+            "}"
+        ]
+    },
+    "checkver": {
+        "url": "https://qzonestyle.gtimg.cn/qzone/qzactStatics/configSystem/data/1605/config1.js",
+        "regex": "https?://dldir1\\.qq\\.com/qqfile/qq(?<extra>.*)/TIM(?<main>\\d+\\.\\d+\\.\\d+)/TIM.*\\.(?<patch>\\d+)\\.exe",
+        "replace": "${main}.${patch}"
+    },
+    "autoupdate": {
+        "url": "http://dldir1.qq.com/qqfile/qq$matchExtra/TIM$matchMain/TIM$version.exe#/TimSetup.exe",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}
