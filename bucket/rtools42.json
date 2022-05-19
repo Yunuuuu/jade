@@ -1,12 +1,13 @@
 {
-    "version": "5168.5107",
+    "version": "5253.5107",
     "description": "Tools for building packages for R under Microsoft Windows, or for building R itself.",
     "homepage": "https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html",
     "license": "BSD-3-Clause",
     "notes": "For R 3.3.x to 3.6.x, please use 'versions/rtools35'; and for R versions R-4.0.0 to to R-4.1.3, please use 'jade/rtools40'.",
     "architecture": {
         "64bit": {
-            "url": "https://cran.r-project.org/bin/windows/Rtools/rtools42/files/rtools42-5168-5107.exe"
+            "url": "https://cran.r-project.org/bin/windows/Rtools/rtools42/files/rtools42-5253-5107.exe",
+            "hash": "ede54fa99592173bc0637f645644bbef5f86e020cd136a7f540123f20feb02e9"
         }
     },
     "innosetup": true,
@@ -36,14 +37,17 @@
         ]
     ],
     "checkver": {
-        "github": "https://cran.r-project.org/bin/windows/Rtools/rtools42/files/",
+        "url": "https://cran.r-project.org/bin/windows/Rtools/rtools42/files/",
         "regex": "rtools42-(\\d+)-(\\d+)",
         "replace": "${1}.${2}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cran.r-project.org/bin/windows/Rtools/rtools42/files/rtools42-$match1-$match2.exe"
+                "url": "https://cran.r-project.org/bin/windows/Rtools/rtools42/files/rtools42-$match1-$match2.exe",
+                "hash": {
+                    "mode": "download"
+                }
             }
         }
     }
