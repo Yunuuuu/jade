@@ -11,8 +11,8 @@
             "hash": "74187a336a5eca75c82288510e56300da1711e34aa602e9d6d358340a477d064",
             "post_install": [
                 "Remove-Item \"$dir\\`$*\" -Recurse",
-                "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\RStudio\" -name \"Roaming\"",
-                "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:LOCALAPPDATA}\\RStudio\" -name \"Local\""
+                "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\RStudio\" -name \"Roaming\\RStudio\"",
+                "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:LOCALAPPDATA}\\RStudio\" -name \"Local\\RStudio\""
             ]
         }
     },
