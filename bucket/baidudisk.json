@@ -12,7 +12,8 @@
     "post_install": [
         "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Baidu\\BaiduYunKernel\" -name \"Baidu\\BaiduYunKernel\"",
         "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\BaiduYunGuanjia\"",
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\BaiduYunKernel\""
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\BaiduYunKernel\"",
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\PLogs\""
     ],
     "shortcuts": [
         [
@@ -35,6 +36,9 @@
             "}",
             "if (is_link \"${env:APPDATA}\\BaiduYunKernel\") {",
             "    Remove-Item \"${env:APPDATA}\\BaiduYunKernel\" -Force -Recurse",
+            "}",
+            "if (is_link \"${env:APPDATA}\\BaiduYunKernel\") {",
+            "    Remove-Item \"${env:APPDATA}\\PLogs\" -Force -Recurse",
             "}",
             "if (-not (Test-Path -Path \"${env:APPDATA}\\Baidu\\*\")) {",
             "    Remove-Item \"${env:APPDATA}\\Baidu\" -Force -Recurse",
