@@ -117,7 +117,8 @@
         "        sep = \" \"",
         "    ))",
         "}'",
-        "[IO.File]::AppendAllText(\"$dir\\etc\\Rprofile.site\", $message_rmkl)"
+        "[IO.File]::AppendAllText(\"$dir\\etc\\Rprofile.site\", $message_rmkl)",
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:LOCALAPPDATA}\\R\" -name \"Local\\R\""
     ],
     "uninstaller": {
         "script": [
