@@ -29,6 +29,9 @@
             "}",
             "if (is_link \"${env:LOCALAPPDATA}\\Zotero\") {",
             "    Remove-Item \"${env:LOCALAPPDATA}\\Zotero\" -Force -Recurse",
+            "}",
+            "if (is_link \"${env:USERPROFILE}\\Zotero\") {",
+            "    Remove-Item \"${env:USERPROFILE}\\Zotero\" -Force -Recurse",
             "}"
         ]
     },
