@@ -109,7 +109,7 @@
     "autoupdate": {
         "url": "https://cran.r-project.org/bin/windows/base/old/$version/R-$version-win.exe",
         "hash": {
-            "mode": "download"
+            "url": "https://cran.r-project.org/bin/windows/base/old/$version/md5sum.R-$version.txt"
         }
     }
 }
