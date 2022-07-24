@@ -7,8 +7,8 @@
     "depends": "jade/r",
     "architecture": {
         "64bit": {
-            "url": "https://download1.rstudio.org/desktop/windows/RStudio-2022.07.0-548.exe#/dl.7z",
-            "hash": "7bfd6825b26b75198766480581eca39186d3152a57ed575c54f30d214d6d5115",
+            "url": "https://download1.rstudio.org/desktop/windows/RStudio-2022.07.0-548.zip",
+            "hash": "c1f2de9fffb0f2528a50a82a2fc740ca139e4431cd582836c600f7acfee171fa",
             "post_install": [
                 "Remove-Item \"$dir\\`$*\" -Recurse",
                 "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\RStudio\" -name \"Roaming\\RStudio\"",
@@ -16,7 +16,12 @@
             ]
         }
     },
-    "bin": "bin\\rstudio.exe",
+    "bin": [
+        [
+            "bin\\rstudio.exe",
+            "rstudio"
+        ]
+    ],
     "shortcuts": [
         [
             "bin\\rstudio.exe",
@@ -44,7 +49,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download1.rstudio.org/desktop/windows/RStudio-$version.exe#/dl.7z",
+                "url": "https://download1.rstudio.org/desktop/windows/RStudio-$version.zip",
                 "hash": {
                     "url": "https://www.rstudio.com/products/rstudio/download/",
                     "regex": "(?s)$basename.*?$sha256"
