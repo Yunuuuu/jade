@@ -39,7 +39,7 @@
             "    $linktype = (Get-Item -Path $dir -Force).LinkType",
             "    ($linktype -eq \"Junction\") -or ($linktype -eq \"HardLink\")",
             "}",
-            "'DeskUpdate', 'IM', 'libsdk', 'Logs', 'QQ', 'QQTempSys', 'QQDoctor', 'Tencentdl', 'TIM', 'TXSSO', 'Users' | ForEach-Object {",
+            "'DeskUpdate', 'IM', 'libsdk', 'Logs', 'QQ', 'QQTempSys', 'QQDoctor', 'QQLive', 'Tencentdl', 'TIM', 'TXSSO', 'Users' | ForEach-Object {",
             "    if (is_link \"${env:APPDATA}\\Tencent\\$_\") {",
             "        Remove-Item \"${env:APPDATA}\\Tencent\\$_\" -Force -Recurse",
             "    }",
