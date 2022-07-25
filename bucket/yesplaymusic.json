@@ -12,7 +12,7 @@
     "pre_install": [
         "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" | Out-Null",
         "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
-        "Copy-Item -Path \"$bucketsdir\\jade\\scripts\\yesplaymusic\\01.ico\" -Destination \"$dir\\yesplaymusic.ico\""
+        "Copy-Item -Path \"$bucketsdir\\jade\\config\\yesplaymusic\\01.ico\" -Destination \"$dir\\yesplaymusic.ico\""
     ],
     "post_install": [
         "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\yesplaymusic\" -name \"Roaming\\yesplaymusic\""

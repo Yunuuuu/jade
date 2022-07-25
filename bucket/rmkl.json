@@ -77,7 +77,7 @@
             "   Remove-Item \"$dir\\bin\\R,*.exe\" -Force",
             "}",
             "Copy-Item \"$dir\\bin\\R.exe\" \"$dir\\bin\\Rscript.exe\"",
-            "$mkl_path = \"$bucketsdir\\jade\\scripts\\mro\"",
+            "$mkl_path = \"$bucketsdir\\jade\\config\\mro\"",
             "function BackUp([String] $file) {",
             "   if (-not (Test-Path -Path \"$dir\\bin\\x64\\$file.bak\")) {",
             "       Write-Host \"Backup $file\"",
