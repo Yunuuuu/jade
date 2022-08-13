@@ -28,12 +28,16 @@
     },
     "shortcuts": [
         [
+            "msys2.exe",
+            "Rtools40/Rtools40 Bash"
+        ],
+        [
             "mingw64.exe",
-            "Rtools40/Rtools40 64-bit"
+            "Rtools40/Rtools40 MinGW 64-bit"
         ],
         [
             "ucrt64.exe",
-            "Rtools40/Rtools40 64-bit UCRT"
+            "Rtools40/Rtools40 UCRT 64-bit"
         ]
     ],
     "checkver": {
