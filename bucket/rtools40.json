@@ -40,6 +40,12 @@
             "Rtools40/Rtools40 UCRT 64-bit"
         ]
     ],
+    "persist": [
+        "mingw32.ini",
+        "mingw64.ini",
+        "ucrt64.ini",
+        "msys2.ini"
+    ],
     "checkver": {
         "github": "https://github.com/r-windows/rtools-installer",
         "regex": "/tag/(\\d+)-(\\d+)-(\\d+)",

@@ -40,6 +40,12 @@
             "Rtools42/Rtools42 UCRT 64-bit"
         ]
     ],
+    "persist": [
+        "mingw32.ini",
+        "mingw64.ini",
+        "ucrt64.ini",
+        "msys2.ini"
+    ],
     "checkver": {
         "url": "https://cran.r-project.org/bin/windows/Rtools/rtools42/files/",
         "regex": "rtools42-(\\d+)-(\\d+)",
