@@ -29,16 +29,24 @@
     ],
     "uninstaller": {
         "script": [
-            "function is_link($dir) {",
-            "    $linktype = (Get-Item -Path $dir -Force).LinkType",
-            "    ($linktype -eq \"Junction\") -or ($linktype -eq \"HardLink\")",
+            "function remove_link($dir) {",
+            "    $source = (Get-Item -Path $dir -Force)",
+            "    if ($source.LinkType) {",
+            "        $source_path = $source.FullName",
+            "        # directory (junction)",
+            "        if ($source -is [System.IO.DirectoryInfo]) {",
+            "            # remove read-only attribute on the link",
+            "            attrib -R /L $source_path",
+            "            # remove the junction",
+            "            Remove-Item -Path $source_path -Recurse -Force -ErrorAction SilentlyContinue",
+            "        } else {",
+            "            # remove the hard link",
+            "            Remove-Item -Path $source_path -Force -ErrorAction SilentlyContinue",
+            "        }",
+            "    }",
             "}",
-            "if (is_link \"${env:APPDATA}\\RStudio\") {",
-            "    Remove-Item \"${env:APPDATA}\\RStudio\" -Force -Recurse",
-            "}",
-            "if (is_link \"${env:LOCALAPPDATA}\\RStudio\") {",
-            "    Remove-Item \"${env:LOCALAPPDATA}\\RStudio\" -Force -Recurse",
-            "}"
+            "remove_link \"${env:APPDATA}\\RStudio\"",
+            "remove_link \"${env:LOCALAPPDATA}\\RStudio\""
         ]
     },
     "checkver": {
