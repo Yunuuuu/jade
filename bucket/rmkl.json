@@ -123,6 +123,7 @@
     "uninstaller": {
         "script": [
             "function remove_link($dir) {",
+            "    write-host \"Unlinking $dir\"",
             "    $source = (Get-Item -Path $dir -Force)",
             "    if ($source.LinkType) {",
             "        $source_path = $source.FullName",
