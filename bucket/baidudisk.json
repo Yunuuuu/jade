@@ -41,7 +41,7 @@
             "        }",
             "    }",
             "}",
-            "remove_link \"${env:APPDATA}\\Baidu\\BaiduYunKernel\")",
+            "remove_link \"${env:APPDATA}\\Baidu\\BaiduYunKernel\"",
             "remove_link \"${env:APPDATA}\\BaiduYunGuanjia\"",
             "remove_link \"${env:APPDATA}\\BaiduYunKernel\"",
             "remove_link \"${env:APPDATA}\\PLogs\"",
