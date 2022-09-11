@@ -1,11 +1,11 @@
 {
-    "version": "20220908131416",
+    "version": "20220911074642",
     "description": "Geosite and domain data for V2Ray (official)",
     "homepage": "https://github.com/v2fly/domain-list-community",
     "license": "MIT",
     "depends": "jade/v2ray",
-    "url": "https://download.fastgit.org/v2fly/domain-list-community/releases/download/20220908131416/dlc.dat",
-    "hash": "569893a101b0d28e20dc4f719f336e33c0b4ca60ace3dc70ca8060630a14db27",
+    "url": "https://download.fastgit.org/v2fly/domain-list-community/releases/download/20220911074642/dlc.dat",
+    "hash": "e68d7c2a244e845680eb8397dcab82c3fd1d1dfbbcec862e7d3b5cc97ca1fd9b",
     "installer": {
         "script": [
             "function BackUp([String] $file) {",
