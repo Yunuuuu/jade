@@ -1,5 +1,5 @@
 {
-    "version": "2022.07.1-554",
+    "version": "2022.07.2-576",
     "description": "An IDE for R with console, syntax-highlighting, editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.",
     "homepage": "https://www.rstudio.com/products/rstudio/",
     "license": "AGPL-3.0-only",
@@ -7,8 +7,8 @@
     "depends": "jade/r",
     "architecture": {
         "64bit": {
-            "url": "https://download1.rstudio.org/desktop/windows/RStudio-2022.07.1-554.zip",
-            "hash": "c77cc2d3c7824c3dcb0a800819ba066fddaf0aa07c28dc71a18c1ac877dcb031",
+            "url": "https://download1.rstudio.org/desktop/windows/RStudio-2022.07.2-576.zip",
+            "hash": "063ead1f62f773c3228c9213dbe75879a8c4d0d2f5cf49f170b8ab5ded060308",
             "post_install": [
                 "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\RStudio\" -name \"Roaming\\RStudio\"",
                 "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:LOCALAPPDATA}\\RStudio\" -name \"Local\\RStudio\""
