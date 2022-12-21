@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "description": "The ultimate automation scripting language for Windows.",
+    "homepage": "https://www.autohotkey.com/",
+    "license": "GPL-2.0-or-later",
+    "url": "https://github.com/Lexikos/AutoHotkey_L/releases/download/v2.0.0/AutoHotkey_2.0.0_setup.exe#/setup.exe",
+    "hash": "8dc4871ac544d2cd0ff7ccd84b8862eaf9ba0af18bd5b71e29146b17e4b13783",
+    "pre_install": "Write-Host 'Installing AutoHotKey with their installer and its own options ( create registry keys removed by uninstaller )' -ForegroundColor Magenta",
+    "installer": {
+        "script": "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @(\"/installto `\"$dir`\"\", '/silent') | Out-Null"
+    },
+    "bin": [
+        [
+            "v2\\AutoHotkey64.exe",
+            "autohotkey64"
+        ],
+        [
+            "v2\\AutoHotkey32.exe",
+            "autohotkey32"
+        ]
+    ],
+    "uninstaller": {
+        "script": "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList '/uninstall' | Out-Null"
+    },
+    "checkver": {
+        "github": "https://github.com/lexikos/autohotkey_l"
+    },
+    "autoupdate": {
+        "url": "https://github.com/Lexikos/AutoHotkey_L/releases/download/v$version/AutoHotkey_$version_setup.exe#/setup.exe"
+    }
+}
