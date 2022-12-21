@@ -9,16 +9,6 @@
     "installer": {
         "script": "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @(\"/installto `\"$dir`\"\", '/silent') | Out-Null"
     },
-    "bin": [
-        [
-            "v2\\AutoHotkey64.exe",
-            "autohotkey64"
-        ],
-        [
-            "v2\\AutoHotkey32.exe",
-            "autohotkey32"
-        ]
-    ],
     "uninstaller": {
         "script": "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList '/uninstall' | Out-Null"
     },
