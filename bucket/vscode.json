@@ -63,7 +63,7 @@
                 "hash": {
                     "mode": "json",
                     "jp": "$.sha256hash",
-                    "url": "https://update.code.visualstudio.com/api/versions/$version/win32-x64/stable"
+                    "url": "https://update.code.visualstudio.com/api/versions/$version/win32-x64-archive/stable"
                 }
             },
             "32bit": {
@@ -71,7 +71,7 @@
                 "hash": {
                     "mode": "json",
                     "jp": "$.sha256hash",
-                    "url": "https://update.code.visualstudio.com/api/versions/$version/win32/stable"
+                    "url": "https://update.code.visualstudio.com/api/versions/$version/win32-archive/stable"
                 }
             }
         }
