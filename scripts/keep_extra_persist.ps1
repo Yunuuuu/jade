@@ -1,4 +1,4 @@
-# & \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\"
+# & \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\"
 param(
     [string]$extra_persist = $(throw "Parameter missing: -extra_persist extra_persist"),
     [string]$name = $(Split-Path -Path $extra_persist -Leaf)

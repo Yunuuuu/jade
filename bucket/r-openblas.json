@@ -102,7 +102,7 @@
         "   $ruserenv = 'R_USER=\"${USERPROFILE}/Documents\"'",
         "   [IO.File]::WriteAllLines(\"$dir\\etc\\Renviron.site\", $ruserenv)",
         "}",
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:LOCALAPPDATA}\\R\" -name \"Local\\R\""
+        "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:LOCALAPPDATA}\\R\" -name \"Local\\R\""
     ],
     "uninstaller": {
         "script": [

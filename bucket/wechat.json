@@ -16,9 +16,9 @@
         ]
     },
     "post_install": [
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Tencent\\WeChat\" -name \"Roaming\\Tencent\\WeChat\"",
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\Tencent\\WeChatApp\" -name \"Roaming\\Tencent\\WeChatApp\"",
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:USERPROFILE}\\Documents\\WeChat Files\" -name \"Documents\\WeChat Files\""
+        "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:APPDATA}\\Tencent\\WeChat\" -name \"Roaming\\Tencent\\WeChat\"",
+        "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:APPDATA}\\Tencent\\WeChatApp\" -name \"Roaming\\Tencent\\WeChatApp\"",
+        "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:USERPROFILE}\\Documents\\WeChat Files\" -name \"Documents\\WeChat Files\""
     ],
     "shortcuts": [
         [

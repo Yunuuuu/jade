@@ -10,8 +10,8 @@
             "url": "https://download1.rstudio.org/electron/windows/RStudio-2023.03.0-386.zip",
             "hash": "a33f73c82cabdef215fd473a468cde8ea21a038353810dc9c4482e07ed8bc545",
             "post_install": [
-                "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:APPDATA}\\RStudio\" -name \"Roaming\\RStudio\"",
-                "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:LOCALAPPDATA}\\RStudio\" -name \"Local\\RStudio\""
+                "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:APPDATA}\\RStudio\" -name \"Roaming\\RStudio\"",
+                "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:LOCALAPPDATA}\\RStudio\" -name \"Local\\RStudio\""
             ]
         }
     },
