@@ -101,6 +101,7 @@
         "  if (Test-Path \"$bucketsdir\\jade\\config\\R\\$_.reg\") {",
         "    $content = Get-Content \"$bucketsdir\\jade\\config\\R\\$_.reg\"",
         "    $content = $content.Replace('$roriginal_dir', $original_dir_path)",
+        "    $content = $content.Replace('$rversion', $version)",
         "    if ($global) {",
         "      $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
         "    }",
