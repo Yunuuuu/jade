@@ -1,0 +1,15 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\SOFTWARE\R-core\R]
+"InstallPath"="$rdir"
+"Current Version"="$rversion"
+
+[HKEY_CURRENT_USER\SOFTWARE\R-core\R\$rversion]
+"InstallPath"="$rdir"
+
+[HKEY_CURRENT_USER\SOFTWARE\R-core\R64]
+"InstallPath"="$rdir"
+"Current Version"="$rversion"
+
+[HKEY_CURRENT_USER\SOFTWARE\R-core\R64\4.2.3]
+"InstallPath"="$rdir"

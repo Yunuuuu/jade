@@ -95,7 +95,18 @@
         "   $ruserenv = 'R_USER=\"${USERPROFILE}/Documents\"'",
         "   [IO.File]::WriteAllLines(\"$dir\\etc\\Renviron.site\", $ruserenv)",
         "}",
-        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:LOCALAPPDATA}\\R\" -name \"Local\\R\""
+        "$dirpath = \"$dir\".Replace('\\', '\\\\')",
+        "if (Test-Path \"$bucketsdir\\jade\\config\\R\\r-install-context.reg\") {",
+        "  $content = Get-Content \"$bucketsdir\\jade\\config\\R\\r-install-context.reg\"",
+        "  $content = $content.Replace('$rdir', $dirpath)",
+        "  $content = $content.Replace('$rversion', $version)",
+        "  if ($global) {",
+        "    $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "  }",
+        "  $content | Set-Content -Path \"$dir\\install-context.reg\"",
+        "}",
+        "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:LOCALAPPDATA}\\R\" -name \"Local\\R\"",
+        "reg import \"$dir\\install-context.reg\""
     ],
     "uninstaller": {
         "script": [
