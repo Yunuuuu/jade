@@ -1,5 +1,7 @@
 # .github/workflows/Sync_to_gitee.yml
 
+name: Sync to remote gitee
+
 on: 
   push:
   workflow_dispatch:
