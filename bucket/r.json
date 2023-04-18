@@ -95,17 +95,19 @@
         "   $ruserenv = 'R_USER=\"${USERPROFILE}/Documents\"'",
         "   [IO.File]::WriteAllLines(\"$dir\\etc\\Renviron.site\", $ruserenv)",
         "}",
-        "$dirpath = \"$dir\".Replace('\\', '\\\\')",
-        "if (Test-Path \"$bucketsdir\\jade\\config\\R\\r-install-context.reg\") {",
-        "  $content = Get-Content \"$bucketsdir\\jade\\config\\R\\r-install-context.reg\"",
-        "  $content = $content.Replace('$rdir', $dirpath)",
-        "  $content = $content.Replace('$rversion', $version)",
-        "  if ($global) {",
-        "    $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
-        "  }",
-        "  $content | Set-Content -Path \"$dir\\install-context.reg\"",
-        "}",
         "& \"$bucketsdir\\jade\\scripts\\keep_extra_persist.ps1\" \"${env:LOCALAPPDATA}\\R\" -name \"Local\\R\"",
+        "$dirpath = \"$dir\".Replace('\\', '\\\\')",
+        "'install-context', 'uninstall-context' | ForEach-Object {",
+        "  if (Test-Path \"$bucketsdir\\jade\\config\\R\\$_.reg\") {",
+        "    $content = Get-Content \"$bucketsdir\\jade\\config\\R\\$_.reg\"",
+        "    $content = $content.Replace('$rdir', $dirpath)",
+        "    $content = $content.Replace('$rversion', $version)",
+        "    if ($global) {",
+        "      $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "    }",
+        "    $content | Set-Content -Path \"$dir\\$_.reg\"",
+        "  }",
+        "}",
         "reg import \"$dir\\install-context.reg\""
     ],
     "uninstaller": {
@@ -127,7 +129,8 @@
             "        }",
             "    }",
             "}",
-            "remove_link \"${env:LOCALAPPDATA}\\R\""
+            "remove_link \"${env:LOCALAPPDATA}\\R\"",
+            "reg import \"$dir\\uninstall-context.reg\""
         ]
     },
     "checkver": {
