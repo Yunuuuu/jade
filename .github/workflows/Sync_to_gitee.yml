@@ -11,8 +11,8 @@ jobs:
       - name: git-sync
         uses: wei/git-sync@v3
         with:
-          source_repo: "Yunuuuu/jade"
+          source_repo: "https://github.com/Yunuuuu/jade.git"
           source_branch: "master"
           destination_repo: "git@gitee.com:yunyunp/jade.git"
           destination_branch: "master"
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} # optional
+          destination_ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} # optional
