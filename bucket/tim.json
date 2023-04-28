@@ -1,13 +1,13 @@
 {
-    "version": "3.4.6.22074",
+    "version": "3.4.6.22077",
     "description": "tencent TIM, lightweight alternative to QQ",
     "homepage": "https://tim.qq.com/",
     "license": {
         "identifier": "Unknown",
         "url": "https://tim.qq.com/support.html"
     },
-    "url": "http://dldir1.qq.com/qqfile/qq/TIM3.4.6/TIM3.4.6.22074.exe#/TimSetup.exe",
-    "hash": "3492424e5a7e168b140eb07dc708be25082f3ce34cdfabc4a254191fddb5a3ab",
+    "url": "http://dldir1.qq.com/qqfile/qq/TIM3.4.6/TIM3.4.6.22077.exe#/TimSetup.exe",
+    "hash": "0daaeb891605d48f9a5eb83811de785fb9270ee6893e8dea7bc6dfe3cae1b908",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\")) {",
         "    New-Item -Path \"$persist_dir\" -ItemType Directory | Out-Null",
