@@ -16,6 +16,10 @@
         "regex": "Ahk2Exe v([\\da-zA-Z.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/AutoHotkey/Ahk2Exe/releases/download/Ahk2Exe$version/Ahk2Exe$version.zip"
+        "url": "https://github.com/AutoHotkey/Ahk2Exe/releases/download/Ahk2Exe$version/Ahk2Exe$version.zip",
+        "hash": {
+            "url": "https://github.com/AutoHotkey/Ahk2Exe/releases/tag/Ahk2Exe$version",
+            "find": "$basename\\s*$sha256"
+        }
     }
 }
