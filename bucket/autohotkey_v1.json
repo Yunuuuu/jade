@@ -5,15 +5,8 @@
     "license": "GPL-2.0-or-later",
     "url": "https://www.autohotkey.com/download/1.1/AutoHotkey_1.1.36.02_setup.exe#/setup.exe",
     "hash": "af7b8e60b4b54f5f85e6b207ac51926cb076aa4319b8e4c72e59b98c85818cae",
-    "pre_install": "Write-Host 'Installing AutoHotKey with their installer and its own options ( create registry keys removed by uninstaller )' -ForegroundColor Magenta",
     "architecture": {
         "64bit": {
-            "installer": {
-                "script": [
-                    "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-                    "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/S', '/x64', '/uiAccess=0', '/IsHostApp=1', \"/D=`\"$dir`\"\") -Verb RunAs | Out-Null"
-                ]
-            },
             "bin": [
                 "autohotkeyu64.exe",
                 [
@@ -24,12 +17,6 @@
             ]
         },
         "32bit": {
-            "installer": {
-                "script": [
-                    "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-                    "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/S', '/U32', '/uiAccess=0', '/IsHostApp=1', \"/D=`\"$dir`\"\") -Verb RunAs | Out-Null"
-                ]
-            },
             "bin": [
                 "autohotkeyu32.exe",
                 [
@@ -39,12 +26,6 @@
                 "compiler\\ahk2exe.exe"
             ]
         }
-    },
-    "uninstaller": {
-        "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-            "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList '/Uninstall' -Verb RunAs | Out-Null"
-        ]
     },
     "checkver": {
         "url": "https://www.autohotkey.com/download/1.1/version.txt",
