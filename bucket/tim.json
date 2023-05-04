@@ -15,7 +15,7 @@
     ],
     "installer": {
         "script": [
-            "Start-Process -Wait -WindowStyle Hidden -Verb RunAs powershell -ArgumentList \"Invoke-Expression \"\"$dir\\TimSetup.exe -s\"\"\"",
+            "Start-Process -Wait -WindowStyle Hidden \"$dir\\TimSetup.exe\" -ArgumentList \"-s\"",
             "Remove-Item \"$dir\\TimSetup.exe\""
         ]
     },
