@@ -30,7 +30,7 @@
     ],
     "uninstaller": {
         "script": [
-            "Start-Process -Wait -WindowStyle Hidden -Verb RunAs powershell -ArgumentList {\"Invoke-Expression \"\"$dir\\TIMUninst.exe\"\" | Out-Null\"; \"Remove-Item -Force -Recurse -ErrorAction SilentlyContinue -Path 'C:\\Program Files (x86)\\Tencent\\TIM'\"}",
+            "Start-Process -Wait -WindowStyle Hidden -Verb RunAs powershell -ArgumentList {\"Start-Process -Wait -WindowStyle Hidden \"\"$dir\\TIMUninst.exe\"\"\"; \"Remove-Item -Force -Recurse -ErrorAction SilentlyContinue -Path 'C:\\Program Files (x86)\\Tencent\\TIM'\"}",
             "function remove_link($dir) {",
             "    write-host \"Unlinking $dir\"",
             "    $source = (Get-Item -Path $dir -Force)",
