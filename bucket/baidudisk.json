@@ -10,10 +10,10 @@
     "hash": "fb1fd74d73755e436c12ae4a07fc039b5051da3436c7e55b5f539656ac5c1a5c",
     "pre_install": "Remove-Item -R -Path \"$dir\\`$TEMP\",\"$dir\\`$PLUGINSDIR\"",
     "post_install": [
-        "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:APPDATA}\\Baidu\\BaiduYunKernel\" -name \"Roaming\\Baidu\\BaiduYunKernel\"",
-        "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:APPDATA}\\BaiduYunGuanjia\" -name \"Roaming\\BaiduYunGuanjia\"",
-        "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:APPDATA}\\BaiduYunKernel\" -name \"Roaming\\BaiduYunKernel\"",
-        "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:APPDATA}\\PLogs\" -name \"Roaming\\PLogs\""
+        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:APPDATA}\\Baidu\\BaiduYunKernel\" -name \"Roaming\\Baidu\\BaiduYunKernel\"",
+        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:APPDATA}\\BaiduYunGuanjia\" -name \"Roaming\\BaiduYunGuanjia\"",
+        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:APPDATA}\\BaiduYunKernel\" -name \"Roaming\\BaiduYunKernel\"",
+        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:APPDATA}\\PLogs\" -name \"Roaming\\PLogs\""
     ],
     "shortcuts": [
         [

@@ -93,7 +93,7 @@
         "   $pathenv = 'PATH=\"${RTOOLS40_HOME-C:/rtools40}/usr/bin;${PATH}\"'",
         "   [IO.File]::WriteAllLines(\"$dir\\etc\\Renviron.site\", $pathenv)",
         "}",
-        "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:LOCALAPPDATA}\\R\" -name \"Local\\R\"",
+        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:LOCALAPPDATA}\\R\" -name \"Local\\R\"",
         "$original_dir_path = \"$original_dir\".Replace('\\', '\\\\')",
         "'install-context', 'uninstall-context' | ForEach-Object {",
         "  if (Test-Path \"$bucketsdir\\jade\\config\\R\\$_.reg\") {",
