@@ -30,7 +30,7 @@
     ],
     "uninstaller": {
         "script": [
-            "Start-Process -Wait -WindowStyle Hidden -Verb RunAs powershell -ArgumentList {\"Invoke-Expression \"\"$dir\\TIMUninst.exe\"\" | Out-Null\"; \"Remove-Item -Force -Recurse -Path 'C:\\Program Files (x86)\\Tencent\\TIM'\"}",
+            "Start-Process -Wait -WindowStyle Hidden -Verb RunAs powershell -ArgumentList {\"Invoke-Expression \"\"$dir\\TIMUninst.exe\"\" | Out-Null\"; \"Remove-Item -Force -Recurse -ErrorAction SilentlyContinue -Path 'C:\\Program Files (x86)\\Tencent\\TIM'\"}",
             "function remove_link($dir) {",
             "    write-host \"Unlinking $dir\"",
             "    $source = (Get-Item -Path $dir -Force)",
@@ -54,13 +54,13 @@
             "remove_link \"${env:LOCALAPPDATA}\\Tencent\\MiniBrowser\"",
             "remove_link \"${env:USERPROFILE}\\Documents\\Tencent Files\"",
             "if (Test-Path -Path \"${env:APPDATA}\\Tencent\\QQCalllb.exe\") {",
-            "    Remove-Item \"${env:APPDATA}\\Tencent\\QQCalllb.exe\" -Force",
+            "    Remove-Item \"${env:APPDATA}\\Tencent\\QQCalllb.exe\" -Force -ErrorAction SilentlyContinue",
             "}",
             "if (-not (Test-Path -Path \"${env:APPDATA}\\Tencent\\*\")) {",
-            "    Remove-Item \"${env:APPDATA}\\Tencent\" -Force -Recurse",
+            "    Remove-Item \"${env:APPDATA}\\Tencent\" -Force -Recurse -ErrorAction SilentlyContinue",
             "}",
             "if (-not (Test-Path -Path \"${env:LOCALAPPDATA}\\Tencent\\*\")) {",
-            "    Remove-Item \"${env:LOCALAPPDATA}\\Tencent\" -Force -Recurse",
+            "    Remove-Item \"${env:LOCALAPPDATA}\\Tencent\" -Force -Recurse -ErrorAction SilentlyContinue",
             "}"
         ]
     },
