@@ -40,7 +40,6 @@
             "    }",
             "}",
             "remove_link \"${env:USERPROFILE}\\Documents\\Fiddler2\""
-
         ]
     },
     "shortcuts": [
