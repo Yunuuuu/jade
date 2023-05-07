@@ -5,7 +5,7 @@
     "license": "MPL-2.0",
     "url": "https://github.com/Cnotech/flash-collector/releases/download/v1.11-rc/Flash.Collector_1.11.0_win-x64.7z",
     "hash": "70d973a75da7c2d175117b514ef62f2ac946056354004f15f0ca6ee0029ce659",
-    "pre_install": "if (!(Test-Path \"$persist_dir\\config.json\")) { New-Item \"$dir\\config.json\" | Out-Null }",
+    "pre_install": "if (!(Test-Path \"$persist_dir\\config.json\")) { New-Item -Path \"$dir\" -Name \"config.json\" -ItemType \"file\" | Out-Null }",
     "shortcuts": [
         [
             "flash-collector.exe",
