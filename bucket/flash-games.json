@@ -1,0 +1,27 @@
+{
+    "version": "1.11",
+    "description": "Flash Games collector (4399, 7k7k, game773, 17yy, 7724)",
+    "homepage": "https://github.com/Cnotech/flash-collector",
+    "license": "MPL-2.0",
+    "url": "https://github.com/Cnotech/flash-collector/releases/download/v1.11-rc/Flash.Collector_1.11.0_win-x64.7z",
+    "hash": "70d973a75da7c2d175117b514ef62f2ac946056354004f15f0ca6ee0029ce659",
+    "shortcuts": [
+        [
+            "flash-collector.exe",
+            "Flash-Games"
+        ]
+    ],
+    "persist": [
+        "config.json",
+        "games"
+    ],
+    "checkver": {
+        "github": "https://github.com/Cnotech/flash-collector"
+    },
+    "autoupdate": {
+        "url": "https://github.com/Cnotech/flash-collector/releases/download/v$version-rc/Flash.Collector_$version.0_win-x64.7z",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}
