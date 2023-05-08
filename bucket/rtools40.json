@@ -1,5 +1,5 @@
 {
-    "version": "4.0.20220206",
+    "version": "2022-02-06",
     "description": "Tools for building packages for R under Microsoft Windows, or for building R itself.",
     "homepage": "https://cloud.r-project.org/bin/windows/Rtools",
     "license": "BSD-3-Clause",
@@ -48,13 +48,12 @@
     ],
     "checkver": {
         "github": "https://github.com/r-windows/rtools-installer",
-        "regex": "/tag/(\\d+)-(\\d+)-(\\d+)",
-        "replace": "4.0.${1}${2}${3}"
+        "regex": "\\/releases\\/tag\\/(?:v|V)?([\\d-]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/r-windows/rtools-installer/releases/download/$match1-$match2-$match3/rtools40-x86_64.exe"
+                "url": "https://github.com/r-windows/rtools-installer/releases/download/$version/rtools40-x86_64.exe"
             }
         }
     }

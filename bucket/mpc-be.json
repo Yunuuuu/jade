@@ -52,11 +52,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/mpcbe/MPC-BE/Release%20builds/$matchHead/MPC-BE.$version.x64.7z",
+                "url": "https://downloads.sourceforge.net/project/mpcbe/MPC-BE/Release%20builds/$version/MPC-BE.$version.x64.7z",
                 "extract_dir": "MPC-BE.$version.x64"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/mpcbe/MPC-BE/Release%20builds/$matchHead/MPC-BE.$version.x86.7z",
+                "url": "https://downloads.sourceforge.net/project/mpcbe/MPC-BE/Release%20builds/$version/MPC-BE.$version.x86.7z",
                 "extract_dir": "MPC-BE.$version.x86"
             }
         }

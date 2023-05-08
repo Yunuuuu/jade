@@ -1,5 +1,5 @@
 {
-    "version": "2023.03.0+386",
+    "version": "2023.03.0-386",
     "description": "An IDE for R with console, syntax-highlighting, editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.",
     "homepage": "https://www.rstudio.com/products/rstudio/",
     "license": "AGPL-3.0-only",
@@ -54,12 +54,12 @@
         "url": "https://www.rstudio.com/wp-content/downloads.json",
         "jsonpath": ".rstudio['open_source'].stable.desktop.archive.windows.version",
         "regex": "(?<date>[\\d.]+)\\+(?<build>\\d+)",
-        "replace": "${date}+${build}"
+        "replace": "${date}-${build}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download1.rstudio.org/electron/windows/RStudio-$matchDate-$matchBuild.zip",
+                "url": "https://download1.rstudio.org/electron/windows/RStudio-$version.zip",
                 "hash": {
                     "mode": "json",
                     "jsonpath": ".rstudio['open_source'].stable.desktop.archive.windows.sha256",
