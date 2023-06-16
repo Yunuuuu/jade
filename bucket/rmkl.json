@@ -1,5 +1,5 @@
 {
-    "version": "4.3.0",
+    "version": "4.3.1",
     "description": "R with MKL",
     "homepage": "https://www.r-project.org",
     "license": "GPL-2.0-only",
@@ -17,8 +17,8 @@
         "",
         "Annoying, right?! You might want to check out Pshazz (scoop install pshazz)--this has a plugin to remove some crazy aliases from Powershell, as well as many other improvements."
     ],
-    "url": "https://cran.r-project.org/bin/windows/base/old/4.3.0/R-4.3.0-win.exe",
-    "hash": "md5:ffa08d2ea0f9534a6c1be4422266184c",
+    "url": "https://cran.r-project.org/bin/windows/base/old/4.3.1/R-4.3.1-win.exe",
+    "hash": "md5:cbb6da78aef13dca33afd6a2e0ce7cdb",
     "innosetup": true,
     "architecture": {
         "64bit": {
