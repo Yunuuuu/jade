@@ -14,7 +14,7 @@
         "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
         "Copy-Item -Path \"$bucketsdir\\jade\\config\\yesplaymusic\\01.ico\" -Destination \"$dir\\yesplaymusic.ico\""
     ],
-    "post_install": "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:APPDATA}\\yesplaymusic\" -name \"Roaming\\yesplaymusic\"",
+    "post_install": "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:APPDATA}\\yesplaymusic\" -name \"Roaming\\yesplaymusic\"",
     "shortcuts": [
         [
             "YesPlayMusic.exe",

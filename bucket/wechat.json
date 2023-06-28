@@ -1,5 +1,5 @@
 {
-    "version": "3.9.2",
+    "version": "3.9.5",
     "description": "Instant messaging app by Tencent",
     "homepage": "https://pc.weixin.qq.com/",
     "license": {
@@ -7,7 +7,7 @@
         "url": "https://weixin.qq.com/cgi-bin/readtemplate?lang=zh_CN&t=weixin_agreement&s=default"
     },
     "url": "https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe#/dl.7z",
-    "hash": "f73007b32df3ce9e71f9148bef4be07ff10390f432c6939175e17bf45dc086c6",
+    "hash": "d86a6595d4d298eae11c323a6a98a8e88da1e05f37d0de2fff751a399de2a5c5",
     "installer": {
         "script": [
             "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
@@ -16,9 +16,9 @@
         ]
     },
     "post_install": [
-        "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:APPDATA}\\Tencent\\WeChat\" -name \"Roaming\\Tencent\\WeChat\"",
-        "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:APPDATA}\\Tencent\\WeChatApp\" -name \"Roaming\\Tencent\\WeChatApp\"",
-        "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:USERPROFILE}\\Documents\\WeChat Files\" -name \"Documents\\WeChat Files\""
+        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:APPDATA}\\Tencent\\WeChat\" -name \"Roaming\\Tencent\\WeChat\"",
+        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:APPDATA}\\Tencent\\WeChatApp\" -name \"Roaming\\Tencent\\WeChatApp\"",
+        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:USERPROFILE}\\Documents\\WeChat Files\" -name \"Documents\\WeChat Files\""
     ],
     "shortcuts": [
         [

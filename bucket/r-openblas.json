@@ -1,5 +1,5 @@
 {
-    "version": "4.2.3",
+    "version": "4.3.1",
     "description": "A free software environment for statistical computing and graphics.",
     "homepage": "https://www.r-project.org",
     "license": "GPL-2.0-only",
@@ -102,7 +102,7 @@
         "   $ruserenv = 'R_USER=\"${USERPROFILE}/Documents\"'",
         "   [IO.File]::WriteAllLines(\"$dir\\etc\\Renviron.site\", $ruserenv)",
         "}",
-        "& \"$bucketsdir\\jade\\scripts\\keep_global_persist.ps1\" \"${env:LOCALAPPDATA}\\R\" -name \"Local\\R\""
+        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:LOCALAPPDATA}\\R\" -name \"Local\\R\""
     ],
     "uninstaller": {
         "script": [

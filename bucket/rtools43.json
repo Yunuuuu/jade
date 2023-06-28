@@ -1,13 +1,13 @@
 {
-    "version": "5355-5357",
+    "version": "5550-5548",
     "description": "Tools for building packages for R under Microsoft Windows, or for building R itself.",
-    "homepage": "https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html",
+    "homepage": "https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html",
     "license": "BSD-3-Clause",
-    "notes": "For R 3.3.x to 3.6.x, please use 'versions/rtools35'; and for R versions R-4.0.0 to to R-4.1.3, please use 'jade/rtools40'.",
+    "notes": "For R 3.3.x to 3.6.x, please use 'versions/rtools35'; for R-4.0.0 to to R-4.1.3, please use 'jade/rtools40'; and for R 4.2.*, please use 'jade/rtools42'.",
     "architecture": {
         "64bit": {
-            "url": "https://cran.r-project.org/bin/windows/Rtools/rtools42/files/rtools42-5355-5357.exe",
-            "hash": "98205dd8bd703a7c867d182a83e361c76014520dca7393142d8e7a0c4ef03097"
+            "url": "https://cran.r-project.org/bin/windows/Rtools/rtools43/files/rtools43-5550-5548.exe",
+            "hash": "bf93cf85b109be80586467f586d7e6294f54c5f11ddc6b930a91e28e03e67b74"
         }
     },
     "innosetup": true,
@@ -24,20 +24,20 @@
         ]
     },
     "env_set": {
-        "RTOOLS42_HOME": "$dir"
+        "RTOOLS43_HOME": "$dir"
     },
     "shortcuts": [
         [
             "msys2.exe",
-            "Rtools42/Rtools42 Bash"
+            "Rtools43/Rtools43 Bash"
         ],
         [
             "mingw64.exe",
-            "Rtools42/Rtools42 MinGW 64-bit"
+            "Rtools43/Rtools43 MinGW 64-bit"
         ],
         [
             "ucrt64.exe",
-            "Rtools42/Rtools42 UCRT 64-bit"
+            "Rtools43/Rtools43 UCRT 64-bit"
         ]
     ],
     "persist": [
@@ -47,13 +47,13 @@
         "msys2.ini"
     ],
     "checkver": {
-        "url": "https://cran.r-project.org/bin/windows/Rtools/rtools42/files/",
-        "regex": "rtools42-([\\d-]+)\\.exe"
+        "url": "https://cran.r-project.org/bin/windows/Rtools/rtools43/files/",
+        "regex": "rtools43-([\\d-]+)\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cran.r-project.org/bin/windows/Rtools/rtools42/files/rtools42-$version.exe",
+                "url": "https://cran.r-project.org/bin/windows/Rtools/rtools43/files/rtools43-$version.exe",
                 "hash": {
                     "mode": "download"
                 }
