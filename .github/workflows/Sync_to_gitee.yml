@@ -5,6 +5,9 @@ name: Sync to remote gitee
 on: 
   push:
   workflow_dispatch:
+  schedule:
+    # run every 4 hours
+    - cron: '5 4 * * *'
 
 jobs:
   git-sync:
