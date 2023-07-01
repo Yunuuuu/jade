@@ -10,9 +10,7 @@
     "hash": "d86a6595d4d298eae11c323a6a98a8e88da1e05f37d0de2fff751a399de2a5c5",
     "installer": {
         "script": [
-            "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
-            "Remove-Item \"$dir\\`$_15_\" -Force -Recurse",
-            "Remove-Item \"$dir\\`$R5\" -Force -Recurse"
+            "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
         ]
     },
     "post_install": [
