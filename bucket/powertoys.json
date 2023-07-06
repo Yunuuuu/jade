@@ -6,7 +6,7 @@
     "notes": "To run this application, you must install .Net Core: https://dotnet.microsoft.com/download",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/microsoft/PowerToys/releases/download/v0.71.0/PowerToysSetup-0.71.0-x64.exe",
+            "url": "https://github.com/microsoft/PowerToys/releases/download/v0.71.0/PowerToysUserSetup-0.71.0-x64.exe",
             "hash": "4c6ccb3055e3838da50ff529a670baad129570f4bfabf497b5d92259d3052794"
         }
     },
