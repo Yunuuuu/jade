@@ -22,12 +22,12 @@
         }
     },
     "pre_install": [
-        "if (!(test-path \"$dir\\config.yaml\")) { New-Item -Path $dir -ItemType \"file\" -Name 'config.yaml' > $null }"
+        "if (!(test-path \"$dir\\config.json\")) { New-Item -Path $dir -ItemType \"file\" -Name 'config.json' > $null }"
     ],
     "bin": [
         "godns.exe"
     ],
-    "persist": "config.yaml",
+    "persist": "config.json",
     "checkver": {
         "github": "https://github.com/TimothyYe/godns"
     },
