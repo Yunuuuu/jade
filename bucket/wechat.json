@@ -7,11 +7,9 @@
         "url": "https://weixin.qq.com/cgi-bin/readtemplate?lang=zh_CN&t=weixin_agreement&s=default"
     },
     "url": "https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe#/dl.7z",
-    "hash": "d86a6595d4d298eae11c323a6a98a8e88da1e05f37d0de2fff751a399de2a5c5",
+    "hash": "51165aa3ff04dfb3ef24aa33073949875280e3b4642244c4c437ec8c641d3654",
     "installer": {
-        "script": [
-            "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
-        ]
+        "script": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
     },
     "post_install": [
         "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:APPDATA}\\Tencent\\WeChat\" -name \"Roaming\\Tencent\\WeChat\"",
