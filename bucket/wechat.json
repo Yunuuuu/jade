@@ -1,5 +1,5 @@
 {
-    "version": "3.9.5",
+    "version": "3.9.6",
     "description": "Instant messaging app by Tencent",
     "homepage": "https://pc.weixin.qq.com/",
     "license": {
@@ -7,7 +7,7 @@
         "url": "https://weixin.qq.com/cgi-bin/readtemplate?lang=zh_CN&t=weixin_agreement&s=default"
     },
     "url": "https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe#/dl.7z",
-    "hash": "51165aa3ff04dfb3ef24aa33073949875280e3b4642244c4c437ec8c641d3654",
+    "hash": "38148311ea13440b64bd68647f7a06721f1af7f0c6fff9f3e07516162252c18c",
     "installer": {
         "script": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
     },
