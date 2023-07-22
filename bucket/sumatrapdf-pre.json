@@ -8,9 +8,9 @@
             "url": "https://www.sumatrapdfreader.org/dl/prerel/15481/SumatraPDF-prerel-64.exe",
             "hash": "39c2b7b91675992f484fd351b848b61928c547ccca204105f8196642f79d6219"
         },
-        "32bit": {
-            "url": "https://www.sumatrapdfreader.org/dl/rel/3.4.6/SumatraPDF-3.4.6.zip",
-            "hash": ""
+        "arm64": {
+            "url": "https://www.sumatrapdfreader.org/dl/prerel/15481/SumatraPDF-prerel-arm64.exe",
+            "hash": "d070c2c2ded9a8f51f4256e2631f13fac5a532c613968201c7de2442b7e84931"
         }
     },
     "pre_install": [
