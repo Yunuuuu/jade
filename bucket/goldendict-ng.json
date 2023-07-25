@@ -1,10 +1,10 @@
 {
-    "version": "GreatHeat.230722.fbf82af1",
+    "version": "alpha.230725.2434a5e0",
     "description": "A feature-rich dictionary lookup program",
     "homepage": "https://github.com/xiaoyifang/goldendict-ng",
     "license": "GPL-3.0-only",
-    "url": "https://github.com/xiaoyifang/goldendict-ng/releases/download/tag-GreatHeat.fbf82af1/6.5.1-GoldenDict.exe_windows-2019_20230722.zip",
-    "hash": "df02bce053f4f6ce011143b949d8e2f97ef2f39612dc5336159ee5202d28ef64",
+    "url": "https://github.com/xiaoyifang/goldendict-ng/releases/download/tag-alpha.2434a5e0/6.5.1-GoldenDict.exe_windows-2019_20230725.zip",
+    "hash": "be20097e9375f9443f3198adcf7c1d6e05fd5673bf9fcd21acc286753ec878a8",
     "pre_install": [
         "$main_dir = $(Get-ChildItem -Include \"GoldenDict*\" -Name -Path $dir)",
         "Move-Item $dir/$main_dir/* $dir",
