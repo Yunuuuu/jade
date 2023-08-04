@@ -8,13 +8,13 @@
     "architecture": {
         "64bit": {
             "url": "https://download1.rstudio.org/electron/windows/RStudio-2023.06.1-524.zip",
-            "hash": "ceae1334562b502c4401d32f3038905fd5a5097ba45f0b5783c54236bba0ba15",
-            "post_install": [
-                "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:APPDATA}\\RStudio\" -name \"Roaming\\RStudio\"",
-                "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:LOCALAPPDATA}\\RStudio\" -name \"Local\\RStudio\""
-            ]
+            "hash": "ceae1334562b502c4401d32f3038905fd5a5097ba45f0b5783c54236bba0ba15"
         }
     },
+    "post_install": [
+        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:APPDATA}\\RStudio\" -name \"Roaming\\RStudio\"",
+        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:LOCALAPPDATA}\\RStudio\" -name \"Local\\RStudio\""
+    ],
     "bin": [
         [
             "rstudio.exe",
