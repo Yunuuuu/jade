@@ -7,10 +7,6 @@
         "url": "https://github.com/mamedev/mame/blob/master/COPYING"
     },
     "architecture": {
-        "32bit": {
-            "url": "https://github.com/mamedev/mame/releases/download/mame0258/mame0258s.exe",
-            "hash": "79f42686813ea1c71647ab0e3283735743a3672aa7c3e0eabcbbe3cf71da06aa"
-        },
         "64bit": {
             "url": "https://github.com/mamedev/mame/releases/download/mame0258/mame0258b_64bit.exe#/dl.7z",
             "hash": "7b4c44dd507fce7ecd2194b23caa13f71ed7543afcfcfbeec0cbe332794faed2"
@@ -49,12 +45,6 @@
     },
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "https://github.com/mamedev/mame/releases/download/$version/$versions.exe#/dl.7z",
-                "hash": {
-                    "url": "https://github.com/mamedev/mame/releases/download/$version/SHA256SUMS"
-                }
-            },
             "64bit": {
                 "url": "https://github.com/mamedev/mame/releases/download/$version/$versionb_64bit.exe#/dl.7z",
                 "hash": {
