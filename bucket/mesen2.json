@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0-preview1",
+    "description": "A multi-system emulator (NES, SNES, Game Boy and PC Engine)",
+    "homepage": "https://github.com/SourMesen/Mesen2",
+    "license": "GPL-3.0",
+    "url": "https://github.com/SourMesen/Mesen2/releases/download/2.0.0-preview1/Mesen-2.0.0-preview1-Windows.zip",
+    "hash": "84cbf5d534af9eb6733c2b2e7913538efec720adcf45a93020fcf5f097dd74ff",
+    "shortcuts": [
+        [
+            "Mesen.exe",
+            "Mesen"
+        ]
+    ],
+    "persist": "rom",
+    "checkver": {
+        "url": "https://github.com/SourMesen/Mesen2/releases",
+        "regex": "\\/releases\\/tag/([\\d.\\-a-zA-Z]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/SourMesen/Mesen2/releases/download/$version/Mesen-$version-Windows.zip",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}
