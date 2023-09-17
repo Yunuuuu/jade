@@ -11,9 +11,8 @@
             "Mesen"
         ]
     ],
-    "persist": "rom",
     "checkver": {
-        "url": "https://github.com/SourMesen/Mesen2/releases",
+        "github": "https://github.com/SourMesen/Mesen2",
         "regex": "\\/releases\\/tag/([\\d.\\-a-zA-Z]+)"
     },
     "autoupdate": {
