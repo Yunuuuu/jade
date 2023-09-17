@@ -5,12 +5,37 @@
     "license": "GPL-3.0",
     "url": "https://github.com/SourMesen/Mesen2/releases/download/2.0.0-preview1/Mesen-2.0.0-preview1-Windows.zip",
     "hash": "84cbf5d534af9eb6733c2b2e7913538efec720adcf45a93020fcf5f097dd74ff",
+    "post_install": [
+        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:USERPROFILE}\\Documents\\Mesen2\" -name \"Documents\\Mesen2\""
+    ],
     "shortcuts": [
         [
             "Mesen.exe",
             "Mesen"
         ]
     ],
+    "uninstaller": {
+        "script": [
+            "function remove_link($dir) {",
+            "    write-host \"Unlinking $dir\"",
+            "    $source = (Get-Item -Path $dir -Force)",
+            "    if ($source.LinkType) {",
+            "        $source_path = $source.FullName",
+            "        # directory (junction)",
+            "        if ($source -is [System.IO.DirectoryInfo]) {",
+            "            # remove read-only attribute on the link",
+            "            attrib -R /L $source_path",
+            "            # remove the junction",
+            "            Remove-Item -Path $source_path -Recurse -Force -ErrorAction SilentlyContinue",
+            "        } else {",
+            "            # remove the hard link",
+            "            Remove-Item -Path $source_path -Force -ErrorAction SilentlyContinue",
+            "        }",
+            "    }",
+            "}",
+            "remove_link \"${env:USERPROFILE}\\Documents\\Mesen2\""
+        ]
+    },
     "checkver": {
         "github": "https://github.com/SourMesen/Mesen2",
         "regex": "\\/releases\\/tag/([\\d.\\-a-zA-Z]+)"
