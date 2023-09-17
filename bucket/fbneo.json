@@ -1,0 +1,34 @@
+{
+    "version": "1.0.0.2",
+    "description": "FinalBurn Neo",
+    "homepage": "https://github.com/finalburnneo/FBNeo",
+    "license": {
+        "identifier": "file",
+        "url": "https://github.com/finalburnneo/FBNeo/blob/master/src/license.txt"
+    },
+    "url": "https://github.com/finalburnneo/FBNeo/releases/download/v1.0.0.2/fbneo.zip",
+    "hash": "9d09d210b007745c91143df61da46190d60a344b192ad79e3b6bc1f1140e0ec1",
+    "extract_dir": "fbneo",
+    "persist": [
+        "avi",
+        "config",
+        "neocdiso",
+        "recordings",
+        "roms",
+        "savestates",
+        "screenshots",
+        "support"
+    ],
+    "shortcuts": [
+        [
+            "fbneo.exe",
+            "fbneo"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/finalburnneo/FBNeo"
+    },
+    "autoupdate": {
+        "url": "https://github.com/finalburnneo/FBNeo/releases/download/v$version/fbneo.zip"
+    }
+}
