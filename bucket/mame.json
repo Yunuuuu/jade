@@ -13,8 +13,11 @@
         }
     },
     "pre_install": [
-        "if (!(Test-Path \"$dir\\ui.ini\")) {",
-        "    New-Item \"$dir\\ui.ini\" -Type File | Out-Null",
+        "if (!(Test-Path \"$persist_dir\\ui.ini\")) {",
+        "    New-Item \"$persist_dir\\ui.ini\" -Type File | Out-Null",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\mame.ini\")) {",
+        "    New-Item \"$persist_dir\\mame.ini\" -Type File | Out-Null",
         "}"
     ],
     "bin": [
@@ -35,9 +38,11 @@
     ],
     "persist": [
         "ctrlr",
+        "cheat",
         "plugins",
         "roms",
-        "ui.ini"
+        "ui.ini",
+        "mame.ini"
     ],
     "checkver": {
         "github": "https://github.com/mamedev/mame",

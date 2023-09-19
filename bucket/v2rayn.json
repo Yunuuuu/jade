@@ -8,9 +8,8 @@
     "hash": "e03163198e4dbebdbb50f030da6104d802d9c108f262a33ffa9a1bf0cdf4126f",
     "extract_dir": "v2rayN",
     "pre_install": [
-        "# 'guiNConfig.json',",
-        "if (!(Test-Path \"$persist_dir\")) {",
-        "    New-Item -Path \"$persist_dir\" -ItemType Directory | Out-Null",
+        "if (!(Test-Path \"$persist_dir\\guiNConfig.json\")) {",
+        "    New-Item \"$persist_dir\\guiNConfig.json\" -Type File | Out-Null",
         "}",
         "if (Test-Path \"$(appdir v2ray $global)\\current\") {",
         "    foreach ($form in @('*.exe', '*.dat', 'vpoint*.json')) {",
@@ -40,13 +39,7 @@
             "v2rayN"
         ]
     ],
-    "uninstaller": {
-        "script": [
-            "if (Test-Path \"$dir\\guiNConfig.json\") {",
-            "    Copy-Item \"$dir\\guiNConfig.json\" \"$persist_dir\\\" | Out-Null",
-            "}"
-        ]
-    },
+    "persist": "guiNConfig.json",
     "checkver": "github",
     "autoupdate": {
         "url": "https://github.com/2dust/v2rayN/releases/download/$version/v2rayN.zip",

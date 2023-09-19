@@ -40,8 +40,8 @@
         }
     },
     "pre_install": [
-        "if (!(Test-Path \"$dir\\fceux.cfg\")) {",
-        "    New-Item \"$dir\\fceux.cfg\" -Type File | Out-Null",
+        "if (!(Test-Path \"$persist_dir\\fceux.cfg\")) {",
+        "    New-Item \"$persist_dir\\fceux.cfg\" -Type File | Out-Null",
         "}"
     ],
     "persist": [

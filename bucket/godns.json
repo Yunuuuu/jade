@@ -22,7 +22,7 @@
         }
     },
     "pre_install": [
-        "if (!(test-path \"$dir\\config.json\")) { New-Item -Path $dir -ItemType \"file\" -Name 'config.json' > $null }"
+        "if (!(test-path \"$persist_dir\\config.json\")) { New-Item -Path $dir -ItemType \"file\" -Name 'config.json' > $null }"
     ],
     "bin": [
         "godns.exe"
