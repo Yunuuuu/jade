@@ -14,20 +14,33 @@
     },
     "pre_install": [
         "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
-        "if (!(Test-Path \"$persist_dir\\mame.ini\")) {",
-        "    if ($global) {",
-        "        $app_dir = \"$globaldir\\apps\\$app\\current\"",
-        "    } else {",
-        "        $app_dir = \"$scoopdir\\apps\\$app\\current\"",
-        "    }",
-        "    $home_dir_path = '%USERPROFILE%/mame'",
-        "    $install_dir_path = \"$app_dir\".Replace('\\', '/')",
-        "    $content = Get-Content \"$bucketsdir\\jade\\config\\mame\\mame.ini\"",
-        "    $content = $content.Replace('$home_dir', $home_dir_path)",
-        "    $content = $content.Replace('$install_dir', $install_dir_path)",
-        "    Set-Content -Path \"$persist_dir\\mame.ini\" -value $content",
+        "if ($global) {",
+        "    $app_dir = \"$globaldir\\apps\\$app\\current\"",
+        "} else {",
+        "    $app_dir = \"$scoopdir\\apps\\$app\\current\"",
         "}",
-        "New-Item -Path \"~\\mame.ini\" -ItemType HardLink -Target \"$persist_dir\\mame.ini\" | Out-Null"
+        "$home_dir_path = '%USERPROFILE%/mame'",
+        "$install_dir_path = \"$app_dir\".Replace('\\', '/')",
+        "if (!(Test-Path \"$persist_dir\\mame.ini\")) {",
+        "    $main_content = Get-Content \"$bucketsdir\\jade\\config\\mame\\mame.ini\"",
+        "    $main_content = $main_content.Replace('$home_dir', $home_dir_path)",
+        "    $main_content = $main_content.Replace('$install_dir', $install_dir_path)",
+        "    Set-Content -Path \"$persist_dir\\mame.ini\" -value $main_content",
+        "}",
+        "New-Item -Path \"~\\mame.ini\" -ItemType HardLink -Target \"$persist_dir\\mame.ini\" | Out-Null",
+        "if (!(test-path \"$persist_dir\\ini\")) { ",
+        "    if (test-path \"$dir\\ini\") {",
+        "        Move-Item -Path \"$dir\\ini\" -Destination $persist_dir",
+        "    } else {",
+        "        New-Item -type directory \"$persist_dir\\ini\" > $null",
+        "    }",
+        "}",
+        "if (!(test-path \"$persist_dir\\ini\\ui.ini\")) { ",
+        "    $ui_content = Get-Content \"$bucketsdir\\jade\\config\\mame\\ui.ini\"",
+        "    $ui_content = $ui_content.Replace('$home_dir', $home_dir_path)",
+        "    $ui_content = $ui_content.Replace('$install_dir', $install_dir_path)",
+        "    Set-Content -Path \"$persist_dir\\ini\\ui.ini\" -value $ui_content",
+        "}"
     ],
     "bin": [
         [
@@ -46,7 +59,8 @@
         ]
     ],
     "persist": [
-        "mame.ini"
+        "mame.ini",
+        "ini"
     ],
     "uninstaller": {
         "script": [
