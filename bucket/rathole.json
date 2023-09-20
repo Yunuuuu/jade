@@ -10,6 +10,7 @@
         }
     },
     "pre_install": [
+        "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "if (!(test-path \"$persist_dir\\rathole.toml\")) { New-Item -Path $persist_dir -ItemType \"file\" -Name 'rathole.toml' > $null }"
     ],
     "bin": "rathole.exe",

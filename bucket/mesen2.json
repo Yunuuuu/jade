@@ -6,6 +6,7 @@
     "url": "https://github.com/SourMesen/Mesen2/releases/download/2.0.0-preview1/Mesen-2.0.0-preview1-Windows.zip",
     "hash": "84cbf5d534af9eb6733c2b2e7913538efec720adcf45a93020fcf5f097dd74ff",
     "pre_install": [
+        "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "if (!(Test-Path \"$persist_dir\\MesenNesDB.txt\")) {",
         "    New-Item \"$persist_dir\\MesenNesDB.txt\" -Type File | Out-Null",
         "}",

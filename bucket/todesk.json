@@ -9,6 +9,7 @@
     "url": "https://dl.todesk.com/windows/ToDesk_Setup.exe#/dl.7z",
     "hash": "7e1b3d3e18ff795420d3ee86e4a2de290ee37733ebd099f370a3560a4bdbf502",
     "pre_install": [
+        "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "@('config.ini') | ForEach-Object {",
         "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
         "}"

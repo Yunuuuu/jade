@@ -8,6 +8,7 @@
     "hash": "e03163198e4dbebdbb50f030da6104d802d9c108f262a33ffa9a1bf0cdf4126f",
     "extract_dir": "v2rayN",
     "pre_install": [
+        "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "if (!(Test-Path \"$persist_dir\\guiNConfig.json\")) {",
         "    New-Item \"$persist_dir\\guiNConfig.json\" -Type File | Out-Null",
         "}",

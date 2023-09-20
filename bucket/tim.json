@@ -9,8 +9,8 @@
     "url": "http://dldir1.qq.com/qqfile/qq/TIM3.4.8/TIM3.4.8.22092.exe#/TimSetup.exe",
     "hash": "57b2d7fc2065751e66354b9a4ef05fff89ba5e2342520aaba85776e0e174925c",
     "pre_install": [
-        "if (!(Test-Path \"$persist_dir\")) {",
-        "    New-Item -Path \"$persist_dir\" -ItemType Directory | Out-Null",
+        "if (!(Test-Path $persist_dir)) {",
+        "    New-Item -Path $persist_dir -ItemType Directory | Out-Null",
         "}"
     ],
     "installer": {
