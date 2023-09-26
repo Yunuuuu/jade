@@ -9,7 +9,7 @@ function is_directory([String] $path) {
 }
 
 function ensure($dir) { 
-    if (!(Test-Path $dir -PathType Container)) { 
+    if (!(Test-Path $dir)) { 
         New-Item -ItemType "directory" -Force -Path "$dir" | Out-Null
     }
     Resolve-Path $dir
