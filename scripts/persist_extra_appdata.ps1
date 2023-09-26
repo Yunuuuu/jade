@@ -36,13 +36,22 @@ $target = fullpath "$persist_dir\$name"
 if (Test-Path $target) {
     # if there is also a source data, rename it (to keep a original backup)
     if (Test-Path $source) {
-
-        if (is_link $source) {
-            Remove-Item -Path $source -Force -Recurse
+        $item = (Get-Item -Path $source -Force)
+        if ($item.LinkType) {
+            $item_path = $item.FullName
+            # directory (junction)
+            if ($item -is [System.IO.DirectoryInfo]) {
+                # remove read-only attribute on the link
+                attrib -R /L $item_path
+                # remove the junction
+                Remove-Item -Path $item_path -Recurse -Force -ErrorAction SilentlyContinue
+            } else {
+                # remove the hard link
+                Remove-Item -Path $item_path -Force -ErrorAction SilentlyContinue
+            }
         } else {
             Move-Item -Force $source "$source.original"
         }
-
     }
     # we don't have persist data in the store, move the source to target, then create link
 } elseif (Test-Path $source) {
