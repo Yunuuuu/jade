@@ -15,12 +15,11 @@
     "extract_to": "installer",
     "installer": {
         "script": [
-            "$ahk = @('/script', \"`\"$dir\\installer\\UX\\install.ahk`\"\", '/to', \"`\"$dir`\"\", '/user', '/silent')",
-            "if ($global) { $ahk = @('/script', \"`\"$dir\\installer\\UX\\install.ahk`\"\", '/to', \"`\"$dir`\"\", '/silent') }",
+            "$ahk = @('/script', \"`\"$dir\\installer\\UX\\install.ahk`\"\", '/user', '/silent', '/to', \"`\"$dir`\"\")",
+            "if ($global) { $ahk = @('/script', \"`\"$dir\\installer\\UX\\install.ahk`\"\", '/elevate', '/silent', '/to', \"`\"$dir`\"\") }",
             "Start-Process \"$dir\\installer\\AutoHotkey32.exe\" -ArgumentList $ahk -Wait"
         ]
     },
-    "post_install": "Remove-Item \"$dir\\installer\" -Force -Recurse",
     "architecture": {
         "64bit": {
             "bin": [
@@ -31,16 +30,27 @@
                 [
                     "v2\\AutoHotkey32.exe",
                     "autohotkey32"
+                ],
+                [
+                    "v2\\AutoHotkey64.exe",
+                    "autohotkey64"
                 ]
             ]
         },
         "32bit": {
             "bin": [
-                "UX\\AutohotkeyUX.exe",
-                "autohotkey"
+                [
+                    "UX\\AutohotkeyUX.exe",
+                    "autohotkey"
+                ],
+                [
+                    "v2\\AutoHotkey32.exe",
+                    "autohotkey32"
+                ]
             ]
         }
     },
+    "post_install": "Remove-Item \"$dir\\installer\" -Force -Recurse",
     "uninstaller": {
         "script": "Start-Process \"$dir\\UX\\AutoHotkeyUX.exe\" -ArgumentList @('/script', \"`\"$dir\\UX\\install.ahk`\"\", '/uninstall', '/silent') -Wait"
     },
