@@ -6,6 +6,9 @@
         "identifier": "GPL-2.0",
         "url": "https://github.com/mamedev/mame/blob/master/COPYING"
     },
+    "notes": [
+        "To download ROM Set, Please See: https://archive.org/details/mame-merged"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/mamedev/mame/releases/download/mame0259/mame0259b_64bit.exe#/dl.7z",
