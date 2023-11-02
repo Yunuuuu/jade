@@ -1,33 +1,31 @@
 {
-    "version": "2.9.8",
+    "version": "3.0.4",
     "description": "A dynamic DNS (DDNS) client tool",
     "homepage": "https://github.com/TimothyYe/godns",
     "license": "Apache",
     "architecture": {
         "32bit": {
-            "url": "https://github.com/TimothyYe/godns/releases/download/v2.9.8/godns_2.9.8_Windows_i386.tar.gz",
-            "hash": "37039a39ffd69e4cd77dc6790f58c038d5032201c0099823235eb1f4acbc5ab9"
+            "url": "https://github.com/TimothyYe/godns/releases/download/v3.0.4/godns_3.0.4_Windows_386.tar.gz",
+            "hash": "2057781aa89b8d5d0effe847b243416fc785f5868a5d06acc7ce75473a5f1e01"
         },
         "64bit": {
-            "url": "https://github.com/TimothyYe/godns/releases/download/v2.9.8/godns_2.9.8_Windows_x86_64.tar.gz",
-            "hash": "d6a14e483f87c1ed02cbaf0ceb752bb6c69e57ff3dd7200842c0a1d9ff52da7d"
+            "url": "https://github.com/TimothyYe/godns/releases/download/v3.0.4/godns_3.0.4_Windows_amd64.tar.gz",
+            "hash": "c43ba5c5037c1df0317b27df22dafb9d0c432b430442ebf8cded6e0f00e3ef42"
         },
         "arm64": {
-            "url": "https://github.com/TimothyYe/godns/releases/download/v2.9.8/godns_2.9.8_Windows_arm64.tar.gz",
-            "hash": "765f167bf7628914ba4568c702feaba3c499a9156dbec72860cd64f2eae3c037"
+            "url": "https://github.com/TimothyYe/godns/releases/download/v3.0.4/godns_3.0.4_Windows_arm64.tar.gz",
+            "hash": "90e3eb67d6b3c5400e4108641a43e69f7273adcf2f7106eb0ba52424de6fee76"
         },
         "armv6": {
             "url": "https://github.com/TimothyYe/godns/releases/download/v2.9.8/godns_2.9.8_Windows_armv6.tar.gz",
-            "hash": "9c3896b33dc816a0ba3bd44d40e79187ed0fa89cad1febe5bcd92cf71a818319"
+            "hash": ""
         }
     },
     "pre_install": [
         "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "if (!(test-path \"$persist_dir\\config.json\")) { New-Item -Path $dir -ItemType \"file\" -Name 'config.json' > $null }"
     ],
-    "bin": [
-        "godns.exe"
-    ],
+    "bin": "godns.exe",
     "persist": "config.json",
     "checkver": {
         "github": "https://github.com/TimothyYe/godns"
@@ -35,16 +33,16 @@
     "autoupdate": {
         "architecture": {
             "32bit": {
-                "url": "https://github.com/TimothyYe/godns/releases/download/v$version/godns_$version_Windows_i386.tar.gz"
+                "url": "https://github.com/TimothyYe/godns/releases/download/v$version/godns_$version_Windows_386.tar.gz"
             },
             "64bit": {
-                "url": "https://github.com/TimothyYe/godns/releases/download/v$version/godns_$version_Windows_x86_64.tar.gz"
+                "url": "https://github.com/TimothyYe/godns/releases/download/v$version/godns_$version_Windows_amd64.tar.gz"
+            },
+            "arm": {
+                "url": "https://github.com/TimothyYe/godns/releases/download/v$version/godns_$version_Windows_arm.tar.gz"
             },
             "arm64": {
                 "url": "https://github.com/TimothyYe/godns/releases/download/v$version/godns_$version_Windows_arm64.tar.gz"
-            },
-            "armv6": {
-                "url": "https://github.com/TimothyYe/godns/releases/download/v$version/godns_$version_Windows_armv6.tar.gz"
             }
         },
         "hash": {
