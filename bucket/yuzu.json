@@ -3,6 +3,11 @@
     "description": "Experimental emulator for the Nintendo Switch",
     "homepage": "https://yuzu-emu.org/",
     "license": "GPL-2.0",
+    "notes": [
+        "ATTENTION: yuzu requires console keys to play your games.",
+        "Learn more at https://yuzu-emu.org/help/quickstart/",
+        "For Game Compatibility List see https://yuzu-emu.org/game/"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-1617/yuzu-windows-msvc-20231111-030c140c0.7z",
