@@ -4,7 +4,8 @@
     "homepage": "https://yuzu-emu.org/",
     "license": "GPL-2.0",
     "notes": [
-        "ATTENTION: yuzu requires console keys to play your games.",
+        "yuzu requires the latest versions of Microsoft Visual C++: `winget install Microsoft.VCRedist.2015+.x64`",
+        "ATTENTION: yuzu requires Decryption Keys and Firmware to play your games.",
         "Learn more at https://yuzu-emu.org/help/quickstart/",
         "For Game Compatibility List see https://yuzu-emu.org/game/"
     ],
