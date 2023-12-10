@@ -1,5 +1,5 @@
 {
-    "version": "1.83.1",
+    "version": "1.85.0",
     "description": "Lightweight but powerful source code editor",
     "homepage": "https://code.visualstudio.com/",
     "license": {
@@ -9,12 +9,12 @@
     "notes": "For file associations, run '$dir\\install-associations.reg'",
     "architecture": {
         "64bit": {
-            "url": "https://update.code.visualstudio.com/1.83.1/win32-x64-archive/stable#/dl.7z",
-            "hash": "bf53268e45d12cd43d4f7c61cd782d11d13646eb21e7d57532739a952f4d7ff5"
+            "url": "https://update.code.visualstudio.com/1.85.0/win32-x64-archive/stable#/dl.7z",
+            "hash": "31170a98a417c70a54d0f83ee96067aafeaacfbbce317e080b619c1001f3b7a9"
         },
-        "32bit": {
-            "url": "https://update.code.visualstudio.com/1.83.1/win32-archive/stable#/dl.7z",
-            "hash": "91f1e91dfc17caaa23d7c0bdf889581b79621362eb10bda00ed0a9bb0c13ff77"
+        "arm64": {
+            "url": "https://update.code.visualstudio.com/1.85.0/win32-arm64-archive/stable#/dl.7z",
+            "hash": "abed434e691885f3571a96e2f33468caa0880ff079717c05040dfdbf69df5fed"
         }
     },
     "post_install": [
@@ -61,17 +61,15 @@
             "64bit": {
                 "url": "https://update.code.visualstudio.com/$version/win32-x64-archive/stable#/dl.7z",
                 "hash": {
-                    "mode": "json",
-                    "jp": "$.sha256hash",
-                    "url": "https://update.code.visualstudio.com/api/versions/$version/win32-x64-archive/stable"
+                    "url": "https://code.visualstudio.com/sha?build=stable",
+                    "jsonpath": "$.products[?(@.platform.os == 'win32-x64-archive')].sha256hash"
                 }
             },
-            "32bit": {
-                "url": "https://update.code.visualstudio.com/$version/win32-archive/stable#/dl.7z",
+            "arm64": {
+                "url": "https://update.code.visualstudio.com/$version/win32-arm64-archive/stable#/dl.7z",
                 "hash": {
-                    "mode": "json",
-                    "jp": "$.sha256hash",
-                    "url": "https://update.code.visualstudio.com/api/versions/$version/win32-archive/stable"
+                    "url": "https://code.visualstudio.com/sha?build=stable",
+                    "jsonpath": "$.products[?(@.platform.os == 'win32-arm64-archive')].sha256hash"
                 }
             }
         }
