@@ -1,10 +1,10 @@
 {
-    "version": "alpha.230725.d3e60184",
+    "version": "v23.12.07-HeavySnow.b0086d5c",
     "description": "A feature-rich dictionary lookup program",
     "homepage": "https://github.com/xiaoyifang/goldendict-ng",
     "license": "GPL-3.0-only",
-    "url": "https://github.com/xiaoyifang/goldendict-ng/releases/download/tag-alpha.d3e60184/6.5.1-GoldenDict.exe_windows-2019_20230725.zip",
-    "hash": "e3310f107fb598e7412b54ae8e46f21c364c2a934b9e63dd5b4c5d0dfd13fedc",
+    "url": "https://github.com/xiaoyifang/goldendict-ng/releases/download/v23.12.07-HeavySnow.b0086d5c/6.6.1-GoldenDict.exe_windows-2019_20231208.zip",
+    "hash": "2b78a93ef05dfd6f104b9e0fea4a2df97852f1033efb9d72665639f3b13b6c29",
     "pre_install": [
         "$main_dir = $(Get-ChildItem -Include \"GoldenDict*\" -Name -Path $dir)",
         "Move-Item $dir/$main_dir/* $dir",
@@ -42,11 +42,17 @@
         ]
     },
     "checkver": {
-        "url": "https://github.com/xiaoyifang/goldendict-ng/releases",
-        "regex": "GoldenDict-ng-v[\\d.]+-([\\da-zA-Z.]+)"
+        "url": "https://api.github.com/repos/xiaoyifang/goldendict-ng/releases/latest",
+        "script": [
+            "$version = json_path $page $.tag_name",
+            "$file = json_path $page $..assets[7].name",
+            "\"$version $file\""
+        ],
+        "regex": "(?<version>[^ ]+) (?<file>.*)",
+        "replace": "${version}"
     },
     "autoupdate": {
-        "url": "https://github.com/xiaoyifang/goldendict-ng/releases/download/tag-$majorVersion.$patchVersion/6.5.1-GoldenDict.exe_windows-2019_20$minorVersion.zip",
+        "url": "https://github.com/xiaoyifang/goldendict-ng/releases/download/$matchVersion/$matchFile",
         "hash": {
             "mode": "download"
         }
