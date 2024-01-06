@@ -3,6 +3,8 @@
     "description": [
         "Mesen is a NES/Famicom emulator and NSF player. It is still a work in progress - some features are currently incomplete or may change in future versions.",
         "",
+        "Mesen requires the DotNet Runtime 6.0: `winget install --id Microsoft.DotNet.Runtime.6`",
+        "",
         "Mesen Features:",
         "* High Accuracy - A lot of effort has gone into making Mesen as accurate as possible",
         "* Stand-alone - Put the Mesen application into any folder and run it from there",
