@@ -22,10 +22,10 @@
     "post_install": [
         "Copy-Item -Path \"C:\\Program Files (x86)\\Tencent\\TIM\\TIMUninst.exe\" \"$dir\\TIMUninst.exe\"",
         "'DeskUpdate', 'IM', 'libsdk', 'Logs', 'QQ', 'QQTempSys', 'QQDoctor', 'QQLive', 'Tencentdl', 'TIM', 'TXSSO', 'Users' | ForEach-Object {",
-        "    & \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:APPDATA}\\Tencent\\$_\" -name \"Roaming\\Tencent\\$_\"",
+        "    & \"$bucketsdir\\jade\\scripts\\linking.ps1\" \"${env:APPDATA}\\Tencent\\$_\" -name \"Roaming\\Tencent\\$_\"",
         "}",
-        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:LOCALAPPDATA}\\Tencent\\MiniBrowser\" -name \"Local\\Tencent\\MiniBrowser\"",
-        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:USERPROFILE}\\Documents\\Tencent Files\" -name \"Documents\\Tencent Files\"",
+        "& \"$bucketsdir\\jade\\scripts\\linking.ps1\" \"${env:LOCALAPPDATA}\\Tencent\\MiniBrowser\" -name \"Local\\Tencent\\MiniBrowser\"",
+        "& \"$bucketsdir\\jade\\scripts\\linking.ps1\" \"${env:USERPROFILE}\\Documents\\Tencent Files\" -name \"Documents\\Tencent Files\"",
         "Remove-Item \"C:\\Users\\Public\\Desktop\\TIM.lnk\""
     ],
     "uninstaller": {

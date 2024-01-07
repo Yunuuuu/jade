@@ -1,7 +1,9 @@
-# & \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\"
+# & \"$bucketsdir\\jade\\scripts\\linking.ps1\"
 param(
-    [string]$extra_persist = $(throw "Parameter missing: -extra_persist extra_persist"),
-    [string]$name = $(Split-Path -Path $extra_persist -Leaf)
+    [string]$source = $(throw "Parameter missing: -source source"),
+    [string]$name = $(Split-Path -Path $source -Leaf),
+    [string]$target = $persist_dir,
+    [string]$action = "Persisting"
 )
 
 function is_directory([String] $path) {
@@ -25,12 +27,13 @@ function is_link($dir) {
     ($linktype -eq "Junction") -or ($linktype -eq "HardLink")
 }
 
-write-host "Persisting $extra_persist"
+write-host "$action $source"
 
-$source = $extra_persist.TrimEnd("/").TrimEnd("\\")
+$source = $source.TrimEnd("/").TrimEnd("\\")
+$target = $target.TrimEnd("/").TrimEnd("\\")
 
 $source = fullpath "$source"
-$target = fullpath "$persist_dir\$name"
+$target = fullpath "$target\$name"
 
 # if we have had persist data in the store, just create link and go
 if (Test-Path $target) {

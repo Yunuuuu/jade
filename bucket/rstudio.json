@@ -12,8 +12,8 @@
         }
     },
     "post_install": [
-        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:APPDATA}\\RStudio\" -name \"Roaming\\RStudio\"",
-        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:LOCALAPPDATA}\\RStudio\" -name \"Local\\RStudio\""
+        "& \"$bucketsdir\\jade\\scripts\\linking.ps1\" \"${env:APPDATA}\\RStudio\" -name \"Roaming\\RStudio\"",
+        "& \"$bucketsdir\\jade\\scripts\\linking.ps1\" \"${env:LOCALAPPDATA}\\RStudio\" -name \"Local\\RStudio\""
     ],
     "bin": [
         [

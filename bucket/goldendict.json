@@ -6,7 +6,7 @@
     "url": "https://downloads.sourceforge.net/project/goldendict/early%20access%20builds/GoldenDict-1.5.0_(QT_486).7z",
     "hash": "sha1:734702238c574e7a80a94aa5c9a4d6faf9ba082f",
     "extract_dir": "GoldenDict",
-    "post_install": "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:APPDATA}\\GoldenDict\" -name \"Roaming\\GoldenDict\"",
+    "post_install": "& \"$bucketsdir\\jade\\scripts\\linking.ps1\" \"${env:APPDATA}\\GoldenDict\" -name \"Roaming\\GoldenDict\"",
     "bin": "GoldenDict.exe",
     "shortcuts": [
         [

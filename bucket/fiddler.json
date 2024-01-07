@@ -17,7 +17,7 @@
         "}"
     ],
     "post_install": [
-        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:USERPROFILE}\\Documents\\Fiddler2\" -name \"Documents\\Fiddler2\""
+        "& \"$bucketsdir\\jade\\scripts\\linking.ps1\" \"${env:USERPROFILE}\\Documents\\Fiddler2\" -name \"Documents\\Fiddler2\""
     ],
     "uninstaller": {
         "script": [

@@ -10,7 +10,7 @@
         "Move-Item $dir/$main_dir/* $dir",
         "Remove-Item -Recurse -Force -ErrorAction SilentlyContinue -Path $dir/$main_dir"
     ],
-    "post_install": "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:APPDATA}\\GoldenDict\" -name \"Roaming\\GoldenDict\"",
+    "post_install": "& \"$bucketsdir\\jade\\scripts\\linking.ps1\" \"${env:APPDATA}\\GoldenDict\" -name \"Roaming\\GoldenDict\"",
     "bin": "GoldenDict.exe",
     "shortcuts": [
         [

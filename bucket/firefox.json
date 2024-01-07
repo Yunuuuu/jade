@@ -35,8 +35,8 @@
         "profile"
     ],
     "post_install": [
-        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:APPDATA}\\Mozilla\\Firefox\" -name \"Roaming\\Mozilla\\Firefox\"",
-        "& \"$bucketsdir\\jade\\scripts\\persist_extra_appdata.ps1\" \"${env:LOCALAPPDATA}\\Mozilla\\Firefox\" -name \"Local\\Mozilla\\Firefox\"",
+        "& \"$bucketsdir\\jade\\scripts\\linking.ps1\" \"${env:APPDATA}\\Mozilla\\Firefox\" -name \"Roaming\\Mozilla\\Firefox\"",
+        "& \"$bucketsdir\\jade\\scripts\\linking.ps1\" \"${env:LOCALAPPDATA}\\Mozilla\\Firefox\" -name \"Local\\Mozilla\\Firefox\"",
         "if (!(Test-Path \"$persist_dir\\Roaming\\Mozilla\\Firefox\\profiles.ini\")) {",
         "    $profile_ini = Get-Content \"$bucketsdir\\jade\\config\\firefox\\profiles.ini\"",
         "    $profile_ini = $profile_ini.Replace('$persist_dir', $persist_dir)",
