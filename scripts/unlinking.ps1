@@ -5,7 +5,7 @@ $source = $source.TrimEnd("/").TrimEnd("\\")
 
 # if we have had persist data in the store, just create link and go
 if (Test-Path $source) {
-    write-host \"Unlinking $source\"
+    write-host "Unlinking $source"
     $source = (Get-Item -Path $source -Force)
     if ($source.LinkType) {
         $source_path = $source.FullName
