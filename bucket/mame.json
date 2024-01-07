@@ -67,24 +67,7 @@
     ],
     "uninstaller": {
         "script": [
-            "function remove_link($dir) {",
-            "    write-host \"Unlinking $dir\"",
-            "    $source = (Get-Item -Path $dir -Force)",
-            "    if ($source.LinkType) {",
-            "        $source_path = $source.FullName",
-            "        # directory (junction)",
-            "        if ($source -is [System.IO.DirectoryInfo]) {",
-            "            # remove read-only attribute on the link",
-            "            attrib -R /L $source_path",
-            "            # remove the junction",
-            "            Remove-Item -Path $source_path -Recurse -Force -ErrorAction SilentlyContinue",
-            "        } else {",
-            "            # remove the hard link",
-            "            Remove-Item -Path $source_path -Force -ErrorAction SilentlyContinue",
-            "        }",
-            "    }",
-            "}",
-            "remove_link \"~\\mame.ini\""
+            "& \"$bucketsdir\\jade\\scripts\\unlinking.ps1\" \"~\\mame.ini\""
         ]
     },
     "checkver": {
