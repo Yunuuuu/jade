@@ -17,7 +17,9 @@
             "hash": "sha1:a4e138669b25098b10d27d6aa959361ac49157e8"
         }
     },
-    "env_add_path": "$dir",
+    "bin": [
+        "mpv.exe"
+    ],
     "shortcuts": [
         [
             "mpv.exe",
