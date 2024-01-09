@@ -18,8 +18,7 @@
         }
     },
     "bin": [
-        ["mpv.com", "mpv.com"],
-        "mpv.exe"
+        "mpv.com"
     ],
     "shortcuts": [
         [
