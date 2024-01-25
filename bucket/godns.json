@@ -1,20 +1,20 @@
 {
-    "version": "3.0.5",
+    "version": "3.0.6",
     "description": "A dynamic DNS (DDNS) client tool",
     "homepage": "https://github.com/TimothyYe/godns",
     "license": "Apache",
     "architecture": {
         "32bit": {
-            "url": "https://github.com/TimothyYe/godns/releases/download/v3.0.5/godns_3.0.5_Windows_386.tar.gz",
-            "hash": "ab3ffa5fcb669e9b55b1b1adfa6cbafc26ec4be74e55ec44da5015f56265f7a0"
+            "url": "https://github.com/TimothyYe/godns/releases/download/v3.0.6/godns_3.0.6_Windows_386.tar.gz",
+            "hash": "844a6d39a5317e9ac055c0c13d0483022637f43432acd051b46856bad5e34bcc"
         },
         "64bit": {
-            "url": "https://github.com/TimothyYe/godns/releases/download/v3.0.5/godns_3.0.5_Windows_amd64.tar.gz",
-            "hash": "a9524c6e10d8fa1db73e4827e35fa73aaf082778433d741eff4d8bea0111c211"
+            "url": "https://github.com/TimothyYe/godns/releases/download/v3.0.6/godns_3.0.6_Windows_amd64.tar.gz",
+            "hash": "20d0ec480a13dc6826af0f540da06d369f16541be87956525c439d604784b584"
         },
         "arm64": {
-            "url": "https://github.com/TimothyYe/godns/releases/download/v3.0.5/godns_3.0.5_Windows_arm64.tar.gz",
-            "hash": "2b2ef0d77ddca5a0ad61adeb85d0920e7ce8ec9c76b4469ee43ca641a0408fa0"
+            "url": "https://github.com/TimothyYe/godns/releases/download/v3.0.6/godns_3.0.6_Windows_arm64.tar.gz",
+            "hash": "2f0d925907a9f021dc82ca47d2ef87329d65b0bc5ec2dfd8fa6fb4ff3ffcb297"
         },
         "armv6": {
             "url": "https://github.com/TimothyYe/godns/releases/download/v2.9.8/godns_2.9.8_Windows_armv6.tar.gz",
