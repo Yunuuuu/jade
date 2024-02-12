@@ -1,10 +1,10 @@
 {
-    "version": "1.1.37.01c",
+    "version": "1.1.37.01c0",
     "description": "The official AutoHotkey script to EXE converter",
     "homepage": "https://github.com/AutoHotkey/Ahk2Exe",
     "license": "GPL-2.0-or-later",
-    "url": "https://github.com/AutoHotkey/Ahk2Exe/releases/download/Ahk2Exe1.1.37.01c/Ahk2Exe1.1.37.01c.zip",
-    "hash": "9f2c7f990c554ba286616dd08e59ac32d543e80eef335f5c65762c020234bc1b",
+    "url": "https://github.com/AutoHotkey/Ahk2Exe/releases/download/Ahk2Exe1.1.37.01c0/Ahk2Exe1.1.37.01c0.zip",
+    "hash": "80840379e83b70528c541218023961323ae10cfd85b4a1dcf6bf0fc01a9336b7",
     "shortcuts": [
         [
             "Ahk2Exe.exe",
