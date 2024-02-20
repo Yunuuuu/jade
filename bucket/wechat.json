@@ -7,7 +7,7 @@
         "url": "https://weixin.qq.com/cgi-bin/readtemplate?lang=zh_CN&t=weixin_agreement&s=default"
     },
     "url": "https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe#/dl.7z",
-    "hash": "b89e98d127aadfd1682bd1bda83031f40c35333d4e912f20febdebbe8e07d5bb",
+    "hash": "f6de40a0e0c5b51daa70456189d10f7fc1e7dcd36168cf8afcb17035efda6686",
     "installer": {
         "script": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
     },
