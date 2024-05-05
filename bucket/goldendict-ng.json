@@ -1,10 +1,10 @@
 {
-    "version": "v23.12.07-HeavySnow.b0086d5c",
+    "version": "v24.05.05-LiXia.ecd1138c",
     "description": "A feature-rich dictionary lookup program",
     "homepage": "https://github.com/xiaoyifang/goldendict-ng",
     "license": "GPL-3.0-only",
-    "url": "https://github.com/xiaoyifang/goldendict-ng/releases/download/v23.12.07-HeavySnow.b0086d5c/6.6.1-GoldenDict.exe_windows-2019_20231208.zip",
-    "hash": "2b78a93ef05dfd6f104b9e0fea4a2df97852f1033efb9d72665639f3b13b6c29",
+    "url": "https://github.com/xiaoyifang/goldendict-ng/releases/download/v24.05.05-LiXia.ecd1138c/6.7.0.windows-2019-GoldenDict.pdb",
+    "hash": "613a76522e7a33716ba06de612cbeb6e18397890b79bbfb148c5fddf326e9bdb",
     "pre_install": [
         "$main_dir = $(Get-ChildItem -Include \"GoldenDict*\" -Name -Path $dir)",
         "Move-Item $dir/$main_dir/* $dir",
@@ -20,9 +20,7 @@
     ],
     "persist": "content",
     "uninstaller": {
-        "script": [
-            "& \"$bucketsdir\\jade\\scripts\\unlinking.ps1\" \"${env:APPDATA}\\GoldenDict\""
-        ]
+        "script": "& \"$bucketsdir\\jade\\scripts\\unlinking.ps1\" \"${env:APPDATA}\\GoldenDict\""
     },
     "checkver": {
         "url": "https://api.github.com/repos/xiaoyifang/goldendict-ng/releases/latest",
