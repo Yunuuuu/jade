@@ -50,7 +50,10 @@
     ],
     "persist": "data",
     "uninstaller": {
-        "script": "reg import \"$dir\\uninstall-context.reg\""
+        "script": [
+            "reg import \"$dir\\uninstall-context.reg\"",
+            "reg import \"$dir\\uninstall-associations.reg\""
+        ]
     },
     "checkver": {
         "url": "https://code.visualstudio.com/sha?build=stable",
