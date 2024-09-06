@@ -1,5 +1,5 @@
 {
-    "version": "v24.05.05-LiXia.ecd1138c",
+    "version": "v24.05.05-LiXia.ecd138c",
     "description": "A feature-rich dictionary lookup program",
     "homepage": "https://github.com/xiaoyifang/goldendict-ng",
     "license": "GPL-3.0-only",
@@ -23,17 +23,11 @@
         "script": "& \"$bucketsdir\\jade\\scripts\\unlinking.ps1\" \"${env:APPDATA}\\GoldenDict\""
     },
     "checkver": {
-        "url": "https://api.github.com/repos/xiaoyifang/goldendict-ng/releases/latest",
-        "script": [
-            "$version = json_path $page $.tag_name",
-            "$file = json_path $page $..assets[7].name",
-            "\"$version $file\""
-        ],
-        "regex": "(?<version>[^ ]+) (?<file>.*)",
-        "replace": "${version}"
+        "url": "https://api.github.com/repos/xiaoyifang/goldendict/releases",
+        "regex": "download/v(?<version>([\\w.-]+?))/(?<a>6[\\d.]+)-GoldenDict\\.exe_windows-(?<b>[\\d_]+)\\.zip"
     },
     "autoupdate": {
-        "url": "https://github.com/xiaoyifang/goldendict-ng/releases/download/$matchVersion/$matchFile",
+        "url": "https://github.com/xiaoyifang/goldendict/releases/download/v$version/$matchA-GoldenDict.exe_windows-$matchB.zip",
         "hash": {
             "mode": "download"
         }
