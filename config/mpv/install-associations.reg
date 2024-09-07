@@ -1,0 +1,121 @@
+Windows Registry Editor Version 5.00
+
+; Register mpv.exe under the "App Paths" key for the current user
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\mpv.exe]
+@="$mpv"
+"UseUrl"=dword:00000001
+
+; Register mpv.exe under the "Applications" key for the current user
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Applications\mpv.exe]
+"FriendlyAppName"="mpv"
+
+; Add mpv to the "Open with" list for video and audio file types
+[HKEY_CURRENT_USER\SOFTWARE\Classes\SystemFileAssociations\video\OpenWithList\mpv.exe]
+@=""
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\SystemFileAssociations\audio\OpenWithList\mpv.exe]
+@=""
+
+; DVD AutoPlay handler
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\Handlers\MpvPlayDVDMovieOnArrival]
+"Action"="Play DVD movie"
+"DefaultIcon"="$mpv,0"
+"InvokeProgID"="io.mpv.dvd"
+"InvokeVerb"="play"
+"Provider"="mpv"
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\EventHandlers\PlayDVDMovieOnArrival]
+"MpvPlayDVDMovieOnArrival"=""
+
+; Blu-ray AutoPlay handler
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\Handlers\MpvPlayBluRayOnArrival]
+"Action"="Play Blu-ray movie"
+"DefaultIcon"="$mpv,0"
+"InvokeProgID"="io.mpv.bluray"
+"InvokeVerb"="play"
+"Provider"="mpv"
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\EventHandlers\PlayBluRayOnArrival]
+"MpvPlayBluRayOnArrival"=""
+
+; Add capabilities key for mpv
+[HKEY_CURRENT_USER\SOFTWARE\Clients\Media\mpv\Capabilities]
+"ApplicationName"="mpv"
+"ApplicationDescription"="mpv media player"
+
+; File types
+; DVD/Blu-ray audio formats
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Applications\mpv.exe\SupportedTypes]
+"audio/ac3"=""
+"audio/eac3"=""
+"audio/vnd.dolby.mlp"=""
+"audio/vnd.dts"=""
+"audio/vnd.dts.hd"=""
+"audio/x-truehd"=""
+"audio/x-tta"=""
+
+; Uncompressed formats
+"audio/wav"=""
+"audio/aiff"=""
+"audio/amr"=""
+"audio/amr-wb"=""
+"audio/basic"=""
+"audio/x-pcm"=""
+
+; Video formats
+"video/x-yuv"=""
+"video/x-y4m"=""
+"video/vnd.dlna.mpeg-tts"=""
+"video/mpeg"=""
+"video/mp4"=""
+"video/avi"=""
+"video/quicktime"=""
+"video/x-flv"=""
+"video/mp4"=""
+
+; Real Media formats
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Applications\mpv.exe\SupportedTypes]
+"application/vnd.rn-realmedia"=""
+"application/vnd.rn-realmedia-vbr"=""
+"audio/vnd.rn-realaudio"=""
+
+; 3GPP formats
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Applications\mpv.exe\SupportedTypes]
+"audio/3gpp"=""
+"video/3gpp"=""
+"audio/3gpp2"=""
+"video/3gpp2"=""
+
+; Register Default Programs entry for the current user
+[HKEY_CURRENT_USER\SOFTWARE\RegisteredApplications]
+"mpv"="SOFTWARE\\Clients\\Media\\mpv\\Capabilities"
+
+; Add ProgId entries for each file type
+[HKEY_CURRENT_USER\SOFTWARE\Classes\io.mpv.dvd]
+@="DVD Video"
+"EditFlags"=dword:00400000
+"FriendlyTypeName"="DVD Video"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\io.mpv.dvd\DefaultIcon]
+@="$mpvdir\\mpv-document.ico"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\io.mpv.dvd\shell\play]
+@="&Play"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\io.mpv.dvd\shell\play\command]
+@="\"$mpv\" %1"
+
+; Repeat ProgId registration for other file types
+[HKEY_CURRENT_USER\SOFTWARE\Classes\io.mpv.bluray]
+@="Blu-ray movie"
+"EditFlags"=dword:00400000
+"FriendlyTypeName"="Blu-ray movie"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\io.mpv.bluray\DefaultIcon]
+@="$mpvdir\\mpv-document.ico"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\io.mpv.bluray\shell\play]
+@="&Play"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\io.mpv.bluray\shell\play\command]
+@="\"$mpv\" %1"

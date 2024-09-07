@@ -17,6 +17,22 @@
             "hash": "sha1:55869db09bff1f0a8b5e14a25243bc52651d06f9"
         }
     },
+    "post_install": [
+        "$dirpath = \"$dir\".Replace('\\', '\\\\')",
+        "$exepath = \"$dir\\mpv.exe\".Replace('\\', '\\\\')",
+        "'install-associations', 'uninstall-associations' | ForEach-Object {",
+        "  if (Test-Path \"$bucketsdir\\jade\\config\\mpv\\$_.reg\") {",
+        "    $content = Get-Content \"$bucketsdir\\jade\\config\\mpv\\$_.reg\"",
+        "    $content = $content.Replace('$mpvdir', $dirpath)",
+        "    $content = $content.Replace('$mpv', $exepath)",
+        "    if ($global) {",
+        "      $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "    }",
+        "    $content | Set-Content -Path \"$dir\\$_.reg\"",
+        "  }",
+        "}",
+        "Copy-Item -Path \"$bucketsdir\\jade\\config\\mpv\\mpv-document.ico\" -Destination \"$dir\\mpv-document.ico\""
+    ],
     "bin": "mpv.com",
     "shortcuts": [
         [
@@ -25,6 +41,9 @@
         ]
     ],
     "persist": "portable_config",
+    "uninstaller": {
+        "script": "reg import \"$dir\\uninstall-associations.reg\""
+    },
     "checkver": {
         "sourceforge": "mpv-player-windows/release",
         "regex": "mpv-([\\d.]+)-"

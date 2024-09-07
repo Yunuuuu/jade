@@ -1,0 +1,40 @@
+Windows Registry Editor Version 5.00
+
+; Uninstall mpv registry entries for the current user
+
+; Remove mpv.exe path
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\mpv.exe]
+
+; Remove mpv entries from the "Applications" key
+[-HKEY_CURRENT_USER\SOFTWARE\Classes\Applications\mpv.exe]
+
+; Remove mpv from the "Open with" list for video and audio file types
+[-HKEY_CURRENT_USER\SOFTWARE\Classes\SystemFileAssociations\video\OpenWithList\mpv.exe]
+
+[-HKEY_CURRENT_USER\SOFTWARE\Classes\SystemFileAssociations\audio\OpenWithList\mpv.exe]
+
+; Remove AutoPlay handlers for DVD and Blu-ray
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\Handlers\MpvPlayDVDMovieOnArrival]
+@=""
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\EventHandlers\PlayDVDMovieOnArrival]
+"MpvPlayDVDMovieOnArrival"=-
+
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\Handlers\MpvPlayBluRayOnArrival]
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\EventHandlers\PlayBluRayOnArrival]
+"MpvPlayBluRayOnArrival"=-
+
+; Remove capabilities key for mpv
+[-HKEY_CURRENT_USER\SOFTWARE\Clients\Media\mpv]
+@=""
+
+; Remove ProgId entries
+[-HKEY_CURRENT_USER\SOFTWARE\Classes\io.mpv.dvd]
+
+; Remove ProgId entries
+[-HKEY_CURRENT_USER\SOFTWARE\Classes\io.mpv.bluray]
+
+; Remove Default Programs entry
+[HKEY_CURRENT_USER\SOFTWARE\RegisteredApplications]
+"mpv"=-
