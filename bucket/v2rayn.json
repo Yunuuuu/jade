@@ -1,12 +1,12 @@
 {
-    "version": "6.60",
+    "version": "7.0.9",
     "description": "GUI client based on v2ray core",
     "notes": "v2rayN requires the DotNet Runtime 6.0: `winget install --id Microsoft.DotNet.Runtime.6`",
     "homepage": "https://github.com/2dust/v2rayN",
     "license": "GPL-3.0-only",
     "depends": "jade/xray",
-    "url": "https://github.com/2dust/v2rayN/releases/download/6.60/v2rayN.zip",
-    "hash": "fc1243faee5ebdf501d1416ae8567a993638c9ead92f94c4121feb6771f549d5",
+    "url": "https://github.com/2dust/v2rayN/releases/download/7.0.9/v2rayN.zip",
+    "hash": "3fb6de200616953665d0d344662456114778d80dd6597efe51b2762f1e21c9a4",
     "extract_dir": "v2rayN",
     "pre_install": [
         "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
