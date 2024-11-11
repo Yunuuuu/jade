@@ -13,12 +13,6 @@
             "/TASKS=\"\""
         ]
     },
-    "shortcuts": [
-        [
-            "Positron.exe",
-            "Positron"
-        ]
-    ],
     "env_add_path": "bin",
     "uninstaller": {
         "file": "unins000.exe",
