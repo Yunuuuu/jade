@@ -1,5 +1,5 @@
 {
-    "version": "338-20240524-a6ce34b",
+    "version": "537-20250105-bc2383a",
     "description": [
         "Mesen is a NES/Famicom emulator and NSF player. It is still a work in progress - some features are currently incomplete or may change in future versions.",
         "",
@@ -12,13 +12,13 @@
         "* Net Play - Play online with friends",
         "* Automatic updates - Mesen is able to check for updates and automatically install new versions of itself.",
         "* Built-in Debugger",
-        "* Other Features: 7z/zip archive support, numerous　video filters (xBRZ, Scale2x, NTSC, etc.), sound recorder, sound effects, etc."
+        "* Other Features: 7z/zip archive support, numerous video filters (xBRZ, Scale2x, NTSC, etc.), sound recorder, sound effects, etc."
     ],
     "notes": "Mesen requires the DotNet Runtime 6.0: `winget install --id Microsoft.DotNet.Runtime.6`",
     "homepage": "https://github.com/SourMesen/Mesen2",
     "license": "Unknown",
-    "url": "https://nightly.link/SourMesen/Mesen2/workflows/build/master/Mesen%20%28Windows%29.zip",
-    "hash": "a382f0e7c01a9a21f13a8230eefce34f511613573a6440169652a4285814afc9",
+    "url": "https://nightly.link/SourMesen/Mesen2/workflows/build/master/Mesen%20%28Windows%20-%20net8.0%20-%20AoT%29.zip",
+    "hash": "001264c7e11fad4c5d2f821b7aaab02f40f38f52c136e5018aed364467374614",
     "pre_install": [
         "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "if (!(Test-Path \"$persist_dir\\MesenNesDB.txt\")) {",
@@ -62,6 +62,6 @@
         ]
     },
     "autoupdate": {
-        "url": "https://nightly.link/SourMesen/Mesen2/workflows/build/master/Mesen%20%28Windows%29.zip"
+        "url": "https://nightly.link/SourMesen/Mesen2/workflows/build/master/Mesen%20%28Windows%20-%20net8.0%20-%20AoT%29.zip"
     }
 }
