@@ -1,11 +1,11 @@
 {
     "version": "1.1.1403",
     "description": "A simple, experimental Nintendo Switch emulator",
-    "homepage": "https://ryujinx.org/",
+    "homepage": "https://ryujinx-emulator.com/",
     "license": "MIT",
     "notes": [
         "ATTENTION: Ryujinx requires Nintendo Switch firmware and a prod.keys file to function.",
-        "Learn more at https://github.com/Ryujinx/Ryujinx/wiki/Ryujinx-Setup-&-Configuration-Guide"
+        "Learn more at https://github.com/Ryubing/Ryujinx/wiki/Ryujinx-Setup-&-Configuration-Guide"
     ],
     "architecture": {
         "64bit": {
@@ -33,12 +33,12 @@
     ],
     "persist": "portable",
     "checkver": {
-        "github": "https://github.com/Ryujinx/release-channel-master"
+        "github": "https://github.com/Ryubing/Ryujinx"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Ryujinx/release-channel-master/releases/download/$version/ryujinx-$version-win_x64.zip"
+                "url": "https://github.com/Ryubing/Ryujinx/releases/download/$version/ryujinx-$version-win_x64.zip"
             }
         }
     }
