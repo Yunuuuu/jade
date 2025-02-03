@@ -5,7 +5,10 @@
     "license": "MIT",
     "notes": [
         "ATTENTION: Ryujinx requires Nintendo Switch firmware and a prod.keys file to function.",
-        "Learn more at https://github.com/Ryubing/Ryujinx/wiki/Ryujinx-Setup-&-Configuration-Guide"
+        "Learn more at https://github.com/Ryubing/Ryujinx/wiki/Ryujinx-Setup-&-Configuration-Guide",
+        "Following site may be useful, use them at your own risk:",
+        "  1. https://theprodkeys.com/vi/",
+        "  2. https://prodkeys.net/"
     ],
     "architecture": {
         "64bit": {
