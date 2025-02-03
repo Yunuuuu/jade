@@ -1,0 +1,48 @@
+{
+    "version": "Yuzu-1734",
+    "description": "Experimental emulator for the Nintendo Switch",
+    "homepage": "https://yuzu-mirror.github.io/",
+    "license": "GPL-2.0",
+    "notes": [
+        "yuzu requires the latest versions of Microsoft Visual C++: `winget install Microsoft.VCRedist.2015+.x64`",
+        "Learn more at https://yuzu-mirror.github.io/help/quickstart/",
+        "For Game Compatibility List see https://yuzu-mirror.github.io/game/",
+        "ATTENTION: yuzu requires Decryption Keys and Firmware to play your games.",
+        "Following site may be useful, use them at your own risk:",
+        "  1. https://emuyuzu.com/",
+        "  2. https://theprodkeys.com/vi/",
+        "  3. https://prodkeys.net/"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://gitgud.io/YuzuRemnant/youuuuu-zuuuu-1734/-/raw/master/yuzu-windows-msvc-20240304-537296095.7z",
+            "hash": "5c644bbba1b694b01f5d52d5080aa2a5c86360d841851286df058da2ff5f6088"
+        }
+    },
+    "extract_dir": "yuzu-windows-msvc",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   New-Item \"$persist_dir\\user\" -ItemType Directory | Out-Null",
+        "   if (Test-Path \"$env:APPDATA\\yuzu\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:APPDATA\\yuzu\\*\" -Destination \"$persist_dir\\user\" -Recurse",
+        "       Remove-Item -Path \"$env:APPDATA\\yuzu\" -Recurse",
+        "   }",
+        "}"
+    ],
+    "bin": [
+        "yuzu.exe",
+        "yuzu-cmd.exe"
+    ],
+    "shortcuts": [
+        [
+            "yuzu.exe",
+            "Yuzu"
+        ]
+    ],
+    "persist": [
+        "user",
+        "plugins"
+    ]
+}
