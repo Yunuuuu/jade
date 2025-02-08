@@ -31,7 +31,6 @@ All cache files for non-portable applications, such as `APPDATA` and `LOCALAPPDA
 | rtools40             |                                                                                                                      |
 | rtools42             |                                                                                                                      |
 | rtools43             |                                                                                                                      |
-| autohotkey           |                                                                                                                      |
 | baidudisk            |                                                                                                                      |
 | goldendict           |                                                                                                                      |
 | goldendict-ng        |                                                                                                                      |
