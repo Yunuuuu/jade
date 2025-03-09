@@ -1,0 +1,66 @@
+{
+    "version": "18-20250210-edefaeb",
+    "description": "Simple and efficient screen recording utility for Windows.",
+    "homepage": "https://github.com/mmozeiko/wcap",
+    "license": "unlicense",
+    "architecture": {
+        "64bit": {
+            "url": "https://raw.githubusercontent.com/wiki/mmozeiko/wcap/wcap-x64.exe",
+            "hash": "067eef672fb1e0caee47744d0ccfc6e286bec98e20462840112fc00e4d140c0c",
+            "persist": "wcap-x64.ini",
+            "shortcuts": [
+                [
+                    "wcap-x64.exe",
+                    "wcap-x64"
+                ]
+            ],
+            "pre_install": [
+                "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
+                "if (!(test-path \"$persist_dir\\wcap-x64.ini\")) { New-Item -Path $dir -ItemType \"file\" -Name 'wcap-x64.ini' > $null }"
+            ]
+        },
+        "arm64": {
+            "url": "https://raw.githubusercontent.com/wiki/mmozeiko/wcap/wcap-arm64.exe",
+            "hash": "2d402f8d0d2935589f679a9869044a04dfa06b1abe2591e446b47a24148671c6",
+            "persist": "wcap-arm64.ini",
+            "shortcuts": [
+                [
+                    "wcap-arm64.exe",
+                    "wcap-arm64"
+                ]
+            ],
+            "pre_install": [
+                "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
+                "if (!(test-path \"$persist_dir\\wcap-arm64.ini\")) { New-Item -Path $dir -ItemType \"file\" -Name 'wcap-arm64.ini' > $null }"
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://api.github.com/repos/mmozeiko/wcap/actions/workflows/wcap.yml/runs?event=push&branch=main&status=success",
+        "regex": "^(?<run>[^ ]+) *(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})[^ ]+ *(?<suite>\\d+) *(?<artifact>\\d+) *(?<commit>[\\da-f]{7})(?<sha>[\\da-f]+)$",
+        "replace": "${run}-${year}${month}${day}-${commit}",
+        "script": [
+            "$sha = json_path $page $.workflow_runs[0].head_sha",
+            "$runId = json_path $page $.workflow_runs[0].run_number",
+            "$suiteId = json_path $page $.workflow_runs[0].check_suite_id",
+            "$artUrl = json_path $page $.workflow_runs[0].artifacts_url",
+            "$date = json_path $page $.workflow_runs[0].created_at",
+            "$cont = (Invoke-WebRequest $artUrl).Content | ConvertFrom-Json",
+            "$artId = $cont.artifacts[0].id",
+            "Write-Output \"$runId $date $suiteId $artId $sha\""
+        ]
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://raw.githubusercontent.com/wiki/mmozeiko/wcap/wcap-x64.exe"
+            },
+            "arm64": {
+                "url": "https://raw.githubusercontent.com/wiki/mmozeiko/wcap/wcap-arm64.exe"
+            }
+        },
+        "hash": {
+            "mode": "download"
+        }
+    }
+}
