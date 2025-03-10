@@ -1,10 +1,18 @@
 {
-    "version": "2025.02.0-171",
+    "version": "2025.03.0-116",
     "description": "Positron, a next-generation data science IDE.",
-    "homepage": "https://github.com/posit-dev/positron",
+    "homepage": "https://positron.posit.co/",
     "license": "Elastic-2.0",
-    "url": "https://github.com/posit-dev/positron/releases/download/2025.02.0-171/Positron-2025.02.0-171-UserSetup.exe",
-    "hash": "149010807041349073353b8e4a4a9ca28368cad1d36a6746c4703a15a6241557",
+    "url": "https://cdn.posit.co/positron/dailies/win/x86_64/Positron-2025.03.0-116-UserSetup.exe",
+    "hash": "62951dff612073b8179433b8adf3503b5e9230fd3c8892f48a9c55e33c7ac22a",
+    "notes": [
+        "Please review Positron's license agreement (https://github.com/posit-dev/positron?tab=License-1-ov-file#readme).",
+        "Your acceptance of this license agreement is required as a condition to proceeding with your use of the software.",
+        "positron requires the latest versions of Microsoft Visual C++:",
+        "    x86: `winget install Microsoft.VCRedist.2015+.x86`",
+        "    x64: `winget install Microsoft.VCRedist.2015+.x64`",
+        "    Arm64: `winget install Microsoft.VCRedist.2022.arm64`"
+    ],
     "installer": {
         "args": [
             "/VERYSILENT",
@@ -13,7 +21,7 @@
             "/TASKS=\"\""
         ]
     },
-    "env_add_path": "bin",
+    "bin": "bin/positron.cmd",
     "uninstaller": {
         "file": "unins000.exe",
         "args": [
@@ -21,18 +29,17 @@
             "/NORESTART"
         ]
     },
+    "shortcuts": [
+        [
+            "Positron.exe",
+            "Positron"
+        ]
+    ],
     "checkver": {
-        "url": "https://github.com/posit-dev/positron/releases.atom",
-        "xpath": "//entry/title[starts-with(text(), '202')]"
+        "url": "https://positron.posit.co/download.html",
+        "regex": "Positron-(\\d+\\.\\d+\\.\\d+-\\d+)-UserSetup.exe"
     },
     "autoupdate": {
-        "url": "https://github.com/posit-dev/positron/releases/download/$version/Positron-$version-UserSetup.exe",
-        "hash": {
-            "mode": "download"
-        }
-    },
-    "notes": [
-        "Please review Positron's license agreement (https://github.com/posit-dev/positron?tab=License-1-ov-file#readme).",
-        "Your acceptance of this license agreement is required as a condition to proceeding with your use of the software."
-    ]
+        "url": "https://cdn.posit.co/positron/dailies/win/x86_64/Positron-$version-UserSetup.exe"
+    }
 }
