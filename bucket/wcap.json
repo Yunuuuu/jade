@@ -28,7 +28,6 @@
     "pre_install": [
         "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "if (!(test-path \"$persist_dir\\wcap-x64.ini\")) { New-Item -Path $dir -ItemType \"file\" -Name 'wcap-x64.ini' > $null }",
-        "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "if (!(test-path \"$persist_dir\\wcap-arm64.ini\")) { New-Item -Path $dir -ItemType \"file\" -Name 'wcap-arm64.ini' > $null }"
     ],
     "persist": [
