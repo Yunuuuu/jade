@@ -1,13 +1,14 @@
 {
     "version": "6459-6401",
     "description": "Tools for building packages for R under Microsoft Windows, or for building R itself.",
-    "homepage": "https://cran.r-project.org/bin/windows/Rtools/rtools44/rtools.html",
+    "homepage": "https://cran.r-project.org/bin/windows/Rtools/rtools45/rtools.html",
     "license": "BSD-3-Clause",
     "notes": [
         "For R 3.3.x to 3.6.x, please use 'jade/rtools35';",
         "for R-4.0.0 to to R-4.1.3, please use 'jade/rtools40';",
         "for R 4.2.*, please use 'jade/rtools42';",
-        "for R 4.3.*, please use 'jade/rtools43'."
+        "for R 4.3.*, please use 'jade/rtools43'.",
+        "for R 4.4.*, please use 'jade/rtools44'."
     ],
     "architecture": {
         "64bit": {
@@ -33,20 +34,20 @@
         ]
     },
     "env_set": {
-        "RTOOLS44_HOME": "$dir"
+        "RTOOLS45_HOME": "$dir"
     },
     "shortcuts": [
         [
             "msys2.exe",
-            "Rtools44/Rtools44 Bash"
+            "Rtools45/Rtools45 Bash"
         ],
         [
             "mingw64.exe",
-            "Rtools44/Rtools44 MinGW 64-bit"
+            "Rtools45/Rtools45 MinGW 64-bit"
         ],
         [
             "ucrt64.exe",
-            "Rtools44/Rtools44 UCRT 64-bit"
+            "Rtools45/Rtools45 UCRT 64-bit"
         ]
     ],
     "persist": [
@@ -56,16 +57,16 @@
         "msys2.ini"
     ],
     "checkver": {
-        "url": "https://cran.r-project.org/bin/windows/Rtools/rtools44/files/",
-        "regex": "rtools44-([\\d-]+)\\.exe"
+        "url": "https://cran.r-project.org/bin/windows/Rtools/rtools45/files/",
+        "regex": "rtools45-([\\d-]+)\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-$version.exe"
+                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-$version.exe"
             },
             "arm64": {
-                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-aarch64-$version.exe"
+                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-aarch64-$version.exe"
             }
         }
     }

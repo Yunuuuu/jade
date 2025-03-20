@@ -1,5 +1,5 @@
 {
-    "version": "4.4.3",
+    "version": "3.6.3",
     "description": "A free software environment for statistical computing and graphics.",
     "homepage": "https://www.r-project.org",
     "license": "GPL-2.0-only",
@@ -15,8 +15,8 @@
         "",
         "Annoying, right?! You might want to check out Pshazz (scoop install pshazz)--this has a plugin to remove some crazy aliases from Powershell, as well as many other improvements."
     ],
-    "url": "https://cran.r-project.org/bin/windows/base/old/4.4.3/R-4.4.3-win.exe",
-    "hash": "md5:9d4c2e6905ce781e0510e1840342ba95",
+    "url": "https://cran-archive.r-project.org/bin/windows/base/old/3.6.3/R-3.6.3-win.exe",
+    "hash": "md5:840714b6dab0a5cb4452b12dc01ca881",
     "innosetup": true,
     "architecture": {
         "64bit": {
@@ -79,10 +79,14 @@
     },
     "post_install": [
         "$version_cur = [Version]\"$version\"",
+        "$version_35 = [Version]\"3.3.0\"",
         "$version_40 = [Version]\"4.0.0\"",
-        "$version_42 = [Version]\"4.2.0\"",
-        "if (($version_cur -ge $version_40) -and ($version_cur -lt $version_42)) {",
-        "   $pathenv = 'PATH=\"${RTOOLS40_HOME-C:/rtools40}/usr/bin;${PATH}\"'",
+        "if (($version_cur -ge $version_35) -and ($version_cur -lt $version_40)) {",
+        "   if ($architecture -eq '32bit') {",
+        "       $pathenv = 'PATH=\"${RTOOLS35_HOME-C:/Rtools}/bin;${RTOOLS35_HOME-C:/Rtools}/mingw_32/bin;${PATH}\"'",
+        "   } else {",
+        "       $pathenv = 'PATH=\"${RTOOLS35_HOME-C:/Rtools}/bin;${RTOOLS35_HOME-C:/Rtools}/mingw_64/bin;${PATH}\"'",
+        "   }",
         "   [IO.File]::WriteAllLines(\"$dir\\etc\\Renviron.site\", $pathenv)",
         "}",
         "& \"$bucketsdir\\jade\\scripts\\linking.ps1\" \"${env:LOCALAPPDATA}\\R\" -name \"Local\\R\"",
@@ -107,13 +111,14 @@
         ]
     },
     "checkver": {
-        "url": "https://cran.r-project.org/bin/windows/base/",
-        "regex": "R-([\\d.]+)"
+        "url": "https://cran-archive.r-project.org/bin/windows/base/old/",
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "reverse": true
     },
     "autoupdate": {
-        "url": "https://cran.r-project.org/bin/windows/base/old/$version/R-$version-win.exe",
+        "url": "https://cran-archive.r-project.org/bin/windows/base/old/$version/R-$version-win.exe",
         "hash": {
-            "url": "https://cran.r-project.org/bin/windows/base/old/$version/md5sum.R-$version.txt"
+            "url": "https://cran-archive.r-project.org/bin/windows/base/old/$version/md5sum.txt"
         }
     }
 }
