@@ -36,8 +36,8 @@
         ]
     ],
     "checkver": {
-        "url": "https://positron.posit.co/download.html",
-        "regex": "Positron-(\\d+\\.\\d+\\.\\d+-\\d+)-UserSetup.exe"
+        "github": "https://github.com/posit-dev/positron",
+        "regex": "\\/releases\\/tag\\/([\\d.\\-]+)"
     },
     "autoupdate": {
         "url": "https://cdn.posit.co/positron/dailies/win/x86_64/Positron-$version-UserSetup.exe"
