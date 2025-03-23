@@ -1,0 +1,60 @@
+{
+    "version": "1.2.8",
+    "description": "A fork of the discontinued Switch emulator, Ryujinx.",
+    "homepage": "https://ryujinx.app/",
+    "license": "MIT",
+    "notes": [
+        "ATTENTION: Ryujinx requires Nintendo Switch firmware and a prod.keys file to function.",
+        "Learn more at https://github.com/Ryubing/Ryujinx/wiki/Ryujinx-Setup-&-Configuration-Guide",
+        "Following site may be useful, use them at your own risk:",
+        "  1. https://theprodkeys.com/vi/",
+        "  2. https://prodkeys.net/"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Ryubing/Ryujinx/releases/download/1.2.86/ryujinx-1.2.86-win_x64.zip",
+            "hash": "e06183dbcf4c24a83960fa2277a83a1ff9401d08a5f1e75911e5a954d1f27f9d"
+        },
+        "arm64": {
+            "url": "https://github.com/Ryubing/Ryujinx/releases/download/1.2.86/ryujinx-1.2.86-win_x64.zip",
+            "hash": "e06183dbcf4c24a83960fa2277a83a1ff9401d08a5f1e75911e5a954d1f27f9d"
+        }
+    },
+    "extract_dir": "publish",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-Item \"$persist_dir\\portable\" -ItemType Directory | Out-Null",
+        "   if (Test-Path \"$env:APPDATA\\Ryujinx\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:APPDATA\\Ryujinx\\*\" -Destination \"$persist_dir\\portable\" -Recurse",
+        "       Remove-Item -Path \"$env:APPDATA\\Ryujinx\" -Recurse",
+        "   }",
+        "}"
+    ],
+    "bin": [
+        [
+            "Ryujinx.exe",
+            "ryubing"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "Ryujinx.exe",
+            "Ryubing"
+        ]
+    ],
+    "persist": "portable",
+    "checkver": {
+        "github": "https://github.com/Ryubing/Stable-Releases"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Ryubing/Stable-Releases/releases/download/$version/ryujinx-$version-win_x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/Ryubing/Stable-Releases/releases/download/$version/ryujinx-$version-win_arm64.zip"
+            }
+        }
+    }
+}
