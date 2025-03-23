@@ -6,7 +6,8 @@
     "notes": [
         "For R 3.3.x to 3.6.x, please use 'jade/rtools35'.",
         "for R-4.0.0 to to R-4.1.3, please use 'jade/rtools40'.",
-        "for R 4.2.*, please use 'jade/rtools42'."
+        "for R 4.2.*, please use 'jade/rtools42'.",
+        "for R 4.3.*, please use 'jade/rtools43'."
     ],
     "architecture": {
         "64bit": {
