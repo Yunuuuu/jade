@@ -1,5 +1,5 @@
 {
-    "version": "1.2.8",
+    "version": "1.2.86",
     "description": "A fork of the discontinued Switch emulator, Ryujinx.",
     "homepage": "https://ryujinx.app/",
     "license": "MIT",
@@ -12,11 +12,7 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Ryubing/Ryujinx/releases/download/1.2.86/ryujinx-1.2.86-win_x64.zip",
-            "hash": "e06183dbcf4c24a83960fa2277a83a1ff9401d08a5f1e75911e5a954d1f27f9d"
-        },
-        "arm64": {
-            "url": "https://github.com/Ryubing/Ryujinx/releases/download/1.2.86/ryujinx-1.2.86-win_x64.zip",
+            "url": "https://github.com/Ryubing/Stable-Releases/releases/download/1.2.86/ryujinx-1.2.86-win_x64.zip",
             "hash": "e06183dbcf4c24a83960fa2277a83a1ff9401d08a5f1e75911e5a954d1f27f9d"
         }
     },
@@ -51,9 +47,6 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/Ryubing/Stable-Releases/releases/download/$version/ryujinx-$version-win_x64.zip"
-            },
-            "arm64": {
-                "url": "https://github.com/Ryubing/Stable-Releases/releases/download/$version/ryujinx-$version-win_arm64.zip"
             }
         }
     }
