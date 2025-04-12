@@ -29,8 +29,8 @@ function is_link($dir) {
 
 write-host "$action $source"
 
-$source = $source.TrimEnd("/").TrimEnd("\\")
-$target = $target.TrimEnd("/").TrimEnd("\\")
+$source = $source.TrimEnd("/").TrimEnd("\")
+$target = $target.TrimEnd("/").TrimEnd("\")
 
 $source = fullpath "$source"
 $target = fullpath "$target\$name"
