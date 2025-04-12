@@ -1,5 +1,5 @@
 {
-    "version": "619-20250411-97d9b05",
+    "version": "620-20250412-f1117c1",
     "description": [
         "Mesen is a NES/Famicom emulator and NSF player. It is still a work in progress - some features are currently incomplete or may change in future versions.",
         "",
@@ -18,7 +18,7 @@
     "homepage": "https://github.com/SourMesen/Mesen2",
     "license": "Unknown",
     "url": "https://nightly.link/SourMesen/Mesen2/workflows/build/master/Mesen%20%28Windows%20-%20net8.0%20-%20AoT%29.zip",
-    "hash": "732620e69f28a7886f0606d663b709d2cc9b3939e0e1097c160b78698b6bb3ea",
+    "hash": "3e9f2398a14ed970cd4c2cd7ea516108552c0b0689934e9ceb780536db280656",
     "pre_install": [
         "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "if (!(Test-Path \"$persist_dir\\MesenNesDB.txt\")) {",
