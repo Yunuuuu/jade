@@ -1,11 +1,11 @@
 {
-    "version": "6.0.36",
+    "version": "7.0.15",
     "description": "Open-source reference management software to manage bibliographic data and related research materials.",
     "homepage": "https://www.zotero.org/",
     "license": "AGPL-3.0-only",
-    "url": "https://download.zotero.org/client/release/6.0.36/Zotero-6.0.36_setup.exe#/dl.7z",
-    "hash": "9fd9d3167653d2b18ec0c507b40da4ac21fc3400ca8c0a97753c4211c969736a",
-    "extract_dir": "core",
+    "url": "https://download.zotero.org/client/release/7.0.15/Zotero-7.0.15_win-x64.zip",
+    "hash": "a9858a36e62d15f60a58a4e48df6121f617e06451c69a9fb5c9603959e8988f3",
+    "extract_dir": "Zotero_win-x64",
     "bin": "zotero.exe",
     "shortcuts": [
         [
@@ -26,11 +26,11 @@
         ]
     },
     "checkver": {
-        "url": "https://www.zotero.org/download/client/update/5.0.0/_/WINNT_x86-msvc/en-US/release/_/update.xml",
-        "xpath": "/updates/update/@appVersion"
+        "url": "https://github.com/zotero/zotero/tags",
+        "regex": "tag/(\\d+\\.\\d+\\.\\d+)"
     },
     "autoupdate": {
-        "url": "https://download.zotero.org/client/release/$version/Zotero-$version_setup.exe#/dl.7z",
+        "url": "https://download.zotero.org/client/release/$version/Zotero-$version_win-x64.zip",
         "hash": {
             "mode": "download"
         }
