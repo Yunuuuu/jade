@@ -1,10 +1,10 @@
 {
-    "version": "2025.04.0-173",
+    "version": "2025.05.0-58",
     "description": "Positron, a next-generation data science IDE.",
     "homepage": "https://positron.posit.co/",
     "license": "Elastic-2.0",
-    "url": "https://cdn.posit.co/positron/dailies/win/x86_64/Positron-2025.04.0-173-UserSetup.exe",
-    "hash": "e71300056b9a6a10038103f02b7e60d3d11c86862902a449a577c1fec24dbd73",
+    "url": "https://cdn.posit.co/positron/dailies/win/x86_64/Positron-2025.05.0-58-UserSetup.exe",
+    "hash": "c0a949aa786ef370da282580e27e4267b4172e9df2332f41219fa5686c54178c",
     "notes": [
         "Please review Positron's license agreement (https://github.com/posit-dev/positron?tab=License-1-ov-file#readme).",
         "Your acceptance of this license agreement is required as a condition to proceeding with your use of the software.",
