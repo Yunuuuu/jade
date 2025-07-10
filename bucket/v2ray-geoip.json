@@ -1,11 +1,11 @@
 {
-    "version": "202506050146",
+    "version": "202507050144",
     "description": "GeoIP data for V2Ray (official)",
     "homepage": "https://github.com/v2ray/geoip",
     "license": "MIT",
     "depends": "jade/v2ray",
-    "url": "https://download.fastgit.org/v2ray/geoip/releases/download/202506050146/geoip.dat",
-    "hash": "58bf8f086473cad7df77f032815eb8d96bbd4a1aaef84c4f7da18cf1a3bb947a",
+    "url": "https://download.fastgit.org/v2ray/geoip/releases/download/202507050144/geoip.dat",
+    "hash": "d77289a7465b6e59df39a2d46bd02b30b4fa7dd70939c13d431fd2bd8f448e10",
     "installer": {
         "script": [
             "function BackUp([String] $file) {",
