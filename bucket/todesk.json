@@ -1,5 +1,5 @@
 {
-    "version": "4.8.0.1",
+    "version": "4.8.1.2",
     "description": "ToDesk 是为您量身定制的远程控制软件，支持在内网、外网和移动网络环境下，随时随地发起远程控制。",
     "homepage": "https://www.todesk.com/",
     "license": {
@@ -7,7 +7,7 @@
         "url": "https://docs.todesk.com"
     },
     "url": "https://dl.todesk.com/windows/ToDesk_Setup.exe#/dl.7z",
-    "hash": "024949b3104b3af13b5fdaef5e7dfcce20f0437a1bdc9d160cb79e9f31c75d1b",
+    "hash": "ea3e80c3821bc52e5d91b9559e2cdb1700ee132b67a2495cf096a6124840c9e4",
     "pre_install": [
         "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "@('config.ini') | ForEach-Object {",
