@@ -1,10 +1,10 @@
 {
-    "version": "7.0.27",
+    "version": "7.0.30",
     "description": "Open-source reference management software to manage bibliographic data and related research materials.",
     "homepage": "https://www.zotero.org/",
     "license": "AGPL-3.0-only",
-    "url": "https://download.zotero.org/client/release/7.0.27/Zotero-7.0.27_win-x64.zip",
-    "hash": "9a9f3f0580b5f0f0a3a8151889717aabfc1acee00bb936822abab4be235db456",
+    "url": "https://download.zotero.org/client/release/7.0.30/Zotero-7.0.30_win-x64.zip",
+    "hash": "2beb185349d728548a0044756eac5dfe488287047ab104ba9447e93a2c5e56f8",
     "extract_dir": "Zotero_win-x64",
     "bin": "zotero.exe",
     "shortcuts": [
