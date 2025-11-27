@@ -1,12 +1,12 @@
 {
-    "version": "33-20251123-f3f0876",
+    "version": "35-20251127-e7990cd",
     "description": "Simple and efficient screen recording utility for Windows.",
     "homepage": "https://github.com/mmozeiko/wcap",
     "license": "unlicense",
     "architecture": {
         "64bit": {
             "url": "https://raw.githubusercontent.com/wiki/mmozeiko/wcap/wcap-x64.exe",
-            "hash": "0c841fcbdb72bdcc74bdb40d5a9dfb4545cee3ac399037b0e64897ab20a13618",
+            "hash": "70c73da8abd56cd6a1863fa8a547620dc70f1176bd796c693c288befaa2d779a",
             "shortcuts": [
                 [
                     "wcap-x64.exe",
@@ -16,7 +16,7 @@
         },
         "arm64": {
             "url": "https://raw.githubusercontent.com/wiki/mmozeiko/wcap/wcap-arm64.exe",
-            "hash": "ae0a7f15c0afd951735122180f157a2fc6481cdc5f2ca8cf9168a35b309bfba7",
+            "hash": "2edfd1d0f0ac7d0e2de193eb09664dc78c73d5f2a1b54e0a46b42d73640af2f0",
             "shortcuts": [
                 [
                     "wcap-arm64.exe",
