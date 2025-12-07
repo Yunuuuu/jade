@@ -9,7 +9,14 @@
             "hash": "ca3b5342a54ca25b1735161c401fef9c9fea8de5c779e53b7b6e62dea9163751"
         }
     },
-    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst.exe\" -Force -Recurse",
+    "pre_install": [
+        "if (Test-Path -PathType Container \"$dir\\`$PLUGINSDIR\") {",
+        "   Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+        "}",
+        "if (Test-Path -PathType Leaf \"$dir\\uninst.exe\") {",
+        "   Remove-Item \"$dir\\uninst.exe\"  -Force",
+        "}"
+    ],
     "shortcuts": [
         [
             "qbittorrent.exe",
