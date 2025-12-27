@@ -12,13 +12,13 @@
             "url": "https://github.com/TimothyYe/godns/releases/download/v3.3.5/godns_3.3.5_Windows_amd64.tar.gz",
             "hash": "5b22247d1eb506d918b5f1700c417e80a5af9f72b6f740b24a9afda5d785d355"
         },
+        "arm": {
+            "url": "https://github.com/TimothyYe/godns/releases/download/v3.3.5/godns_3.3.5_Windows_arm.tar.gz",
+            "hash": "45336c7fdfdac65ca064831679a85ce2420610bf7b183690f867ad9db18b36ae"
+        },
         "arm64": {
             "url": "https://github.com/TimothyYe/godns/releases/download/v3.3.5/godns_3.3.5_Windows_arm64.tar.gz",
             "hash": "154d8c6144b605109cc0702324e8e7d753b03cd1a12863b16dba9198fe515cba"
-        },
-        "armv6": {
-            "url": "https://github.com/TimothyYe/godns/releases/download/v2.9.8/godns_2.9.8_Windows_armv6.tar.gz",
-            "hash": ""
         }
     },
     "pre_install": [
