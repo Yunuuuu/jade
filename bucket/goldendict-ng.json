@@ -5,12 +5,6 @@
     "license": "GPL-3.0-only",
     "url": "https://github.com/xiaoyifang/goldendict-ng/releases/download/v25.10.2-Release.673d1b90/GoldenDict-ng-25.10.2-Qt6.7.2-Windows-installer.7z",
     "hash": "4bbe51a59457853c2220c93461e5114c81c671e51638b680924bbe6d00bca840",
-    "notes": [
-        "goldendict-ng requires Windows 10 (1809 or later) with Microsoft Visual C++ runtime installed:",
-        "    x86: `winget install --id Microsoft.VCRedist.2015+.x86`",
-        "    x64: `winget install --id Microsoft.VCRedist.2015+.x64`",
-        "    Arm64: `winget install --id Microsoft.VCRedist.2015+.arm64`"
-    ],
     "extract_dir": "GoldenDict-ng-25.10.2-Qt6.7.2",
     "bin": "GoldenDict.exe",
     "shortcuts": [
