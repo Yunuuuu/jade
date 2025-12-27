@@ -9,9 +9,9 @@
         "Please review Positron's license agreement (https://github.com/posit-dev/positron?tab=License-1-ov-file#readme).",
         "Your acceptance of this license agreement is required as a condition to proceeding with your use of the software.",
         "positron requires the latest versions of Microsoft Visual C++:",
-        "    x86: `winget install Microsoft.VCRedist.2015+.x86`",
-        "    x64: `winget install Microsoft.VCRedist.2015+.x64`",
-        "    Arm64: `winget install Microsoft.VCRedist.2022.arm64`"
+        "    x86: `winget install --id Microsoft.VCRedist.2015+.x86`",
+        "    x64: `winget install --id Microsoft.VCRedist.2015+.x64`",
+        "    Arm64: `winget install --id Microsoft.VCRedist.2015+.arm64`"
     ],
     "installer": {
         "args": [
