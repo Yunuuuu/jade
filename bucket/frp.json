@@ -9,10 +9,10 @@
             "hash": "5885bff09604e719e429698f800f89379f3910f07490ca1f7d8a7f7a40970eda",
             "extract_dir": "frp_0.65.0_windows_amd64"
         },
-        "32bit": {
-            "url": "https://github.com/fatedier/frp/releases/download/v0.51.3/frp_0.51.3_windows_386.zip",
-            "hash": "",
-            "extract_dir": "frp_0.51.3_windows_386"
+        "arm64": {
+            "url": "https://github.com/fatedier/frp/releases/download/v0.65.0/frp_0.65.0_windows_arm64.zip",
+            "hash": "cef05f46ec253c3542c3e943740d161f004387d52ff5d9d30d8dde0d58bba6e8",
+            "extract_dir": "frp_0.65.0_windows_arm64"
         }
     },
     "bin": [
