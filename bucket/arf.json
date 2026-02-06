@@ -1,20 +1,20 @@
 {
-    "version": "0.2.0-rc.2",
+    "version": "0.2.0-rc.3",
     "description": "A modern, cross-platform R console",
     "homepage": "https://github.com/eitsupi/arf",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/eitsupi/arf/releases/download/v0.2.0-rc.2/arf-console-x86_64-pc-windows-msvc.zip",
-            "hash": "35257833fbe9c3d719cd9fef183dffcab8af496ec19e473fbae91c29f1db4a43"
+            "url": "https://github.com/eitsupi/arf/releases/download/v0.2.0-rc.3/arf-console-x86_64-pc-windows-msvc.zip",
+            "hash": "ade5ed935f1586c3f6bcf0c0d7c5c9e7b6771349a35fa3b1d4f654f06dadf000"
         },
         "32bit": {
-            "url": "https://github.com/eitsupi/arf/releases/download/v0.2.0-rc.2/arf-console-x86_64-pc-windows-msvc.zip",
-            "hash": "35257833fbe9c3d719cd9fef183dffcab8af496ec19e473fbae91c29f1db4a43"
+            "url": "https://github.com/eitsupi/arf/releases/download/v0.2.0-rc.3/arf-console-x86_64-pc-windows-msvc.zip",
+            "hash": "ade5ed935f1586c3f6bcf0c0d7c5c9e7b6771349a35fa3b1d4f654f06dadf000"
         },
         "arm64": {
-            "url": "https://github.com/eitsupi/arf/releases/download/v0.2.0-rc.2/arf-console-aarch64-pc-windows-msvc.zip",
-            "hash": "7cf1594a4d3fef80ec6b2e51a53684beb53a3dcc79864ace63c6ab94634f7bc4"
+            "url": "https://github.com/eitsupi/arf/releases/download/v0.2.0-rc.3/arf-console-aarch64-pc-windows-msvc.zip",
+            "hash": "ef941d7dd3aca2742b5018e4756a69c4c37854ef9bd784b973257b0186109cb0"
         }
     },
     "bin": "arf.exe",
