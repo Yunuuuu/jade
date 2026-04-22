@@ -1,5 +1,5 @@
 {
-    "version": "2026.01.2-418",
+    "version": "2026.04.0-526",
     "description": "An IDE for R with console, syntax-highlighting, editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.",
     "homepage": "https://www.rstudio.com/products/rstudio/",
     "license": "AGPL-3.0-only",
@@ -7,8 +7,8 @@
     "depends": "jade/r",
     "architecture": {
         "64bit": {
-            "url": "https://download1.rstudio.org/electron/windows/RStudio-2026.01.2-418.zip",
-            "hash": "1c1ee37bee8fd851e2609605cc38ef96790a4431d05ae0d4626b74c31f377585"
+            "url": "https://download1.rstudio.org/electron/windows/RStudio-2026.04.0-526.zip",
+            "hash": "fa16815ec2ca636a36793e2be883ec64d2732c1c608d107e4b89f0a585667fbb"
         }
     },
     "post_install": [
