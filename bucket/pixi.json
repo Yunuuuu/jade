@@ -14,13 +14,15 @@
         }
     },
     "bin": "pixi.exe",
-    "env_add_path": "Lib\\bin",
+    "env_add_path": "$env:LOCALAPPDATA\\pixi\\bin",
     "env_set": {
-        "PIXI_HOME": "Lib",
+        "PIXI_HOME": "$env:LOCALAPPDATA\\pixi",
         "PIXI_NO_PATH_UPDATE": "true"
     },
-    "persist": [
-        "Lib"
+    "post_install": [
+        "if ($purge) {",
+        "    if (Test-Path \"$env:LOCALAPPDATA\\pixi\") { Remove-Item \"$env:LOCALAPPDATA\\pixi\" -Recurse -Force }",
+        "}"
     ],
     "checkver": {
         "github": "https://github.com/prefix-dev/pixi"
