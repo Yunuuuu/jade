@@ -68,7 +68,7 @@
             "$version_42 = [Version]\"4.2.0\"",
             "$check_version = $version_cur -ge $version_42",
             "if (-not $check_version) {",
-            "   Remove-Item \"$dir\\bin\\R,*.exe\" -Force",
+            "    Remove-Item \"$dir\\bin\\R,*.exe\" -Force",
             "}",
             "Copy-Item \"$dir\\bin\\R.exe\" \"$dir\\bin\\Rscript.exe\""
         ]
@@ -99,7 +99,7 @@
         "    $content = $content.Replace('$roriginal_dir', $original_dir_path)",
         "    $content = $content.Replace('$rversion', $version)",
         "    if ($global) {",
-        "      $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "        $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
         "    }",
         "    $content | Set-Content -Path \"$dir\\$_.reg\"",
         "  }",

@@ -84,7 +84,7 @@
         "    $content = $content.Replace('$roriginal_dir', $original_dir_path)",
         "    $content = $content.Replace('$rversion', $version)",
         "    if ($global) {",
-        "      $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "        $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
         "    }",
         "    $content | Set-Content -Path \"$dir\\$_.reg\"",
         "  }",
