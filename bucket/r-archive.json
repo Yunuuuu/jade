@@ -67,6 +67,7 @@
         "   [IO.File]::WriteAllLines(\"$dir\\etc\\Renviron.site\", $pathenv)",
         "}",
         "& \"$bucketsdir\\jade\\scripts\\linking.ps1\" \"${env:LOCALAPPDATA}\\R\" -name \"Local\\R\"",
+        "if (!(test-path \"${env:LOCALAPPDATA}\\R\\library\")) { New-Item -type directory \"${env:LOCALAPPDATA}\\R\\library\" > $null }",
         "$original_dir_path = \"$original_dir\".Replace('\\', '\\\\')",
         "'install-context', 'uninstall-context' | ForEach-Object {",
         "  if (Test-Path \"$bucketsdir\\jade\\config\\R\\$_.reg\") {",
