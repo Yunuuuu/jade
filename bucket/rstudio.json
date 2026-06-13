@@ -11,10 +11,6 @@
             "hash": "530d604ecf4280d2afa7154262a0ffe840dfdbc0becf5d6b2369d288ef456f3a"
         }
     },
-    "post_install": [
-        "& \"$bucketsdir\\jade\\scripts\\linking.ps1\" \"${env:APPDATA}\\RStudio\" -name \"Roaming\\RStudio\"",
-        "& \"$bucketsdir\\jade\\scripts\\linking.ps1\" \"${env:LOCALAPPDATA}\\RStudio\" -name \"Local\\RStudio\""
-    ],
     "bin": [
         [
             "rstudio.exe",
@@ -27,12 +23,21 @@
             "RStudio"
         ]
     ],
-    "uninstaller": {
-        "script": [
-            "& \"$bucketsdir\\jade\\scripts\\unlinking.ps1\" \"${env:APPDATA}\\RStudio\"",
-            "& \"$bucketsdir\\jade\\scripts\\unlinking.ps1\" \"${env:LOCALAPPDATA}\\RStudio\""
-        ]
-    },
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $app_paths = @(",
+        "        (Join-Path $env:APPDATA 'RStudio'),",
+        "        (Join-Path $env:LOCALAPPDATA 'RStudio'),",
+        "        (Join-Path $env:USERPROFILE 'RStudio')",
+        "    )",
+        "    foreach ($app_path in $app_paths) {",
+        "        if (Test-Path $app_path) {",
+        "            Write-Host \"Purging RStudio data: $app_path\"",
+        "            Remove-Item -Recurse -Force $app_path",
+        "        }",
+        "    }",
+        "}"
+    ],
     "checkver": {
         "url": "https://www.rstudio.com/wp-content/downloads.json",
         "jsonpath": ".rstudio['open_source'].stable.desktop.archive.windows.version",
