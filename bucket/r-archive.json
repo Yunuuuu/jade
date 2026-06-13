@@ -67,14 +67,6 @@
         "   [IO.File]::WriteAllLines(\"$dir\\etc\\Renviron.site\", $pathenv)",
         "}",
 
-        "if (-not $global) {",
-        "    $local_home = Join-Path $env:LocalAppData 'R'",
-        "    Write-Host \"Setting environment variable R_LIBS_USER to $local_home\\library\"",
-        "    Set-EnvVar -Name 'R_LIBS_USER' -Value $local_home\\library -Global:$global",
-        "    if (!(Test-Path $local_home)) { New-Item -ItemType Directory -Force $local_home | Out-Null }",
-        "    if (!(Test-Path $local_home\\library)) { New-Item -ItemType Directory -Force $local_home\\library | Out-Null }",
-        "}",
-
         "$original_dir_path = \"$original_dir\".Replace('\\', '\\\\')",
         "'install-context', 'uninstall-context' | ForEach-Object {",
         "  if (Test-Path \"$bucketsdir\\jade\\config\\R\\$_.reg\") {",
@@ -95,10 +87,6 @@
         ]
     },
     "post_uninstall": [
-        "if (-not $global) {",
-        "    Write-Host \"Removing environment variable R_LIBS_USER\"",
-        "    Set-EnvVar -Name 'R_LIBS_USER' -Value $null -Global:$global",
-        "}",
         "if ($purge) {",
         "    if ($global) {",
         "        $local_home = Join-Path $env:ProgramData 'R'",
