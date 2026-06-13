@@ -42,7 +42,7 @@
         "Remove-Path -Path $pixi_bin -Global:$global",
         "if ($purge) {",
         "    if (Test-Path $local_home) {",
-        "        Write-Host \"Purging pixi appdata: $local_home\"",
+        "        Write-Host \"Purging pixi data: $local_home\"",
         "        Remove-Item -Recurse -Force $local_home",
         "    }",
         "}"
