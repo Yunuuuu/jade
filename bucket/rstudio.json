@@ -28,7 +28,6 @@
         "    $app_paths = @(",
         "        (Join-Path $env:APPDATA 'RStudio'),",
         "        (Join-Path $env:LOCALAPPDATA 'RStudio'),",
-        "        (Join-Path $env:USERPROFILE 'RStudio')",
         "    )",
         "    foreach ($app_path in $app_paths) {",
         "        if (Test-Path $app_path) {",

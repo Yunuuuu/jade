@@ -40,7 +40,6 @@
         "    $app_paths = @(",
         "        (Join-Path $env:APPDATA 'Positron'),",
         "        (Join-Path $env:LOCALAPPDATA 'Positron'),",
-        "        (Join-Path $env:USERPROFILE 'Positron')",
         "    )",
         "    foreach ($app_path in $app_paths) {",
         "        if (Test-Path $app_path) {",
