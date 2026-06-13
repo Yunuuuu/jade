@@ -17,6 +17,21 @@
         "portable",
         "content"
     ],
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $app_paths = @(",
+        "        (Join-Path $env:APPDATA 'GoldenDict-ng'),",
+        "        (Join-Path $env:LOCALAPPDATA 'GoldenDict-ng'),",
+        "        (Join-Path $env:USERPROFILE 'GoldenDict-ng')",
+        "    )",
+        "    foreach ($app_path in $app_paths) {",
+        "        if (Test-Path $app_path) {",
+        "            Write-Host \"Purging GoldenDict-ng data: $app_path\"",
+        "            Remove-Item -Recurse -Force $app_path",
+        "        }",
+        "    }",
+        "}"
+    ],
     "checkver": {
         "url": "https://api.github.com/repos/xiaoyifang/goldendict-ng/releases/latest",
         "jsonpath": "$.assets[?(@.browser_download_url =~ /download\\/v([\\d.]+)-Release\\.(\\w+)\\/GoldenDict-ng-[\\d.]+-Qt([\\d.]+)-Windows-installer\\.7z/)].browser_download_url",
