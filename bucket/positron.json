@@ -1,10 +1,10 @@
 {
-    "version": "2025.10.1-4",
+    "version": "2026.06.0-211",
     "description": "Positron, a next-generation data science IDE.",
     "homepage": "https://positron.posit.co/",
     "license": "Elastic-2.0",
-    "url": "https://cdn.posit.co/positron/dailies/win/x86_64/Positron-2025.10.1-4-UserSetup.exe",
-    "hash": "042ef5fb7efcc84db499c8afeaabebf4a7853b61e3e444cd3ec80dc2cb8b520f",
+    "url": "https://cdn.posit.co/positron/releases/win/x86_64/Positron-2026.06.0-211-UserSetup-x64.exe",
+    "hash": "6f86a50c9f257edaa7583da39919a7bd13f6b890c70dc3d53598e5118a528740",
     "notes": [
         "Please review Positron's license agreement (https://github.com/posit-dev/positron?tab=License-1-ov-file#readme).",
         "Your acceptance of this license agreement is required as a condition to proceeding with your use of the software.",
@@ -55,6 +55,10 @@
         "regex": "\\/releases\\/tag\\/([\\d.\\-]+)"
     },
     "autoupdate": {
-        "url": "https://cdn.posit.co/positron/dailies/win/x86_64/Positron-$version-UserSetup.exe"
+        "url": "https://cdn.posit.co/positron/releases/win/x86_64/Positron-$version-UserSetup-x64.exe",
+        "hash": {
+            "url": "https://cdn.posit.co/positron/releases/checksums/positron-$version-checksums.json",
+            "jsonpath": "$.['Positron-$version-UserSetup-x64.exe']"
+        }
     }
 }
