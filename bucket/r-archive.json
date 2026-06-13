@@ -89,6 +89,11 @@
         "}",
         "reg import \"$dir\\install-context.reg\""
     ],
+    "uninstaller": {
+        "script": [
+            "reg import \"$dir\\uninstall-context.reg\""
+        ]
+    },
     "post_uninstall": [
         "if (-not $global) {",
         "    Write-Host \"Removing environment variable R_LIBS_USER\"",
@@ -104,8 +109,7 @@
         "        Write-Host \"Purging R data: $local_home\"",
         "        Remove-Item -Recurse -Force $local_home",
         "    }",
-        "}",
-        "reg import \"$dir\\uninstall-context.reg\""
+        "}"
     ],
     "checkver": {
         "url": "https://cran-archive.r-project.org/bin/windows/base/old/",
