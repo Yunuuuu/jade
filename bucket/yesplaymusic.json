@@ -14,7 +14,6 @@
         "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
         "Copy-Item -Path \"$bucketsdir\\jade\\config\\yesplaymusic\\01.ico\" -Destination \"$dir\\yesplaymusic.ico\""
     ],
-    "post_install": "& \"$bucketsdir\\jade\\scripts\\linking.ps1\" \"${env:APPDATA}\\yesplaymusic\" -name \"Roaming\\yesplaymusic\"",
     "shortcuts": [
         [
             "YesPlayMusic.exe",
@@ -23,9 +22,21 @@
             "yesplaymusic.ico"
         ]
     ],
-    "uninstaller": {
-        "script": "& \"$bucketsdir\\jade\\scripts\\unlinking.ps1\" \"${env:APPDATA}\\yesplaymusic\""
-    },
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $app_paths = @(",
+        "        (Join-Path $env:APPDATA 'yesplaymusic'),",
+        "        (Join-Path $env:LOCALAPPDATA 'yesplaymusic'),",
+        "        (Join-Path $env:USERPROFILE 'yesplaymusic')",
+        "    )",
+        "    foreach ($app_path in $app_paths) {",
+        "        if (Test-Path $app_path) {",
+        "            Write-Host \"Purging yesplaymusic data: $app_path\"",
+        "            Remove-Item -Recurse -Force $app_path",
+        "        }",
+        "    }",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/qier222/YesPlayMusic"
     },
