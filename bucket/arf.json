@@ -18,6 +18,21 @@
         }
     },
     "bin": "arf.exe",
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $app_paths = @(",
+        "        (Join-Path $env:APPDATA 'arf'),",
+        "        (Join-Path $env:LOCALAPPDATA 'arf'),",
+        "        (Join-Path $env:USERPROFILE 'arf')",
+        "    )",
+        "    foreach ($app_path in $app_paths) {",
+        "        if (Test-Path $app_path) {",
+        "            Write-Host \"Purging arf data: $app_path\"",
+        "            Remove-Item -Recurse -Force $app_path",
+        "        }",
+        "    }",
+        "}"
+    ],
     "checkver": {
         "url": "https://github.com/eitsupi/arf/releases",
         "regex": "releases/tag/v([0-9a-zA-Z\\-.]+)"
