@@ -5,11 +5,11 @@
     "license": "GPL-2.0-only",
     "notes": [
         "For source packages installation, please install 'rtools'.",
-        "For R 4.0.* to 4.1.*, please use 'jade/rtools40';",
-        "For R 4.2.*, please use 'jade/rtools42';",
-        "For R 4.3.*, please use 'jade/rtools43'.",
-        "For R 4.4.*, please use 'jade/rtools44'.",
-        "For R 4.5.* to 4.6.* , please use 'jade/rtools45'."
+        "for R-4.0.x to R-4.1.x, please use 'jade/rtools40';",
+        "for R-4.2.x, please use 'jade/rtools42';",
+        "for R-4.3.x, please use 'jade/rtools43'.",
+        "for R-4.4.x, please use 'jade/rtools44'.",
+        "For R-4.5.x to R-4.6.x, please use 'jade/rtools45'."
     ],
     "url": "https://cran.r-project.org/bin/windows/base/old/4.6.0/R-4.6.0-win.exe",
     "hash": "md5:153213f04912151ea6783006686cdf52",
