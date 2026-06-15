@@ -25,8 +25,8 @@
     "post_uninstall": [
         "if ($purge) {",
         "    $app_paths = @(",
-        "        (Join-Path $env:HOME '.config\\starship.toml')",
-        "        (Join-Path $env:HOME '.cache\\starship')",
+        "        (Join-Path $env:USERPROFILE '.config\\starship.toml')",
+        "        (Join-Path $env:USERPROFILE '.cache\\starship')",
         "        (Join-Path $env:APPDATA 'starship'),",
         "        (Join-Path $env:LOCALAPPDATA 'starship'),",
         "    )",
