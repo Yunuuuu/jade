@@ -17,7 +17,7 @@
     "post_uninstall": [
         "if ($purge) {",
         "    $app_paths = @(",
-        "        (Join-Path $env:APPDATA 'GoldenDict')",
+        "        (Join-Path $env:APPDATA 'GoldenDict'),",
         "        (Join-Path $env:LOCALAPPDATA 'GoldenDict')",
         "    )",
         "    foreach ($app_path in $app_paths) {",

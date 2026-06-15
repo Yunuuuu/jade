@@ -38,7 +38,7 @@
     "post_uninstall": [
         "if ($purge) {",
         "    $app_paths = @(",
-        "        (Join-Path $env:APPDATA 'Positron')",
+        "        (Join-Path $env:APPDATA 'Positron'),",
         "        (Join-Path $env:LOCALAPPDATA 'Positron')",
         "    )",
         "    foreach ($app_path in $app_paths) {",

@@ -37,7 +37,7 @@
     "post_uninstall": [
         "if ($purge) {",
         "    $app_paths = @(",
-        "        (Join-Path $env:APPDATA 'Firefox')",
+        "        (Join-Path $env:APPDATA 'Firefox'),",
         "        (Join-Path $env:LOCALAPPDATA 'Firefox')",
         "    )",
         "    foreach ($app_path in $app_paths) {",
