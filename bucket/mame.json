@@ -13,21 +13,14 @@
             "hash": "67cb5049e497fcd551ca052d815ba4a581435f49d405b501c6ac01ec7610073d"
         }
     },
-    "pre_install": [
+    "post_install": [
         "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "if ($global) {",
         "    $app_dir = \"$globaldir\\apps\\$app\\current\"",
         "} else {",
         "    $app_dir = \"$scoopdir\\apps\\$app\\current\"",
         "}",
-        "$home_dir_path = '%USERPROFILE%/mame'",
-        "$install_dir_path = \"$app_dir\".Replace('\\', '/')",
-        "if (!(Test-Path \"$persist_dir\\mame.ini\")) {",
-        "    $main_content = Get-Content \"$bucketsdir\\jade\\config\\mame\\mame.ini\"",
-        "    $main_content = $main_content.Replace('$home_dir', $home_dir_path)",
-        "    $main_content = $main_content.Replace('$install_dir', $install_dir_path)",
-        "    Set-Content -Path \"$persist_dir\\mame.ini\" -value $main_content",
-        "}",
+        "$app_dir = \"$app_dir\".Replace('\\', '/')",
         "if (!(test-path \"$persist_dir\\ini\")) { ",
         "    if (test-path \"$dir\\ini\") {",
         "        Move-Item -Path \"$dir\\ini\" -Destination $persist_dir",
@@ -35,32 +28,51 @@
         "        New-Item -type directory \"$persist_dir\\ini\" > $null",
         "    }",
         "}",
+        "if (!(Test-Path \"$persist_dir\\ini\\mame.ini\")) {",
+        "    $main_content = Get-Content \"$bucketsdir\\jade\\config\\mame\\mame.ini\"",
+        "    $main_content = $main_content.Replace('$app_dir', $app_dir)",
+        "    Set-Content -Path \"$persist_dir\\ini\\mame.ini\" -value $main_content",
+        "}",
         "if (!(test-path \"$persist_dir\\ini\\ui.ini\")) { ",
         "    $ui_content = Get-Content \"$bucketsdir\\jade\\config\\mame\\ui.ini\"",
-        "    $ui_content = $ui_content.Replace('$home_dir', $home_dir_path)",
-        "    $ui_content = $ui_content.Replace('$install_dir', $install_dir_path)",
+        "    $ui_content = $ui_content.Replace('$app_dir', $app_dir)",
         "    Set-Content -Path \"$persist_dir\\ini\\ui.ini\" -value $ui_content",
         "}"
     ],
     "bin": [
         [
             "mame.exe",
-            "mame"
+            "mame",
+            "-inipath $dir/ini/mame.ini"
         ],
         [
             "chdman.exe",
             "chdman"
         ]
     ],
+    "persist": [
+        "ini"
+    ],
     "shortcuts": [
         [
             "mame.exe",
-            "MAME"
+            "MAME",
+            "-inipath $dir/ini/mame.ini"
         ]
     ],
-    "persist": [
-        "mame.ini",
-        "ini"
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $app_paths = @(",
+        "        (Join-Path $env:APPDATA 'mame'),",
+        "        (Join-Path $env:LOCALAPPDATA 'mame')",
+        "    )",
+        "    foreach ($app_path in $app_paths) {",
+        "        if (Test-Path $app_path) {",
+        "            Write-Host \"Purging mame data: $app_path\"",
+        "            Remove-Item -Recurse -Force $app_path",
+        "        }",
+        "    }",
+        "}"
     ],
     "checkver": {
         "github": "https://github.com/mamedev/mame",
