@@ -22,6 +22,21 @@
         }
     },
     "bin": "starship.exe",
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $app_paths = @(",
+        "        (Join-Path $env:HOME '.config\\starship.toml')",
+        "        (Join-Path $env:HOME '.config\\starship.')",
+        "        (Join-Path $env:HOME '.cache\\starship')",
+        "    )",
+        "    foreach ($app_path in $app_paths) {",
+        "        if (Test-Path $app_path) {",
+        "            Write-Host \"Purging R starship: $app_path\"",
+        "            Remove-Item -Recurse -Force $app_path",
+        "        }",
+        "    }",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/starship/starship"
     },
