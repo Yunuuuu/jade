@@ -48,7 +48,7 @@
         [
             "mame.exe",
             "mame",
-            "-inipath .;ini;%USERPROFILE%/.config/mame/ini;%LOCALAPPDATA%/mame/ini;$dir/ini;$dir/ini/presets"
+            "-inipath .;ini;%USERPROFILE%/.config/mame/ini;%APPDATA%/mame;%LOCALAPPDATA%/mame/ini;$dir/ini;$dir/ini/presets"
         ],
         [
             "chdman.exe",
@@ -62,7 +62,7 @@
         [
             "mame.exe",
             "MAME",
-            "-inipath .;ini;%USERPROFILE%/.config/mame/ini;%LOCALAPPDATA%/mame/ini;$dir/ini;$dir/ini/presets"
+            "-inipath .;ini;%USERPROFILE%/.config/mame/ini;%APPDATA%/mame;%LOCALAPPDATA%/mame/ini;$dir/ini;$dir/ini/presets"
         ]
     ],
     "post_uninstall": [
