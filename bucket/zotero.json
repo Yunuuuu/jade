@@ -16,8 +16,8 @@
     "post_uninstall": [
         "if ($purge) {",
         "    $zotero_paths = @(",
-        "        (Join-Path $env:APPDATA 'Zotero'),",
-        "        (Join-Path $env:LOCALAPPDATA 'Zotero'),",
+        "        (Join-Path $env:APPDATA 'Zotero')",
+        "        (Join-Path $env:LOCALAPPDATA 'Zotero')",
         "        (Join-Path $env:USERPROFILE 'Zotero')",
         "    )",
         "    foreach ($zotero_path in $zotero_paths) {",

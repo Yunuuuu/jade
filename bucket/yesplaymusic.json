@@ -25,8 +25,8 @@
     "post_uninstall": [
         "if ($purge) {",
         "    $app_paths = @(",
-        "        (Join-Path $env:APPDATA 'yesplaymusic'),",
-        "        (Join-Path $env:LOCALAPPDATA 'yesplaymusic'),",
+        "        (Join-Path $env:APPDATA 'yesplaymusic')",
+        "        (Join-Path $env:LOCALAPPDATA 'yesplaymusic')",
         "    )",
         "    foreach ($app_path in $app_paths) {",
         "        if (Test-Path $app_path) {",
