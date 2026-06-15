@@ -4,7 +4,7 @@
     "homepage": "https://starship.rs",
     "license": "ISC",
     "notes": [
-        "Usage: Add '(& starship init powershell) | Out-String | Invoke-Expression' to the end of your PowerShell $PROFILE.",
+        "Usage: Add 'Invoke-Expression (& starship init powershell)' to the end of your PowerShell $PROFILE.",
         "Prerequisites: A Powerline font installed and enabled in your terminal."
     ],
     "architecture": {
