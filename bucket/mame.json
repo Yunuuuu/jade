@@ -6,7 +6,12 @@
         "identifier": "GPL-2.0",
         "url": "https://github.com/mamedev/mame/blob/master/COPYING"
     },
-    "notes": "To download ROM Set, Please See: https://archive.org/details/mame-merged",
+    "notes": [
+        "Learn more at https://docs.mamedev.org/",
+        "Following site may be useful, use them at your own risk:",
+        "  1. https://www.planetemu.net/machine/mame",
+        "  2. https://archive.org/details/mame-merged"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/mamedev/mame/releases/download/mame0280/mame0280b_64bit.exe#/dl.7z",
@@ -43,7 +48,7 @@
         [
             "mame.exe",
             "mame",
-            "-inipath $dir/ini/mame.ini"
+            "-inipath .;ini;%USERPROFILE%/.config/mame/ini;%LOCALAPPDATA%/mame/ini;$dir/ini;$dir/ini/presets"
         ],
         [
             "chdman.exe",
@@ -57,12 +62,13 @@
         [
             "mame.exe",
             "MAME",
-            "-inipath $dir/ini/mame.ini"
+            "-inipath .;ini;%USERPROFILE%/.config/mame/ini;%LOCALAPPDATA%/mame/ini;$dir/ini;$dir/ini/presets"
         ]
     ],
     "post_uninstall": [
         "if ($purge) {",
         "    $app_paths = @(",
+        "        (Join-Path $env:USERPROFILE '.config\\mame'),",
         "        (Join-Path $env:APPDATA 'mame'),",
         "        (Join-Path $env:LOCALAPPDATA 'mame')",
         "    )",
