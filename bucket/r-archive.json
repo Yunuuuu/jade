@@ -89,6 +89,7 @@
     "post_uninstall": [
         "if ($purge) {",
         "    $app_paths = @(",
+        "        (Join-Path $env:APPDATA 'R'),",
         "        (Join-Path $env:LocalAppData 'R')",
         "    )",
         "    if ($global) {",
