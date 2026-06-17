@@ -40,7 +40,7 @@
         "        }",
         "    }",
         "    $out = $new -join \"`n\"",
-        "    Set-Content -Path $path -Value $out -Encoding UTF8",
+        "    Set-Content -Path $path -Value $out",
         "}"
     ],
     "shortcuts": [
