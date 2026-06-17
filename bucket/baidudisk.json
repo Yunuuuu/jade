@@ -50,6 +50,11 @@
         ]
     ],
     "persist": "users",
+    "uninstaller": {
+        "script": [
+            "Get-Process YunDetectService -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.Id -Force }"
+        ]
+    },
     "post_uninstall": [
         "if ($purge) {",
         "    $app_paths = @(",
