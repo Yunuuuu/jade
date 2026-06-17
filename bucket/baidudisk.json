@@ -50,11 +50,12 @@
         ]
     ],
     "persist": "users",
-    "uninstaller": {
-        "script": [
-            "Get-Process YunDetectService -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.Id -Force }"
-        ]
-    },
+    "pre_uninstall": [
+        "Get-Process YunDetectService -ErrorAction SilentlyContinue | ForEach-Object {",
+        "    Write-Host \"[BaiduNetdisk] killing YunDetectService process PID=$($_.Id)\"",
+        "    Stop-Process -Id $_.Id -Force",
+        "}"
+    ],
     "post_uninstall": [
         "if ($purge) {",
         "    $app_paths = @(",
