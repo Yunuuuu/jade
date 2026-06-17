@@ -39,8 +39,6 @@
     ],
     "checkver": {
         "url": "https://api.github.com/repos/nesdev-org/MesenCE/actions/workflows/build.yml/runs?event=push&branch=master&status=success",
-        "regex": "^(?<run>[^ ]+) (?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})[^ ]+ (?<suite>\\d+) (?<artifact>\\d+) (?<commit>[\\da-f]{7})(?<sha>[\\da-f]+)$",
-        "replace": "${run}-${year}${month}${day}-${commit}",
         "script": [
             "$sha = json_path $page $.workflow_runs[0].head_sha",
             "$runId = json_path $page $.workflow_runs[0].run_number",
@@ -50,7 +48,9 @@
             "$cont = (Invoke-WebRequest $artUrl).Content | ConvertFrom-Json",
             "$artId = $cont.artifacts[0].id",
             "Write-Output \"$runId $date $suiteId $artId $sha\""
-        ]
+        ],
+        "regex": "^(?<run>[^ ]+) (?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})[^ ]+ (?<suite>\\d+) (?<artifact>\\d+) (?<commit>[\\da-f]{7})(?<sha>[\\da-f]+)$",
+        "replace": "${run}-${year}${month}${day}-${commit}"
     },
     "autoupdate": {
         "url": "https://nightly.link/nesdev-org/MesenCE/workflows/build/master/Mesen%20%28Windows%20-%20net8.0%20-%20AoT%29.zip"
