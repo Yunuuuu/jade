@@ -1,10 +1,14 @@
 {
-    "version": "2.0.0-preview1",
-    "description": "A multi-system emulator (NES, SNES, Game Boy and PC Engine)",
-    "homepage": "https://github.com/SourMesen/Mesen2",
+    "version": "2.2.1",
+    "homepage": "https://github.com/nesdev-org/MesenCE",
     "license": "GPL-3.0",
-    "url": "https://github.com/SourMesen/Mesen2/releases/download/2.0.0-preview1/Mesen-2.0.0-preview1-Windows.zip",
-    "hash": "84cbf5d534af9eb6733c2b2e7913538efec720adcf45a93020fcf5f097dd74ff",
+    "description": [
+        "Mesen is a multi-system emulator for Windows, Linux, and macOS. It supports NES, SNES, Game Boy (GB/SGB/GBC), Game Boy Advance, PC Engine, SMS/Game Gear, and WonderSwan (WS/WSC)",
+        "",
+        "MesenCE is a community-managed fork based on Mesen2, created to maintain and expand this emulator into the future."
+    ],
+    "url": "https://github.com/nesdev-org/MesenCE/releases/download/2.2.1/Mesen_2.2.1_Windows.zip",
+    "hash": "c19e10b3b3865eb0e86e4d01bf09a5027a4452081c04b5bd5b6cbbf76e346fd6",
     "pre_install": [
         "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "if (!(Test-Path \"$persist_dir\\MesenNesDB.txt\")) {",
@@ -17,7 +21,7 @@
     "shortcuts": [
         [
             "Mesen.exe",
-            "Mesen"
+            "MesenCE"
         ]
     ],
     "persist": [
@@ -33,11 +37,11 @@
         "settings.json"
     ],
     "checkver": {
-        "github": "https://github.com/SourMesen/Mesen2",
+        "github": "https://github.com/nesdev-org/MesenCE",
         "regex": "\\/releases\\/tag/([\\d.\\-a-zA-Z]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/SourMesen/Mesen2/releases/download/$version/Mesen-$version-Windows.zip",
+        "url": "https://github.com/nesdev-org/MesenCE/releases/download/$version/Mesen_$version_Windows.zip",
         "hash": {
             "mode": "download"
         }

@@ -1,0 +1,58 @@
+{
+    "version": "505-20260616-95ceb59",
+    "homepage": "https://github.com/nesdev-org/MesenCE",
+    "license": "Unknown",
+    "description": [
+        "Mesen is a multi-system emulator for Windows, Linux, and macOS. It supports NES, SNES, Game Boy (GB/SGB/GBC), Game Boy Advance, PC Engine, SMS/Game Gear, and WonderSwan (WS/WSC)",
+        "",
+        "MesenCE is a community-managed fork based on Mesen2, created to maintain and expand this emulator into the future."
+    ],
+    "notes": "MesenCE requires the DotNet Runtime 6.0: `winget install --id Microsoft.DotNet.Runtime.6`",
+    "url": "https://nightly.link/nesdev-org/MesenCE/workflows/build/master/Mesen%20%28Windows%20-%20net8.0%20-%20AoT%29.zip",
+    "hash": "d2c719e0ecf78ecc11d6cb40f2b8dc204361ff469a6137ef37b4f9d228b08162",
+    "pre_install": [
+        "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
+        "if (!(Test-Path \"$persist_dir\\MesenNesDB.txt\")) {",
+        "    New-Item \"$persist_dir\\MesenNesDB.txt\" -Type File | Out-Null",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\settings.json\")) {",
+        "    New-Item \"$persist_dir\\settings.json\" -Type File | Out-Null",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "Mesen.exe",
+            "MesenCE-dev"
+        ]
+    ],
+    "persist": [
+        "Cheats",
+        "Debugger",
+        "GameConfig",
+        "HdPacks",
+        "RecentGames",
+        "Satellaview",
+        "Saves",
+        "SaveStates",
+        "MesenNesDB.txt",
+        "settings.json"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/nesdev-org/MesenCE/actions/workflows/build.yml/runs?event=push&branch=master&status=success",
+        "regex": "^(?<run>[^ ]+) (?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})[^ ]+ (?<suite>\\d+) (?<artifact>\\d+) (?<commit>[\\da-f]{7})(?<sha>[\\da-f]+)$",
+        "replace": "${run}-${year}${month}${day}-${commit}",
+        "script": [
+            "$sha = json_path $page $.workflow_runs[0].head_sha",
+            "$runId = json_path $page $.workflow_runs[0].run_number",
+            "$suiteId = json_path $page $.workflow_runs[0].check_suite_id",
+            "$artUrl = json_path $page $.workflow_runs[0].artifacts_url",
+            "$date = json_path $page $.workflow_runs[0].created_at",
+            "$cont = (Invoke-WebRequest $artUrl).Content | ConvertFrom-Json",
+            "$artId = $cont.artifacts[0].id",
+            "Write-Output \"$runId $date $suiteId $artId $sha\""
+        ]
+    },
+    "autoupdate": {
+        "url": "https://nightly.link/nesdev-org/MesenCE/workflows/build/master/Mesen%20%28Windows%20-%20net8.0%20-%20AoT%29.zip"
+    }
+}
