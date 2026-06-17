@@ -1,5 +1,5 @@
 {
-    "version": "1.124.2",
+    "version": "1.125.0",
     "description": "Lightweight but powerful source code editor",
     "homepage": "https://code.visualstudio.com/",
     "license": {
@@ -9,12 +9,12 @@
     "notes": "For file associations, run '$dir\\install-associations.reg'",
     "architecture": {
         "64bit": {
-            "url": "https://update.code.visualstudio.com/1.124.2/win32-x64-archive/stable#/dl.7z",
-            "hash": "410c4ba0c7d9486fe563907a66911d1d7cab0207bf829ebbbe501cc1e1f45ee7"
+            "url": "https://update.code.visualstudio.com/1.125.0/win32-x64-archive/stable#/dl.7z",
+            "hash": "3cbc452631642464819840d1666face0787f3b6eef60ab1fa80f3cd87fef177a"
         },
         "arm64": {
-            "url": "https://update.code.visualstudio.com/1.124.2/win32-arm64-archive/stable#/dl.7z",
-            "hash": "e83237a2b39900660ce6df112214c0b3dd9c648287394d60d6b7b9cc97a54643"
+            "url": "https://update.code.visualstudio.com/1.125.0/win32-arm64-archive/stable#/dl.7z",
+            "hash": "acf76202832cd801d1f7618ce18b88127287176e8d2790f962a6b92fd2ce403f"
         }
     },
     "post_install": [
