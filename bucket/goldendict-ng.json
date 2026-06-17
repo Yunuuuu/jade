@@ -1,11 +1,11 @@
 {
-    "version": "26.5.4-ea1a9803",
+    "version": "26.6.0",
     "description": "A feature-rich dictionary lookup program",
     "homepage": "https://github.com/xiaoyifang/goldendict-ng",
     "license": "GPL-3.0-only",
-    "url": "https://github.com/xiaoyifang/goldendict-ng/releases/download/v26.5.4-Release.ea1a9803/GoldenDict-ng-26.5.4-Qt6.8.3-Windows-installer.7z",
-    "hash": "ed765676b46d5b649b1d6f4fb7046d602223a1b2e6bf0f908f7a58087e832062",
-    "extract_dir": "GoldenDict-ng-26.5.4-Qt6.8.3",
+    "url": "https://github.com/xiaoyifang/goldendict-ng/releases/download/v26.6.0/GoldenDict-ng-26.6.0-Qt6.10.3-Windows.7z",
+    "hash": "8db2d0f5eef5555ab67e87a599034bc4c47d99e1d32e44c59d9a17d87be6b7f3",
+    "extract_dir": "GoldenDict-ng-26.6.0-Qt6.10.3-Windows",
     "bin": "GoldenDict.exe",
     "shortcuts": [
         [
@@ -33,13 +33,20 @@
     ],
     "checkver": {
         "url": "https://api.github.com/repos/xiaoyifang/goldendict-ng/releases/latest",
-        "jsonpath": "$.assets[?(@.browser_download_url =~ /download\\/v([\\d.]+)-Release\\.(\\w+)\\/GoldenDict-ng-[\\d.]+-Qt([\\d.]+)-Windows-installer\\.7z/)].browser_download_url",
-        "regex": "download/v([\\d.]+)-Release\\.(\\w+)/GoldenDict-ng-[\\d.]+-Qt([\\d.]+)-Windows-installer\\.7z",
-        "reverse": true,
-        "replace": "$1-$2"
+        "script": [
+            "$assets = json_path $page \"$.assets[?(@.name =~ /Windows\\.7z$/)]\"",
+            "$url = json_path $assets \"$[0].browser_download_url\"",
+            "$version = json_path $page $.tag_name",
+            "Write-Output \"$version $url\""
+        ],
+        "regex": "^v(?<Version>[\\d.]+) (?<Url>https://.+/(?<Basename>.+)\\.7z)$",
+        "replace": "${Version}"
     },
     "autoupdate": {
-        "url": "https://github.com/xiaoyifang/goldendict-ng/releases/download/v$match1-Release.$match2/GoldenDict-ng-$match1-Qt$match3-Windows-installer.7z",
-        "extract_dir": "GoldenDict-ng-$match1-Qt$match3"
+        "url": "$matchUrl",
+        "hash": {
+            "mode": "github"
+        },
+        "extract_dir": "$matchBasename"
     }
 }
