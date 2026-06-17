@@ -21,7 +21,7 @@
             "hash": "94ec936d19eb151c6b6d5923f1cd2e4d406a7743f5d0eff3721fdce0b10f3fc6"
         }
     },
-    "pre_install": [
+    "post_install": [
         "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "if (!(test-path \"$persist_dir\\config.json\")) { New-Item -Path $dir -ItemType \"file\" -Name 'config.json' > $null }"
     ],

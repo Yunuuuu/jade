@@ -9,7 +9,7 @@
     ],
     "url": "https://github.com/nesdev-org/MesenCE/releases/download/2.2.1/Mesen_2.2.1_Windows.zip",
     "hash": "c19e10b3b3865eb0e86e4d01bf09a5027a4452081c04b5bd5b6cbbf76e346fd6",
-    "pre_install": [
+    "post_install": [
         "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "if (!(Test-Path \"$persist_dir\\MesenNesDB.txt\")) {",
         "    New-Item \"$persist_dir\\MesenNesDB.txt\" -Type File | Out-Null",

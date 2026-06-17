@@ -13,7 +13,7 @@
             "hash": "d00592906c81a6b50cf2f65b75411893cc672ca9ac6f75313426a71ea0f13a65"
         }
     },
-    "pre_install": [
+    "post_install": [
         "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "$file = 'SumatraPDF-settings.txt'",
         "if (!(Test-Path \"$persist_dir\\$file\")) {",

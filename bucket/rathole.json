@@ -9,7 +9,7 @@
             "hash": "2f3b4900a63d32a14e1578b2de68f78daad89b7c47b9388c26d922962faef430"
         }
     },
-    "pre_install": [
+    "post_install": [
         "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "if (!(test-path \"$persist_dir\\rathole.toml\")) { New-Item -Path $persist_dir -ItemType \"file\" -Name 'rathole.toml' > $null }"
     ],

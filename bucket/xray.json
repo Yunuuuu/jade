@@ -13,7 +13,7 @@
             "hash": "sha1:7b52fb53afe0bdc96276c4dc1112e8710395ad00"
         }
     },
-    "pre_install": [
+    "post_install": [
         "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "if (!(Test-Path \"$persist_dir\\config.json\")) {",
         "    Set-Content \"$dir\\config.json\" '{}' -Encoding 'Ascii'",

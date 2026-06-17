@@ -10,7 +10,7 @@
     "notes": "MesenCE requires the DotNet Runtime 6.0: `winget install --id Microsoft.DotNet.Runtime.6`",
     "url": "https://nightly.link/nesdev-org/MesenCE/workflows/build/master/Mesen%20%28Windows%20-%20net8.0%20-%20AoT%29.zip",
     "hash": "d2c719e0ecf78ecc11d6cb40f2b8dc204361ff469a6137ef37b4f9d228b08162",
-    "pre_install": [
+    "post_install": [
         "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
         "if (!(Test-Path \"$persist_dir\\MesenNesDB.txt\")) {",
         "    New-Item \"$persist_dir\\MesenNesDB.txt\" -Type File | Out-Null",
