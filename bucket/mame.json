@@ -1,5 +1,5 @@
 {
-    "version": "mame0280",
+    "version": "mame0288",
     "description": "Arcade machine emulator",
     "homepage": "http://mamedev.org",
     "license": {
@@ -14,8 +14,12 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/mamedev/mame/releases/download/mame0280/mame0280b_64bit.exe#/dl.7z",
-            "hash": "67cb5049e497fcd551ca052d815ba4a581435f49d405b501c6ac01ec7610073d"
+            "url": "https://github.com/mamedev/mame/releases/download/mame0288/mame0288_64bit.exe#/dl.7z",
+            "hash": "628886754e45e4cac7e5d3b638dcfc278c2efecd9d1cacc691d8c17bd74722c0"
+        },
+        "arm64": {
+            "url": "https://github.com/mamedev/mame/releases/download/mame0288/mame0288_64bit.exe#/dl.7z",
+            "hash": "e4ae20a2359d716fb16824961b1b0fb28d8662ffd1298504edff39d368bb4a55"
         }
     },
     "post_install": [
@@ -66,7 +70,7 @@
     ],
     "persist": [
         "roms", "hash", "samples", "artwork", "ctrlr", "ini", "font", "cheat", "crosshair", "plugins", "language", "software",
-        "history", "folders", "cabinets", "cabdevs", "cpanel", "pcb", "flyers", "titles", "ends", "marquees", 
+        "history", "folders", "cabinets", "cabdevs", "cpanel", "pcb", "flyers", "titles", "ends", "marquees",
         "artwork preview", "bosses", "logo", "scores", "versus", "gameover", "howto", "select", "icons", "covers"
     ],
     "shortcuts": [
@@ -100,7 +104,15 @@
             "64bit": {
                 "url": "https://github.com/mamedev/mame/releases/download/$version/$versionb_64bit.exe#/dl.7z",
                 "hash": {
-                    "url": "https://github.com/mamedev/mame/releases/download/$version/SHA256SUMS"
+                    "url": "https://github.com/mamedev/mame/releases/download/$version/SHA256SUMS",
+                    "find": "([a-fA-F0-9]{64})\\s*\\*$versionb_arm64.exe"
+                }
+            },
+            "arm64": {
+                "url": "https://github.com/mamedev/mame/releases/download/$version/$versionb_arm64.exe#/dl.7z",
+                "hash": {
+                    "url": "https://github.com/mamedev/mame/releases/download/$version/SHA256SUMS",
+                    "find": "([a-fA-F0-9]{64})\\s*\\*$versionb_x64.exe"
                 }
             }
         }
