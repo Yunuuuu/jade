@@ -5,64 +5,65 @@
     "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://download.calibre-ebook.com/9.9.0/calibre-portable-installer-9.9.0.exe",
-            "hash": "sha512:169b14af74aa2893451c9fd894fec473938cce976b53ca0d63aadde8de64df37a8b0eb4121313be55924324bfea114170e64da6f33a64c8ed61a56997591062e"
+            "url": "https://download.calibre-ebook.com/9.9.0/calibre-64bit-9.9.0.msi",
+            "hash": "sha512:7c904ab23b9ba068ae659d33f369f36cad6e496e3f7fa2bf850498868ca6eb43912ab50cac960a9f557f34187f78e3da7ba52d015f86968d23c0c16357c287b4",
+            "extract_dir": "PFiles64\\Calibre2"
         }
     },
-    "installer": {
-        "script": [
-            "Start-Process \"$dir\\calibre-portable-installer-$version.exe\" @(\"$dir\") -Wait",
-            "Move-Item \"$dir\\Calibre Portable\\**\" \"$dir\"",
-            "Remove-Item -Recurse -Force \"$dir\\Calibre Portable\""
-        ]
-    },
     "bin": [
-        [
-            "calibre-portable.exe",
-            "calibre"
-        ],
-        "calibre-portable.exe",
-        "Calibre\\calibre-complete.exe",
-        "Calibre\\calibre-customize.exe",
-        "Calibre\\calibredb.exe",
-        "Calibre\\calibre-debug.exe",
-        "Calibre\\calibre-parallel.exe",
-        "Calibre\\calibre-server.exe",
-        "Calibre\\calibre-smtp.exe",
-        "Calibre\\ebook-convert.exe",
-        "Calibre\\ebook-device.exe",
-        "Calibre\\ebook-edit.exe",
-        "Calibre\\ebook-meta.exe",
-        "Calibre\\ebook-polish.exe",
-        "Calibre\\ebook-viewer.exe",
-        "Calibre\\fetch-ebook-metadata.exe",
-        "Calibre\\lrf2lrs.exe",
-        "Calibre\\lrs2lrf.exe",
-        "Calibre\\lrfviewer.exe",
-        "Calibre\\markdown-calibre.exe",
-        "Calibre\\web2disk.exe"
+        "calibre.exe",
+        "calibre-complete.exe",
+        "calibre-customize.exe",
+        "calibredb.exe",
+        "calibre-debug.exe",
+        "calibre-parallel.exe",
+        "calibre-server.exe",
+        "calibre-smtp.exe",
+        "ebook-convert.exe",
+        "ebook-device.exe",
+        "ebook-edit.exe",
+        "ebook-meta.exe",
+        "ebook-polish.exe",
+        "ebook-viewer.exe",
+        "fetch-ebook-metadata.exe",
+        "lrf2lrs.exe",
+        "lrs2lrf.exe",
+        "lrfviewer.exe",
+        "markdown-calibre.exe",
+        "web2disk.exe"
     ],
     "shortcuts": [
         [
-            "calibre-portable.exe",
+            "calibre.exe",
             "Calibre"
         ],
         [
-            "Calibre\\ebook-edit.exe",
+            "ebook-edit.exe",
             "Calibre E-Book Editor"
         ],
         [
-            "Calibre\\ebook-viewer.exe",
+            "ebook-viewer.exe",
             "Calibre E-Book Viewer"
         ],
         [
-            "Calibre\\lrfviewer.exe",
+            "lrfviewer.exe",
             "Calibre LRF Viewer"
         ]
     ],
-    "persist": [
-        "Calibre Library",
-        "Calibre Settings"
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $app_paths = @(",
+        "        (Join-Path $env:APPDATA 'calibre'),",
+        "        (Join-Path $env:APPDATA 'calibre-ebook.com'),",
+        "        (Join-Path $env:LOCALAPPDATA 'calibre-cache')",
+        "    )",
+        "    foreach ($app_path in $app_paths) {",
+        "        if (Test-Path $app_path) {",
+        "            Write-Host \"Purging Calibre data: $app_path\"",
+        "            Remove-Item -Recurse -Force $app_path",
+        "        }",
+        "    }",
+        "}"
     ],
     "checkver": {
         "github": "https://github.com/kovidgoyal/calibre"
@@ -70,9 +71,9 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.calibre-ebook.com/$version/calibre-portable-installer-$version.exe",
+                "url": "https://download.calibre-ebook.com/$version/calibre-64bit-$version.msi",
                 "hash": {
-                    "url": "https://calibre-ebook.com/signatures/calibre-portable-installer-$version.exe.sha512"
+                    "url": "https://calibre-ebook.com/signatures/calibre-64bit-$version.msi.sha512"
                 }
             }
         }
