@@ -51,8 +51,12 @@
     "persist": "data",
     "uninstaller": {
         "script": [
-            "reg import \"$dir\\uninstall-context.reg\"",
-            "reg import \"$dir\\uninstall-associations.reg\""
+            "if (Test-Path \"$dir\\uninstall-context.reg\") {",
+            "    reg import \"$dir\\uninstall-context.reg\"",
+            "}",
+            "if (Test-Path \"$dir\\uninstall-associations.reg\") {",
+            "    reg import \"$dir\\uninstall-associations.reg\"",
+            "}"
         ]
     },
     "checkver": {

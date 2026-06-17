@@ -42,7 +42,12 @@
     ],
     "persist": "portable_config",
     "uninstaller": {
-        "script": "reg import \"$dir\\uninstall-associations.reg\""
+        "script": [
+            "if (Test-Path \"$dir\\uninstall-associations.reg\") {",
+            "    reg import \"$dir\\uninstall-associations.reg\"",
+            "}"
+        ]
+
     },
     "checkver": {
         "sourceforge": "mpv-player-windows/release",

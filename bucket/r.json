@@ -98,7 +98,9 @@
     ],
     "uninstaller": {
         "script": [
-            "reg import \"$dir\\uninstall-context.reg\""
+            "if (Test-Path \"$dir\\uninstall-context.reg\") {",
+            "    reg import \"$dir\\uninstall-context.reg\"",
+            "}"
         ]
     },
     "post_uninstall": [
