@@ -13,7 +13,7 @@
         "script": [
             "Start-Process \"$dir\\calibre-portable-installer-$version.exe\" @(\"$dir\") -Wait",
             "Move-Item \"$dir\\Calibre Portable\\**\" \"$dir\"",
-            "Remove-Item \"$dir\\Calibre Portable\""
+            "Remove-Item -Recurse -Force \"$dir\\Calibre Portable\""
         ]
     },
     "bin": [
