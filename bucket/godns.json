@@ -49,9 +49,6 @@
                     "find": "([a-fA-F0-9]{64})\\s*godns_$version_windows_arm64.tar.gz"
                 }
             }
-        },
-        "hash": {
-            "mode": "download"
         }
     }
 }
