@@ -5,7 +5,7 @@
     "license": "GPL-3.0-only",
     "url": "https://github.com/xiaoyifang/goldendict-ng/releases/download/v26.6.0/GoldenDict-ng-26.6.0-Qt6.10.3-Windows.7z",
     "hash": "8db2d0f5eef5555ab67e87a599034bc4c47d99e1d32e44c59d9a17d87be6b7f3",
-    "extract_dir": "GoldenDict-ng-26.6.0-Qt6.10.3-Windows",
+    "extract_dir": "GoldenDict-ng-26.6.0-Qt6.10.3",
     "bin": "GoldenDict.exe",
     "shortcuts": [
         [
@@ -39,7 +39,7 @@
             "$version = json_path $page $.tag_name",
             "Write-Output \"$version $url\""
         ],
-        "regex": "^v(?<Version>[\\d.]+) (?<Url>https://.+/(?<Basename>.+)\\.7z)$",
+        "regex": "^v(?<Version>[\\d.]+) (?<Url>https://.+/(?<Basename>.+)-Windows\\.7z)$",
         "replace": "${Version}"
     },
     "autoupdate": {
