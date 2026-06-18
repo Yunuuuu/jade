@@ -37,10 +37,10 @@
         "}"
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/goldendict/goldendict/releases",
+        "url": "https://api.github.com/repos/goldendict/goldendict/releases/latest",
         "script": [
-            "$version = json_path $page '$[0].tag_name'",
-            "$assets = json_path $page '$[0].assets[?(@.name =~ /\\.7z$/)]'",
+            "$version = json_path $page '$.tag_name'",
+            "$assets = json_path $page '$.assets[?(@.name =~ /\\.7z$/)]'",
             "$name_64bit = json_path $assets '$[?(@.name =~ /\\.64bit\\.7z$/)].name'",
             "$name_32bit = $name_64bit -replace '\\.64bit', ''",
             "$url_32bit = json_path $assets \"$[?(@.name == '$name_32bit')].browser_download_url\"",
@@ -53,10 +53,16 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "$matchUrl64bit"
+                "url": "$matchUrl64bit",
+                "hash": {
+                    "mode": "download"
+                }
             },
             "32bit": {
-                "url": "$matchUrl32bit"
+                "url": "$matchUrl32bit",
+                "hash": {
+                    "mode": "download"
+                }
             }
         }
     }
