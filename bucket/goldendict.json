@@ -38,16 +38,25 @@
     ],
     "checkver": {
         "url": "https://api.github.com/repos/goldendict/goldendict/releases",
-        "jsonpath": "$[*].assets[*].browser_download_url",
-        "regex": "GoldenDict-([\\d.]+)_\\.QT_(?<build>[\\d]+)\\.64bit\\.7z"
+        "script": [
+            "$version = json_path $page '$[0].tag_name'",
+            "$assets = json_path $page '$[0].assets[?(@.name =~ /\\.7z$/)]'",
+            "$name_64bit = json_path $assets '$[?(@.name =~ /\\.64bit\\.7z$/)].name'",
+            "$name_32bit = $name_64bit -replace '\\.64bit', ''",
+            "$url_32bit = json_path $assets \"$[?(@.name == '$name_32bit')].browser_download_url\"",
+            "$url_64bit = json_path $assets \"$[?(@.name == '$name_64bit')].browser_download_url\"",
+            "Write-Output \"$version $url_32bit $url_64bit\""
+        ],
+        "regex": "^(?<Version>[\\d.]+) (?<Url32bit>https://.+\\.7z) (?<Url64bit>https://.+\\.7z)$",
+        "replace": "${Version}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/goldendict/goldendict/releases/download/$version/GoldenDict-$version_.QT_$matchBuild.64bit.7z"
+                "url": "$matchUrl64bit"
             },
             "32bit": {
-                "url": "https://github.com/goldendict/goldendict/releases/download/$version/GoldenDict-$version_.QT_$matchBuild.7z"
+                "url": "$matchUrl32bit"
             }
         }
     }
