@@ -34,9 +34,9 @@
     "checkver": {
         "url": "https://api.github.com/repos/xiaoyifang/goldendict-ng/releases/latest",
         "script": [
-            "$assets = json_path $page \"$.assets[?(@.name =~ /Windows\\.7z$/)]\"",
-            "$url = json_path $assets \"$[0].browser_download_url\"",
-            "$version = json_path $page $.tag_name",
+            "$assets = json_path $page '$.assets[?(@.name =~ /Windows\\.7z$/)]'",
+            "$url = json_path $assets '$[0].browser_download_url'",
+            "$version = json_path $page '$.tag_name'",
             "Write-Output \"$version $url\""
         ],
         "regex": "^v(?<Version>[\\d.]+) (?<Url>https://.+/(?<Basename>.+)-Windows\\.7z)$",
