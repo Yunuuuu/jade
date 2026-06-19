@@ -1,16 +1,16 @@
 {
-    "version": "18651",
+    "version": "18661",
     "description": "PDF and eBook reader",
     "homepage": "https://www.sumatrapdfreader.org/free-pdf-reader",
     "license": "GPL-3.0-only,BSD-2-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://www.sumatrapdfreader.org/dl/prerel/18651/SumatraPDF-prerel-64.exe",
-            "hash": "82a4cbfdb1fda90a7984f7d3d308277aa133b72123e1d0991eb9a1c65d6d45db"
+            "url": "https://www.sumatrapdfreader.org/dl/prerel/18661/SumatraPDF-prerel-64.exe",
+            "hash": "58f995186f0959051a91b70ebb301c49527ad9a4ce984c25704d3fbb40ad462d"
         },
         "arm64": {
-            "url": "https://www.sumatrapdfreader.org/dl/prerel/18651/SumatraPDF-prerel-arm64.exe",
-            "hash": "e1a8497e59d9b094849860696989a90fb0f85dc09c30be84748fe1f5c40315ce"
+            "url": "https://www.sumatrapdfreader.org/dl/prerel/18661/SumatraPDF-prerel-arm64.exe",
+            "hash": "04869c7dc85a7afaf594eff3e42e9c3788091a96e88b0ac5940174d4b757d758"
         }
     },
     "post_install": [
