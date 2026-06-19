@@ -1,0 +1,68 @@
+{
+    "version": "v0.2.1",
+    "description": "Experimental emulator for the Nintendo Switch",
+    "homepage": "https://eden-emu.dev/",
+    "license": "GPL-2.0",
+    "notes": [
+        "yuzu requires the latest versions of Microsoft Visual C++:",
+        "    x86: `winget install --id Microsoft.VCRedist.2015+.x86`",
+        "    x64: `winget install --id Microsoft.VCRedist.2015+.x64`",
+        "    Arm64: `winget install --id Microsoft.VCRedist.2015+.arm64`",
+        "Learn more at https://git.eden-emu.dev/eden-emu/eden/src/branch/master/docs/user/README.md",
+        "For Game Compatibility List see https://eden-emu.dev/compatibility",
+        "ATTENTION: yuzu requires Decryption Keys and Firmware to play your games.",
+        "Following site may be useful, use them at your own risk:",
+        "  1. https://theprodkeys.com/vi/",
+        "  2. https://prodkeys.net/"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://stable.eden-emu.dev/v0.2.1/Eden-Windows-v0.2.1-amd64-msvc-standard.zip",
+            "hash": "ff498e5da9630216926ac3cbe9fb493b14930665c728a40a8f5b59507fdd7ebf"
+        },
+        "arm64": {
+            "url": "https://stable.eden-emu.dev/v0.2.1/Eden-Windows-v0.2.1-arm64-clang-standard.zip",
+            "hash": "7df16b64bb0a0225acddcb498e524aa7854c24708022ecbea599cc1aebf010dc"
+        }
+    },
+    "extract_dir": "yuzu-windows-msvc",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   New-Item \"$persist_dir\\user\" -ItemType Directory | Out-Null",
+        "   if (Test-Path \"$env:APPDATA\\yuzu\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:APPDATA\\yuzu\\*\" -Destination \"$persist_dir\\user\" -Recurse",
+        "       Remove-Item -Path \"$env:APPDATA\\yuzu\" -Recurse",
+        "   }",
+        "}"
+    ],
+    "bin": [
+        "yuzu.exe",
+        "yuzu-cmd.exe"
+    ],
+    "shortcuts": [
+        [
+            "yuzu.exe",
+            "Yuzu"
+        ]
+    ],
+    "persist": [
+        "user",
+        "plugins"
+    ],
+    "checkver": {
+        "url": "https://git.eden-emu.dev/eden-emu/eden/releases/latest",
+        "regex": "releases/tag/([0-9a-zA-Z\\-.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://stable.eden-emu.dev/$version/Eden-Windows-$version-amd64-msvc-standard.zip"
+            },
+            "arm64": {
+                "url": "https://stable.eden-emu.dev/$version/Eden-Windows-$version-arm64-clang-standard.zip"
+            }
+        }
+    }
+}
