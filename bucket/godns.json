@@ -8,13 +8,13 @@
             "url": "https://github.com/TimothyYe/godns/releases/download/v3.4.2/godns_3.4.2_Windows_386.tar.gz",
             "hash": "c499257c52527d84be8d71d9eb11baba36edc1919b607bd34f7a57588f10f0dc"
         },
+        "64bit": {
+            "url": "https://github.com/TimothyYe/godns/releases/download/v3.4.2/godns_3.4.2_Windows_amd64.tar.gz",
+            "hash": "0991da11acaba25c00c72501f67516609544aee3b28e8636464ebac2d18c671b"
+        },
         "arm64": {
             "url": "https://github.com/TimothyYe/godns/releases/download/v3.4.2/godns_3.4.2_Windows_arm64.tar.gz",
             "hash": "41fa27bf4b33f05cc268cdca45f25c91573b45d2b0e0ef6b624f03f163b764c4"
-        },
-        "amd64": {
-            "url": "https://github.com/TimothyYe/godns/releases/download/v3.4.2/godns_3.4.2_Windows_amd64.tar.gz",
-            "hash": "0991da11acaba25c00c72501f67516609544aee3b28e8636464ebac2d18c671b"
         }
     },
     "post_install": [
@@ -35,7 +35,7 @@
                     "find": "([a-fA-F0-9]{64})\\s*godns_$version_windows_386.tar.gz"
                 }
             },
-            "amd64": {
+            "64bit": {
                 "url": "https://github.com/TimothyYe/godns/releases/download/v$version/godns_$version_Windows_amd64.tar.gz",
                 "hash": {
                     "url": "https://github.com/TimothyYe/godns/releases/download/v$version/checksums.txt",
