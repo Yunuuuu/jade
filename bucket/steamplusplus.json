@@ -17,6 +17,22 @@
         "Cache",
         "Logs"
     ],
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $certs = Get-ChildItem Cert:\\LocalMachine\\Root -ErrorAction SilentlyContinue | Where-Object { $_.Subject -match 'SteamTools|Watt' }",
+        "    if ($certs) {",
+        "        Write-Host \"Purging $app certificates\"",
+        "        $isAdmin = [Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent().IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)",
+        "        if ($isAdmin) {",
+        "            $certs | Remove-Item -ErrorAction SilentlyContinue",
+        "        } else {",
+        "            $thumbprints = $certs.Thumbprint -join ','",
+        "            $cmd = \"'$thumbprints'.Split(',') | ForEach-Object { Remove-Item `\"Cert:\\LocalMachine\\Root\\`$_`\" -ErrorAction SilentlyContinue }\"",
+        "            Start-Process powershell -ArgumentList \"-NoProfile -WindowStyle Hidden -Command $cmd\" -Verb RunAs -Wait",
+        "        }",
+        "    }",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/SteamTools-Team/SteamTools/"
     },
