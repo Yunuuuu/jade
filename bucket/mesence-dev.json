@@ -1,5 +1,5 @@
 {
-    "version": "537-20260622-142884b",
+    "version": "540-20260622-d5b85c3",
     "homepage": "https://github.com/nesdev-org/MesenCE",
     "license": "GPL-3.0",
     "description": [
@@ -9,7 +9,7 @@
     ],
     "notes": "MesenCE requires the DotNet Runtime 6.0: `winget install --id Microsoft.DotNet.Runtime.6`",
     "url": "https://nightly.link/nesdev-org/MesenCE/workflows/build/master/Mesen%20%28Windows%20-%20net8.0%20-%20AoT%29.zip",
-    "hash": "a2fc00bbcd1222f58d991e658856947acac8f0051b407f8f58e5da50ca5b40b1",
+    "hash": "752a793d47fdf98e34f6251b9038c15ab43ab28abcfa0a2dd353f0ab932cbeb7",
     "installer": {
         "script": [
             "if (!(test-path $persist_dir)) { New-Item -ItemType directory $persist_dir > $null }",
