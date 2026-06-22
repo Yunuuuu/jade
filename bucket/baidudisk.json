@@ -62,6 +62,7 @@
         "        (Join-Path $env:APPDATA 'Baidu\\BaiduYunKernel'),",
         "        (Join-Path $env:APPDATA 'BaiduYunGuanjia'),",
         "        (Join-Path $env:APPDATA 'BaiduYunKernel'),",
+        "        (Join-Path $env:APPDATA 'baidunetdisk'),",
         "        (Join-Path $env:APPDATA 'PLogs'),",
         "        (Join-Path $env:LOCALAPPDATA 'BaiduYunGuanjia'),",
         "        (Join-Path $env:LOCALAPPDATA 'BaiduYunKernel')",
