@@ -9,10 +9,25 @@
             "hash": "2f3b4900a63d32a14e1578b2de68f78daad89b7c47b9388c26d922962faef430"
         }
     },
-    "post_install": [
-        "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
-        "if (!(test-path \"$persist_dir\\rathole.toml\")) { New-Item -Path $persist_dir -ItemType \"file\" -Name 'rathole.toml' > $null }"
-    ],
+    "installer": {
+        "script": [
+            "if (!(test-path $persist_dir)) { New-Item -ItemType directory $persist_dir > $null }",
+            "$file_items = @(",
+            "    'rathole.toml'",
+            ")",
+            "foreach ($item in $file_items) {",
+            "    $persist_item = Join-Path $persist_dir $item",
+            "    if (!(Test-Path $persist_item)) {",
+            "        $source_item  = Join-Path $dir $item",
+            "        if (Test-Path $source_item) {",
+            "            Move-Item -Path $source_item -Destination $persist_item",
+            "        } else {",
+            "            New-Item -ItemType File -Path $persist_item | Out-Null",
+            "        }",
+            "    }",
+            "}"
+        ]
+    },
     "bin": "rathole.exe",
     "persist": "rathole.toml",
     "checkver": "github",

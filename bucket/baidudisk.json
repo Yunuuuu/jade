@@ -41,6 +41,8 @@
         "    }",
         "    $out = $new -join \"`n\"",
         "    Set-Content -Path $path -Value $out",
+        "} else {",
+        "    Set-Content -Path $path '[AutoUpdate]\nIsAutoUpdate=0'",
         "}"
     ],
     "shortcuts": [

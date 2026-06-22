@@ -25,11 +25,26 @@
             ]
         }
     },
-    "post_install": [
-        "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
-        "if (!(test-path \"$persist_dir\\wcap-x64.ini\")) { New-Item -Path $dir -ItemType \"file\" -Name 'wcap-x64.ini' > $null }",
-        "if (!(test-path \"$persist_dir\\wcap-arm64.ini\")) { New-Item -Path $dir -ItemType \"file\" -Name 'wcap-arm64.ini' > $null }"
-    ],
+    "installer": {
+        "script": [
+            "if (!(test-path $persist_dir)) { New-Item -ItemType directory $persist_dir > $null }",
+            "$file_items = @(",
+            "    'wcap-x64.ini',",
+            "    'wcap-arm64.ini'",
+            ")",
+            "foreach ($item in $file_items) {",
+            "    $persist_item = Join-Path $persist_dir $item",
+            "    if (!(Test-Path $persist_item)) {",
+            "        $source_item  = Join-Path $dir $item",
+            "        if (Test-Path $source_item) {",
+            "            Move-Item -Path $source_item -Destination $persist_item",
+            "        } else {",
+            "            New-Item -ItemType File -Path $persist_item | Out-Null",
+            "        }",
+            "    }",
+            "}"
+        ]
+    },
     "persist": [
         "wcap-x64.ini",
         "wcap-arm64.ini"

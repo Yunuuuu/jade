@@ -5,10 +5,39 @@
     "license": "GPL-3.0-only",
     "url": "https://github.com/pbatard/rufus/releases/download/v4.14/rufus-4.14p.exe#/rufus.exe",
     "hash": "9fcad316c82ba3d0c3130c9f43fb0fe147e9eb62e1bf830716a0bbb6c58d24ee",
-    "post_install": [
-        "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
-        "if (!(Test-Path \"$persist_dir\\rufus.ini\")) { New-Item \"$dir\\rufus.ini\" | Out-Null }"
-    ],
+    "installer": {
+        "script": [
+            "if (!(test-path $persist_dir)) { New-Item -ItemType directory $persist_dir > $null }",
+            "$dir_items = @(",
+            "    'rufus_files'",
+            ")",
+            "foreach ($item in $dir_items) {",
+            "    $persist_item = Join-Path $persist_dir $item",
+            "    if (!(Test-Path $persist_item)) {",
+            "        $source_item  = Join-Path $dir $item",
+            "        if (Test-Path $source_item) {",
+            "            Move-Item -Path $source_item -Destination $persist_item",
+            "        } else {",
+            "            New-Item -ItemType Directory -Path $persist_item | Out-Null",
+            "        }",
+            "    }",
+            "}",
+            "$file_items = @(",
+            "    'rufus.ini'",
+            ")",
+            "foreach ($item in $file_items) {",
+            "    $persist_item = Join-Path $persist_dir $item",
+            "    if (!(Test-Path $persist_item)) {",
+            "        $source_item  = Join-Path $dir $item",
+            "        if (Test-Path $source_item) {",
+            "            Move-Item -Path $source_item -Destination $persist_item",
+            "        } else {",
+            "            New-Item -ItemType File -Path $persist_item | Out-Null",
+            "        }",
+            "    }",
+            "}"
+        ]
+    },
     "shortcuts": [
         [
             "rufus.exe",

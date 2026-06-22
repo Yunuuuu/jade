@@ -22,36 +22,27 @@
             "hash": "e4ae20a2359d716fb16824961b1b0fb28d8662ffd1298504edff39d368bb4a55"
         }
     },
-    "post_install": [
-        "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
-        "$items = @(",
-        "    'roms','hash','samples','artwork','ctrlr','ini','font','cheat','crosshair','plugins','language','software',",
-        "    'history','folders','cabinets','cabdevs','cpanel','pcb','flyers','titles','ends','marquees',",
-        "    'artwork preview','bosses','logo','scores','versus','gameover','howto','select','icons','covers'",
-        ")",
-        "foreach ($item in $items) {",
-        "    $persist_item = Join-Path $persist_dir $item",
-        "    $source_item  = Join-Path $dir $item",
-        "    if (!(Test-Path $persist_item)) {",
-        "        if (Test-Path $source_item) {",
-        "            Move-Item -Path $source_item -Destination $persist_item",
-        "        } else {",
-        "            New-Item -ItemType Directory -Path $persist_item | Out-Null",
-        "        }",
-        "    }",
-        "}",
-        "$app_dir = \"$dir\".Replace('\\', '/')",
-        "if (!(Test-Path \"$persist_dir\\ini\\mame.ini\")) {",
-        "    $main_content = Get-Content \"$bucketsdir\\jade\\config\\mame\\mame.ini\"",
-        "    $main_content = $main_content.Replace('$app_dir', $app_dir)",
-        "    Set-Content -Path \"$persist_dir\\ini\\mame.ini\" -value $main_content",
-        "}",
-        "if (!(test-path \"$persist_dir\\ini\\ui.ini\")) { ",
-        "    $ui_content = Get-Content \"$bucketsdir\\jade\\config\\mame\\ui.ini\"",
-        "    $ui_content = $ui_content.Replace('$app_dir', $app_dir)",
-        "    Set-Content -Path \"$persist_dir\\ini\\ui.ini\" -value $ui_content",
-        "}"
-    ],
+    "installer": {
+        "script": [
+            "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
+            "$dir_items = @(",
+            "    'roms','hash','samples','artwork','ctrlr','ini','font','cheat','crosshair','plugins','language','software',",
+            "    'history','folders','cabinets','cabdevs','cpanel','pcb','flyers','titles','ends','marquees',",
+            "    'artwork preview','bosses','logo','scores','versus','gameover','howto','select','icons','covers'",
+            ")",
+            "foreach ($item in $dir_items) {",
+            "    $persist_item = Join-Path $persist_dir $item",
+            "    if (!(Test-Path $persist_item)) {",
+            "        $source_item  = Join-Path $dir $item",
+            "        if (Test-Path $source_item) {",
+            "            Move-Item -Path $source_item -Destination $persist_item",
+            "        } else {",
+            "            New-Item -ItemType Directory -Path $persist_item | Out-Null",
+            "        }",
+            "    }",
+            "}"
+        ]
+    },
     "bin": [
         [
             "mame.exe",
@@ -74,6 +65,19 @@
             "MAME",
             "-inipath .;ini;%USERPROFILE%/.config/mame/ini;%APPDATA%/mame;%LOCALAPPDATA%/mame/ini;$dir/ini;$dir/ini/presets"
         ]
+    ],
+    "post_install": [
+        "$app_dir = \"$dir\".Replace('\\', '/')",
+        "if (!(Test-Path \"$persist_dir\\ini\\mame.ini\")) {",
+        "    $main_content = Get-Content \"$bucketsdir\\jade\\config\\mame\\mame.ini\"",
+        "    $main_content = $main_content.Replace('$app_dir', $app_dir)",
+        "    Set-Content -Path \"$persist_dir\\ini\\mame.ini\" -value $main_content",
+        "}",
+        "if (!(test-path \"$persist_dir\\ini\\ui.ini\")) { ",
+        "    $ui_content = Get-Content \"$bucketsdir\\jade\\config\\mame\\ui.ini\"",
+        "    $ui_content = $ui_content.Replace('$app_dir', $app_dir)",
+        "    Set-Content -Path \"$persist_dir\\ini\\ui.ini\" -value $ui_content",
+        "}"
     ],
     "post_uninstall": [
         "if ($purge) {",

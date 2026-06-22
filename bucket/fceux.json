@@ -39,12 +39,20 @@
             ]
         }
     },
-    "post_install": [
-        "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
-        "if (!(Test-Path \"$persist_dir\\fceux.cfg\")) {",
-        "    New-Item \"$persist_dir\\fceux.cfg\" -Type File | Out-Null",
-        "}"
-    ],
+    "installer": {
+        "script": [
+            "if (!(test-path $persist_dir)) { New-Item -ItemType directory $persist_dir > $null }",
+            "$persist_item = Join-Path $persist_dir 'fceux.cfg'",
+            "if (!(Test-Path $persist_item)) {",
+            "    $source_item  = Join-Path $dir 'fceux.cfg'",
+            "    if (Test-Path $source_item) {",
+            "        Move-Item -Path $source_item -Destination $persist_item",
+            "    } else {",
+            "        New-Item -ItemType File -Path $persist_item | Out-Null",
+            "    }",
+            "}"
+        ]
+    },
     "persist": [
         "cheats",
         "fcs",
