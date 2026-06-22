@@ -1,0 +1,35 @@
+{
+    "version": "4.5.0",
+    "description": "Bring macOS 'Quick Look' feature to Windows",
+    "homepage": "https://github.com/QL-Win/QuickLook",
+    "license": "GPL-3.0-or-later",
+    "url": "https://github.com/QL-Win/QuickLook/releases/download/4.5.0/QuickLook-4.5.0.7z",
+    "hash": "d1d578deb75b83ea09255b89382b088d35d38125c0c2b309825b1e20ac962b91",
+    "bin": "QuickLook.exe",
+    "persist": "UserData",
+    "shortcuts": [
+        [
+            "QuickLook.exe",
+            "QuickLook"
+        ]
+    ],
+    "post_uninstall": [
+        "if ($purge) {",
+        "    # For QuickLook 3.6.9 or older",
+        "    $app_paths = @(",
+        "        (Join-Path $env:APPDATA 'pooi.moe\\QuickLook'),",
+        "        (Join-Path $env:LOCALAPPDATA 'pooi.moe\\QuickLook')",
+        "    )",
+        "    foreach ($app_path in $app_paths) {",
+        "        if (Test-Path $app_path) {",
+        "            Write-Host \"Purging QuickLook data: $app_path\"",
+        "            Remove-Item -Recurse -Force $app_path",
+        "        }",
+        "    }",
+        "}"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/QL-Win/QuickLook/releases/download/$version/QuickLook-$version.7z"
+    }
+}
