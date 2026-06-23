@@ -15,32 +15,14 @@
     },
     "bin": "pixi.exe",
     "env_set": {
-        "PIXI_NO_PATH_UPDATE": "true"
+        "PIXI_CACHE_DIR": "$persist_dir\\cache",
+        "PIXI_HOME": "$persist_dir"
     },
     "post_install": [
-        "if ($global) {",
-        "    $pixi_home = Join-Path $env:ProgramData 'pixi'",
-        "} else {",
-        "    $pixi_home = Join-Path $env:LocalAppData 'pixi'",
-        "}",
-        "Write-Host \"Setting environment variable PIXI_HOME to $pixi_home\"",
-        "Set-EnvVar -Name 'PIXI_HOME' -Value $pixi_home -Global:$global",
-        "$pixi_bin = Join-Path $pixi_home 'bin'",
-        "Add-Path -Path $pixi_bin -Global:$global",
-        "if (!(Test-Path $pixi_home)) { New-Item -ItemType Directory -Force $pixi_home | Out-Null }",
-        "if (!(Test-Path $pixi_bin)) { New-Item -ItemType Directory -Force $pixi_bin | Out-Null }"
+        "Add-Path -Path $persist_dir\\shims -Global:$global"
     ],
     "post_uninstall": [
-        "Write-Host \"Removing environment variable PIXI_HOME\"",
-        "Set-EnvVar -Name 'PIXI_HOME' -Value $null -Global:$global",
-
-        "if ($global) {",
-        "    $pixi_home = Join-Path $env:ProgramData 'pixi'",
-        "} else {",
-        "    $pixi_home = Join-Path $env:LocalAppData 'pixi'",
-        "}",
-        "$pixi_bin = Join-Path $pixi_home 'bin'",
-        "Remove-Path -Path $pixi_bin -Global:$global",
+        "Remove-Path -Path $dir\\shims -Global:$global",
 
         "if ($purge) {",
         "    $app_paths = @(",
