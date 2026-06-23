@@ -13,19 +13,21 @@
             "hash": "670e694a5c91633d28ab0df689b4dbf92021183cfe82270ae552cb617a0a07ed"
         }
     },
-    "post_install": [
-        "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
-        "$persist_item = Join-Path $persist_dir 'SumatraPDF-settings.txt'",
-        "if (!(Test-Path $persist_item)) {",
-        "    $source_item  = Join-Path $dir 'SumatraPDF-settings.txt'",
-        "    if (Test-Path $source_item) {",
-        "        Move-Item -Path $source_item -Destination $persist_item",
-        "    } else {",
-        "        Set-Content -Path $persist_item 'CheckForUpdates = false' -Encoding Ascii",
-        "    }",
-        "}",
-        "Get-ChildItem \"$dir\\SumatraPDF-*.exe\" | Rename-Item -NewName 'SumatraPDF.exe'"
-    ],
+    "installer": {
+        "script": [
+            "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
+            "$persist_item = Join-Path $persist_dir 'SumatraPDF-settings.txt'",
+            "if (!(Test-Path $persist_item)) {",
+            "    $source_item  = Join-Path $dir 'SumatraPDF-settings.txt'",
+            "    if (Test-Path $source_item) {",
+            "        Move-Item -Path $source_item -Destination $persist_item",
+            "    } else {",
+            "        Set-Content -Path $persist_item 'CheckForUpdates = false' -Encoding Ascii",
+            "    }",
+            "}",
+            "Get-ChildItem \"$dir\\SumatraPDF-*.exe\" | Rename-Item -NewName 'SumatraPDF.exe'"
+        ]
+    },
     "bin": "SumatraPDF.exe",
     "shortcuts": [
         [
