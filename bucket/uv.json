@@ -24,6 +24,7 @@
     ],
     "env_set": {
         "UV_CACHE_DIR": "$persist_dir\\cache",
+        "UV_CREDENTIALS_DIR": "$persist_dir\\credentials",
         "UV_PYTHON_INSTALL_DIR": "$persist_dir\\python\\versions",
         "UV_PYTHON_BIN_DIR": "$persist_dir\\python\\shims",
         "UV_TOOL_DIR": "$persist_dir\\tools\\data",
