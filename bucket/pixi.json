@@ -19,10 +19,10 @@
         "PIXI_HOME": "$persist_dir"
     },
     "post_install": [
-        "Add-Path -Path $persist_dir\\shims -Global:$global"
+        "Add-Path -Path $persist_dir\\bin -Global:$global"
     ],
     "post_uninstall": [
-        "Remove-Path -Path $dir\\shims -Global:$global",
+        "Remove-Path -Path $dir\\bin -Global:$global",
 
         "if ($purge) {",
         "    $app_paths = @(",
