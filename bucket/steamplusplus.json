@@ -1,10 +1,10 @@
 {
-    "version": "2.8.4",
-    "homepage": "https://github.com/SteamTools-Team/SteamTools/",
+    "version": "3.1.0",
+    "homepage": "https://github.com/BeyondDimension/SteamTools/",
     "description": "Watt Toolkit, 原名 Steam++, 是一个开源跨平台的多功能游戏工具箱, 此工具的大部分功能都是需要您下载安装 Steam 才能使用。",
     "license": "GPL-3.0-only",
-    "url": "https://github.com/SteamTools-Team/SteamTools/releases/download/2.8.4/Steam++_win_x64_v2.8.4.7z",
-    "hash": "e797cb455740de75eef5eea0433d7f37551e75a2061c62c3e7670333598c7281",
+    "url": "https://github.com/BeyondDimension/SteamTools/releases/download/3.1.0/Steam%2B%2B_v3.1.0_win_x64.7z",
+    "hash": "74d0eb1fd67e8eb0914a9962244fc4251993061df77e6e6c0dfe8a4a899d5ae4",
     "bin": "Steam++.exe",
     "shortcuts": [
         [
@@ -34,9 +34,18 @@
         "}"
     ],
     "checkver": {
-        "github": "https://github.com/SteamTools-Team/SteamTools/"
+        "url": "https://api.github.com/repos/BeyondDimension/SteamTools/releases/latest",
+        "script": [
+            "$assets = json_path $page '$.assets[?(@.name =~ /win.*\\.7z$/)]'",
+            "Write-Host $assets",
+            "$url = json_path $assets '$.browser_download_url'",
+            "$version = json_path $page '$.tag_name'",
+            "Write-Output \"$version $url\""
+        ],
+        "regex": "^(?<Version>[^ ]+) (?<Url>https://.+\\.7z)$",
+        "replace": "${Version}"
     },
     "autoupdate": {
-        "url": "https://github.com/SteamTools-Team/SteamTools/releases/download/$version/Steam++_win_x64_v$version.7z"
+        "url": "$matchUrl"
     }
 }
