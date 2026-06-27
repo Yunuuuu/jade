@@ -78,7 +78,7 @@
         "$version_40 = [Version]\"4.0.0\"",
         "$version_42 = [Version]\"4.2.0\"",
         "if (($version_cur -ge $version_40) -and ($version_cur -lt $version_42)) {",
-        "    $pathenv = 'PATH=\"${RTOOLS40_HOME-C:/rtools40}/usr/bin;${PATH}\"'",
+        "    $pathenv = 'PATH=\"${RTOOLS40_HOME:-C:/rtools40}/usr/bin;${PATH}\"'",
         "    [IO.File]::WriteAllLines(\"$dir\\etc\\Renviron.site\", $pathenv)",
         "}",
         "$original_dir_path = \"$original_dir\".Replace('\\', '\\\\')",
