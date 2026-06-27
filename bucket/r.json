@@ -1,5 +1,5 @@
 {
-    "version": "4.6.0",
+    "version": "4.6.1",
     "description": "A free software environment for statistical computing and graphics.",
     "homepage": "https://www.r-project.org",
     "license": "GPL-2.0-only",
@@ -11,8 +11,8 @@
         "for R-4.4.x, please use 'jade/rtools44'.",
         "For R-4.5.x to R-4.6.x, please use 'jade/rtools45'."
     ],
-    "url": "https://cran.r-project.org/bin/windows/base/old/4.6.0/R-4.6.0-win.exe",
-    "hash": "md5:153213f04912151ea6783006686cdf52",
+    "url": "https://cran.r-project.org/bin/windows/base/old/4.6.1/R-4.6.1-win.exe",
+    "hash": "md5:7907f3a20ec8ec88cd0da279024b8e27",
     "innosetup": true,
     "architecture": {
         "64bit": {
@@ -81,7 +81,6 @@
         "    $pathenv = 'PATH=\"${RTOOLS40_HOME-C:/rtools40}/usr/bin;${PATH}\"'",
         "    [IO.File]::WriteAllLines(\"$dir\\etc\\Renviron.site\", $pathenv)",
         "}",
-
         "$original_dir_path = \"$original_dir\".Replace('\\', '\\\\')",
         "'install-context', 'uninstall-context' | ForEach-Object {",
         "    if (Test-Path \"$bucketsdir\\jade\\config\\R\\$_.reg\") {",
