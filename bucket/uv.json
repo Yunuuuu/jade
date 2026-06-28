@@ -26,17 +26,17 @@
         "UV_CACHE_DIR": "$persist_dir\\cache",
         "UV_CREDENTIALS_DIR": "$persist_dir\\credentials",
         "UV_PYTHON_INSTALL_DIR": "$persist_dir\\python\\versions",
-        "UV_PYTHON_BIN_DIR": "$persist_dir\\python\\shims",
+        "UV_PYTHON_BIN_DIR": "$persist_dir\\python\\bin",
         "UV_TOOL_DIR": "$persist_dir\\tools\\data",
-        "UV_TOOL_BIN_DIR": "$persist_dir\\tools\\shims"
+        "UV_TOOL_BIN_DIR": "$persist_dir\\tools\\bin"
     },
     "post_install": [
-        "Add-Path -Path $persist_dir\\python\\shims -Global:$global",
-        "Add-Path -Path $persist_dir\\tools\\shims -Global:$global"
+        "Add-Path -Path $persist_dir\\python\\bin -Global:$global",
+        "Add-Path -Path $persist_dir\\tools\\bin -Global:$global"
     ],
     "post_uninstall": [
-        "Remove-Path -Path $persist_dir\\python\\shims -Global:$global",
-        "Remove-Path -Path $persist_dir\\tools\\shims -Global:$global",
+        "Remove-Path -Path $persist_dir\\python\\bin -Global:$global",
+        "Remove-Path -Path $persist_dir\\tools\\bin -Global:$global",
         "if ($purge) {",
         "    $app_paths = @(",
         "        (Join-Path $env:APPDATA 'uv'),",
