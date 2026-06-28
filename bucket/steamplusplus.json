@@ -37,7 +37,6 @@
         "url": "https://api.github.com/repos/BeyondDimension/SteamTools/releases/latest",
         "script": [
             "$assets = json_path $page '$.assets[?(@.name =~ /win.*\\.7z$/)]'",
-            "Write-Host $assets",
             "$url = json_path $assets '$.browser_download_url'",
             "$version = json_path $page '$.tag_name'",
             "Write-Output \"$version $url\""
