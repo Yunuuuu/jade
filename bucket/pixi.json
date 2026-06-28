@@ -20,7 +20,7 @@
     },
     "post_install": "Add-Path -Path $persist_dir\\bin -Global:$global",
     "post_uninstall": [
-        "Remove-Path -Path $dir\\bin -Global:$global",
+        "Remove-Path -Path $persist_dir\\bin -Global:$global",
         "if ($purge) {",
         "    $app_paths = @(",
         "        (Join-Path $env:APPDATA 'pixi'),",
