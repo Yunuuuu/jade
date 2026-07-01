@@ -47,27 +47,22 @@
         [
             "mame.exe",
             "mame",
-            "-inipath .;ini;%USERPROFILE%/.config/mame/ini;%APPDATA%/mame;%LOCALAPPDATA%/mame/ini;$dir/ini;$dir/ini/presets"
+            "-inipath .;ini;%USERPROFILE%/.config/mame/ini;%APPDATA%/mame;$persist_dir/ini;$persist_dir/ini/presets"
         ],
         [
             "chdman.exe",
             "chdman"
         ]
     ],
-    "persist": [
-        "roms", "hash", "samples", "artwork", "ctrlr", "ini", "font", "cheat", "crosshair", "plugins", "language", "software",
-        "history", "folders", "cabinets", "cabdevs", "cpanel", "pcb", "flyers", "titles", "ends", "marquees",
-        "artwork preview", "bosses", "logo", "scores", "versus", "gameover", "howto", "select", "icons", "covers"
-    ],
     "shortcuts": [
         [
             "mame.exe",
             "MAME",
-            "-inipath .;ini;%USERPROFILE%/.config/mame/ini;%APPDATA%/mame;%LOCALAPPDATA%/mame/ini;$dir/ini;$dir/ini/presets"
+            "-inipath .;ini;%USERPROFILE%/.config/mame/ini;%APPDATA%/mame;$persist_dir/ini;$persist_dir/ini/presets"
         ]
     ],
     "post_install": [
-        "$app_dir = \"$dir\".Replace('\\', '/')",
+        "$app_dir = \"$persist_dir\".Replace('\\', '/')",
         "if (!(Test-Path \"$persist_dir\\ini\\mame.ini\")) {",
         "    $main_content = Get-Content \"$bucketsdir\\jade\\config\\mame\\mame.ini\"",
         "    $main_content = $main_content.Replace('$app_dir', $app_dir)",
