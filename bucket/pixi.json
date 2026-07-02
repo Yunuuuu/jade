@@ -14,13 +14,18 @@
         }
     },
     "bin": "pixi.exe",
+    "persist": [
+        "home",
+        "cache"
+    ],
     "env_set": {
-        "PIXI_CACHE_DIR": "$persist_dir\\cache",
-        "PIXI_HOME": "$persist_dir"
+        "PIXI_CACHE_DIR": "$dir\\cache",
+        "PIXI_HOME": "$dir\\home"
     },
-    "post_install": "Add-Path -Path $persist_dir\\bin -Global:$global",
+    "env_add_path": [
+        "home\\bin"
+    ],
     "post_uninstall": [
-        "Remove-Path -Path $persist_dir\\bin -Global:$global",
         "if ($purge) {",
         "    $app_paths = @(",
         "        (Join-Path $env:APPDATA 'pixi'),",

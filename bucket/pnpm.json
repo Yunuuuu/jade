@@ -30,12 +30,16 @@
             "dlx"
         ]
     ],
+    "persist": [
+        "home"
+    ],
     "env_set": {
-        "PNPM_HOME": "$persist_dir"
+        "PNPM_HOME": "$dir\\home"
     },
-    "post_install": "Add-Path -Path $persist_dir\\bin -Global:$global",
+    "env_add_path": [
+        "home\\bin"
+    ],
     "post_uninstall": [
-        "Remove-Path -Path $persist_dir\\bin -Global:$global",
         "if ($purge) {",
         "    $app_paths = @(",
         "        (Join-Path $env:APPDATA 'pnpm'),",

@@ -22,21 +22,23 @@
         "uvx.exe",
         "uvw.exe"
     ],
+    "persist": [
+        "home",
+        "cache"
+    ],
     "env_set": {
-        "UV_CACHE_DIR": "$persist_dir\\cache",
-        "UV_CREDENTIALS_DIR": "$persist_dir\\credentials",
-        "UV_PYTHON_INSTALL_DIR": "$persist_dir\\python\\versions",
-        "UV_PYTHON_BIN_DIR": "$persist_dir\\python\\bin",
-        "UV_TOOL_DIR": "$persist_dir\\tools\\data",
-        "UV_TOOL_BIN_DIR": "$persist_dir\\tools\\bin"
+        "UV_CACHE_DIR": "$dir\\cache",
+        "UV_CREDENTIALS_DIR": "$dir\\home\\credentials",
+        "UV_PYTHON_INSTALL_DIR": "$dir\\home\\python\\versions",
+        "UV_PYTHON_BIN_DIR": "$dir\\home\\python\\bin",
+        "UV_TOOL_DIR": "$dir\\home\\tools\\envs",
+        "UV_TOOL_BIN_DIR": "$dir\\home\\tools\\bin"
     },
-    "post_install": [
-        "Add-Path -Path $persist_dir\\python\\bin -Global:$global",
-        "Add-Path -Path $persist_dir\\tools\\bin -Global:$global"
+    "env_add_path": [
+        "home\\python\\bin",
+        "home\\tools\\bin"
     ],
     "post_uninstall": [
-        "Remove-Path -Path $persist_dir\\python\\bin -Global:$global",
-        "Remove-Path -Path $persist_dir\\tools\\bin -Global:$global",
         "if ($purge) {",
         "    $app_paths = @(",
         "        (Join-Path $env:APPDATA 'uv'),",
