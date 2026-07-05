@@ -61,10 +61,9 @@
             "$version = '{0}-{1:yyyyMMdd}-{2}' -f $run_number, $date, $commit",
             "$artifact_url = 'https://nightly.link/nesdev-org/MesenCE/suites/{0}/artifacts/{1}' -f $run.check_suite_id, $artifact.id",
             "$artifact_api_url = $artifact.url",
-            "$hash = $artifact.digest.Substring(7)",
-            "Write-Output \"$version $artifact_url $artifact_api_url $hash\""
+            "Write-Output \"$version $artifact_url $artifact_api_url\""
         ],
-        "regex": "^(?<Version>[^ ]+) (?<Url>https://[^ ]+) (?<Artifact>https://api\\.github\\.com/repos/nesdev-org/MesenCE/actions/artifacts/\\d+) (?<Hash>[\\da-f]{64})$"
+        "regex": "^(?<Version>[^ ]+) (?<Url>https://[^ ]+) (?<Artifact>https://[^ ]+)"
     },
     "autoupdate": {
         "url": "$matchUrl",
