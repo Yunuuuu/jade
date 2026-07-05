@@ -1,5 +1,5 @@
 {
-    "version": "604-20260702-8a79713",
+    "version": "609-20260703-40335ce",
     "homepage": "https://github.com/nesdev-org/MesenCE",
     "license": "GPL-3.0",
     "description": [
@@ -8,8 +8,8 @@
         "MesenCE is a community-managed fork based on Mesen2, created to maintain and expand this emulator into the future."
     ],
     "notes": "MesenCE requires the DotNet Runtime 6.0: `winget install --id Microsoft.DotNet.Runtime.6`",
-    "url": "https://nightly.link/nesdev-org/MesenCE/workflows/build/master/Mesen%20%28Windows%20-%20net8.0%20-%20AoT%29.zip",
-    "hash": "04b70cfffaa9a8268655602564311f128060574dc989855ca7e46cc2207dfd5a",
+    "url": "https://nightly.link/nesdev-org/MesenCE/suites/77404475470/artifacts/8060107587",
+    "hash": "1f14245eb6125d652526d4333d2ae84c4bbb92b3b93816cabca62f55e69ccdf3",
     "installer": {
         "script": [
             "if (!(test-path $persist_dir)) { New-Item -ItemType directory $persist_dir > $null }",
@@ -51,19 +51,26 @@
     "checkver": {
         "url": "https://api.github.com/repos/nesdev-org/MesenCE/actions/workflows/build.yml/runs?event=push&branch=master&status=success",
         "script": [
-            "$sha = json_path $page $.workflow_runs[0].head_sha",
-            "$runId = json_path $page $.workflow_runs[0].run_number",
-            "$suiteId = json_path $page $.workflow_runs[0].check_suite_id",
-            "$artUrl = json_path $page $.workflow_runs[0].artifacts_url",
-            "$date = json_path $page $.workflow_runs[0].created_at",
-            "$cont = (Invoke-WebRequest $artUrl).Content | ConvertFrom-Json",
-            "$artId = $cont.artifacts[0].id",
-            "Write-Output \"$runId $date $suiteId $artId $sha\""
+            "$run = (ConvertFrom-Json $page).workflow_runs[0]",
+            "$artifacts = (Invoke-WebRequest -UseBasicParsing $run.artifacts_url).Content | ConvertFrom-Json",
+            "$artifact = $artifacts.artifacts | Where-Object { $_.name -match 'Windows.*AoT' } | Select-Object -First 1",
+            "if (!$artifact) { throw 'Could not find the Windows AoT artifact' }",
+            "$run_number = $run.run_number",
+            "$date = [datetime]$run.created_at",
+            "$commit = $run.head_sha.Substring(0, 7)",
+            "$version = '{0}-{1:yyyyMMdd}-{2}' -f $run_number, $date, $commit",
+            "$artifact_url = 'https://nightly.link/nesdev-org/MesenCE/suites/{0}/artifacts/{1}' -f $run.check_suite_id, $artifact.id",
+            "$artifact_api_url = $artifact.url",
+            "$hash = $artifact.digest.Substring(7)",
+            "Write-Output \"$version $artifact_url $artifact_api_url $hash\""
         ],
-        "regex": "^(?<run>[^ ]+) (?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})[^ ]+ (?<suite>\\d+) (?<artifact>\\d+) (?<commit>[\\da-f]{7})(?<sha>[\\da-f]+)$",
-        "replace": "${run}-${year}${month}${day}-${commit}"
+        "regex": "^(?<Version>[^ ]+) (?<Url>https://[^ ]+) (?<Artifact>https://api\\.github\\.com/repos/nesdev-org/MesenCE/actions/artifacts/\\d+) (?<Hash>[\\da-f]{64})$"
     },
     "autoupdate": {
-        "url": "https://nightly.link/nesdev-org/MesenCE/workflows/build/master/Mesen%20%28Windows%20-%20net8.0%20-%20AoT%29.zip"
+        "url": "$matchUrl",
+        "hash": {
+            "url": "$matchArtifact",
+            "jsonpath": "$.digest"
+        }
     }
 }
