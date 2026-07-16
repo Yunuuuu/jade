@@ -5,18 +5,28 @@
     "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v2.5.1/Clash.Verge_2.5.1_x64-setup.exe",
+            "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v2.5.1/Clash.Verge_2.5.1_x64-setup.exe#/dl.7z",
             "hash": "sha1:e8837f2c223ebfe4c9703fc0b080cfb9ee5a364a"
         },
         "arm64": {
-            "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v2.5.1/Clash.Verge_2.5.1_arm64-setup.exe",
+            "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v2.5.1/Clash.Verge_2.5.1_arm64-setup.exe#/dl.7z",
             "hash": "sha1:df2165e14a5f2b427bb5ebfe5d18ef38f6b4b0b5"
         }
     },
-    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst*\" -Force -Recurse",
+    "pre_install": [
+        "$trash_paths = @(",
+        "    (Join-Path $dir '$TEMP'),",
+        "    (Join-Path $dir '$PLUGINSDIR')",
+        ")",
+        "foreach ($trash_path in $trash_paths) {",
+        "    if (Test-Path $trash_path) {",
+        "        Remove-Item -Recurse -Force $trash_path",
+        "    }",
+        "}"
+    ],
     "shortcuts": [
         [
-            "Clash Verge.exe",
+            "clash-verge.exe",
             "Clash Verge"
         ]
     ],
@@ -42,10 +52,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v$version/Clash.Verge_$version_x64-setup.exe"
+                "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v$version/Clash.Verge_$version_x64-setup.exe#/dl.7z"
             },
             "arm64": {
-                "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v$version/Clash.Verge_$version_arm64-setup.exe"
+                "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v$version/Clash.Verge_$version_arm64-setup.exe#/dl.7z"
             }
         }
     }
