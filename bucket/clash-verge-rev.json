@@ -1,0 +1,52 @@
+{
+    "version": "2.5.1",
+    "description": "Continuation of Clash Verge - A Clash Meta GUI based on Tauri.",
+    "homepage": "https://github.com/clash-verge-rev/clash-verge-rev",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v2.5.1/Clash.Verge_2.5.1_x64-setup.exe",
+            "hash": "sha1:e8837f2c223ebfe4c9703fc0b080cfb9ee5a364a"
+        },
+        "arm64": {
+            "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v2.5.1/Clash.Verge_2.5.1_arm64-setup.exe",
+            "hash": "sha1:df2165e14a5f2b427bb5ebfe5d18ef38f6b4b0b5"
+        }
+    },
+    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst*\" -Force -Recurse",
+    "shortcuts": [
+        [
+            "Clash Verge.exe",
+            "Clash Verge"
+        ]
+    ],
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $app_paths = @(",
+        "        (Join-Path $env:USERPROFILE '.config\\clash-verge'),",
+        "        (Join-Path $env:APPDATA 'clash-verge'),",
+        "        (Join-Path $env:LOCALAPPDATA 'clash-verge')",
+        "    )",
+        "    foreach ($app_path in $app_paths) {",
+        "        if (Test-Path $app_path) {",
+        "            Write-Host \"Purging clash-verge data: $app_path\"",
+        "            Remove-Item -Recurse -Force $app_path",
+        "        }",
+        "    }",
+        "}"
+    ],
+    "checkver": {
+        "url": "https://sourceforge.net/projects/clash-verge-rev.mirror/rss?path=/",
+        "regex": "v(\\d+\\.\\d+\\.\\d+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v$version/Clash.Verge_$version_x64-setup.exe"
+            },
+            "arm64": {
+                "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v$version/Clash.Verge_$version_arm64-setup.exe"
+            }
+        }
+    }
+}
