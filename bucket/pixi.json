@@ -15,14 +15,14 @@
     },
     "bin": "pixi.exe",
     "persist": [
-        "home",
-        "cache"
+        ".pixi",
+        ".cache"
     ],
     "env_set": {
-        "PIXI_CACHE_DIR": "$dir\\cache",
-        "PIXI_HOME": "$dir\\home"
+        "PIXI_CACHE_DIR": "$dir\\.cache",
+        "PIXI_HOME": "$dir\\.pixi"
     },
-    "env_add_path": "home\\bin",
+    "env_add_path": ".pixi\\bin",
     "post_uninstall": [
         "if ($purge) {",
         "    $app_paths = @(",
