@@ -23,20 +23,20 @@
         "uvw.exe"
     ],
     "persist": [
-        "home",
-        "cache"
+        ".pixi",
+        ".cache"
     ],
     "env_set": {
-        "UV_CACHE_DIR": "$dir\\cache",
-        "UV_CREDENTIALS_DIR": "$dir\\home\\credentials",
-        "UV_PYTHON_INSTALL_DIR": "$dir\\home\\python\\versions",
-        "UV_PYTHON_BIN_DIR": "$dir\\home\\python\\bin",
-        "UV_TOOL_DIR": "$dir\\home\\tools\\envs",
-        "UV_TOOL_BIN_DIR": "$dir\\home\\tools\\bin"
+        "UV_CACHE_DIR": "$persist_dir\\.cache",
+        "UV_CREDENTIALS_DIR": "$persist_dir\\.pixi\\credentials",
+        "UV_PYTHON_INSTALL_DIR": "$persist_dir\\.pixi\\python\\versions",
+        "UV_PYTHON_BIN_DIR": "$persist_dir\\.pixi\\python\\bin",
+        "UV_TOOL_DIR": "$persist_dir\\.pixi\\tools\\envs",
+        "UV_TOOL_BIN_DIR": "$persist_dir\\.pixi\\tools\\bin"
     },
     "env_add_path": [
-        "home\\python\\bin",
-        "home\\tools\\bin"
+        ".pixi\\python\\bin",
+        ".pixi\\tools\\bin"
     ],
     "post_uninstall": [
         "if ($purge) {",
