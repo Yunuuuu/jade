@@ -19,8 +19,8 @@
         ".cache"
     ],
     "env_set": {
-        "PIXI_CACHE_DIR": "$dir\\.cache",
-        "PIXI_HOME": "$dir\\.pixi"
+        "PIXI_CACHE_DIR": "$persist_dir\\.cache",
+        "PIXI_HOME": "$persist_dir\\.pixi"
     },
     "env_add_path": ".pixi\\bin",
     "post_uninstall": [
