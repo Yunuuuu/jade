@@ -1,5 +1,5 @@
 {
-    "version": "746-20260730-b2b9497",
+    "version": "757-20260801-fd32321",
     "homepage": "https://github.com/nesdev-org/MesenCE",
     "license": "GPL-3.0",
     "description": [
@@ -8,8 +8,8 @@
         "MesenCE is a community-managed fork based on Mesen2, created to maintain and expand this emulator into the future."
     ],
     "notes": "MesenCE requires the DotNet Runtime 6.0: `winget install --id Microsoft.DotNet.Runtime.6`",
-    "url": "https://nightly.link/nesdev-org/MesenCE/suites/82796105444/artifacts/8757880654",
-    "hash": "b116a34c1dccf9d9c3d535bfe11434dfd3b875ececf1795ebd4ac90dc24d0f6e",
+    "url": "https://nightly.link/nesdev-org/MesenCE/suites/83208436012/artifacts/8812454070",
+    "hash": "60431fe43c7664f50de11d079a76586126c943983deb177df9b11b7407a326c7",
     "installer": {
         "script": [
             "if (!(test-path $persist_dir)) { New-Item -ItemType directory $persist_dir > $null }",
