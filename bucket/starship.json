@@ -22,6 +22,12 @@
         }
     },
     "bin": "starship.exe",
+    "persist": [
+        ".cache"
+    ],
+    "env_set": {
+        "STARSHIP_CACHE": "$persist_dir\\.cache"
+    },
     "post_uninstall": [
         "if ($purge) {",
         "    $app_paths = @(",
