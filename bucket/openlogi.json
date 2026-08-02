@@ -23,6 +23,7 @@
         "if ($purge) {",
         "    $app_paths = @(",
         "        (Join-Path $env:USERPROFILE '.config\\openlogi'),",
+        "        (Join-Path $env:USERPROFILE '.local\\share\\openlogi'),",
         "        (Join-Path $env:APPDATA 'openlogi'),",
         "        (Join-Path $env:LocalAppData 'openlogi')",
         "    )",
