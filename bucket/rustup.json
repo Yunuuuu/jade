@@ -44,8 +44,8 @@
         ]
     },
     "persist": [
-        ".cargo",
-        ".rustup"
+        ".rustup",
+        ".cargo"
     ],
     "env_add_path": ".cargo\\bin",
     "env_set": {
