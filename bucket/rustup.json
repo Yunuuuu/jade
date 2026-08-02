@@ -1,18 +1,28 @@
 {
     "version": "1.29.0",
-    "description": "Manage multiple rust installations with ease",
+    "description": "An installer for the systems programming language Rust",
     "homepage": "https://rustup.rs",
     "license": "MIT|Apache-2.0",
     "notes": [
         "there are two ABIs in use on Windows: the native (MSVC) ABI used by Visual Studio, and the GNU ABI used by the GCC toolchain",
         "This package defaults to the GNU toolchain for new installations; To change this, run:",
-        "    rustup set default-host <host-triple>",
+        "",
+        "rustup set default-host <host-triple>",
         "",
         "The MSVC toolchain requires Microsoft C++ Build Tools: https://visualstudio.microsoft.com/visual-cpp-build-tools/",
         "When installing build tools for MSVC toolchain, these two components should be selected:",
-        "    - MSVC - VS C++ x64/x86 build tools",
-        "    - Windows SDK",
-        "For details, see: https://rust-lang.github.io/rustup/installation/windows-msvc.html"
+        "- MSVC - VS C++ x64/x86 build tools",
+        "- Windows SDK",
+        "For details, see: https://rust-lang.github.io/rustup/installation/windows-msvc.html",
+        "",
+        "No Rust toolchain is installed by default.",
+        "To install and set the stable toolchain as the default, run:",
+        "",
+        "rustup default stable",
+        "",
+        "To install a toolchain without making it the default, run:",
+        "",
+        "rustup toolchain install <toolchain>"
     ],
     "architecture": {
         "32bit": {
@@ -30,28 +40,31 @@
     },
     "installer": {
         "script": [
-            "[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
-            "[Environment]::SetEnvironmentVariable('RUSTUP_HOME', \"$persist_dir\\.rustup\", 'Process')",
             "$host_arch = switch ($architecture) { '64bit' { 'x86_64' } '32bit' { 'i686' } 'arm64' { 'arm64' } }",
             "$rustupArgs = @(",
+            "    '-q'",
             "    '-y'",
             "    '--default-host'",
             "    \"$host_arch-pc-windows-gnu\"",
+            "    '--default-toolchain'",
+            "    'none'",
             "    '--no-update-default-toolchain'",
             "    '--no-modify-path'",
             ")",
+            "[Environment]::SetEnvironmentVariable('RUSTUP_HOME', \"$persist_dir\\.rustup\", 'Process')",
+            "[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
             "Invoke-ExternalCommand \"$dir\\rustup-init.exe\" $rustupArgs | Out-Null"
         ]
+    },
+    "env_add_path": ".cargo\\bin",
+    "env_set": {
+        "RUSTUP_HOME": "$persist_dir\\.rustup",
+        "CARGO_HOME": "$persist_dir\\.cargo"
     },
     "persist": [
         ".rustup",
         ".cargo"
     ],
-    "env_add_path": ".cargo\\bin",
-    "env_set": {
-        "CARGO_HOME": "$persist_dir\\.cargo",
-        "RUSTUP_HOME": "$persist_dir\\.rustup"
-    },
     "checkver": {
         "url": "https://sh.rustup.rs",
         "regex": "rustup-init ([\\d.]+) \\("
