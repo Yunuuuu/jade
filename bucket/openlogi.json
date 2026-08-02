@@ -19,6 +19,21 @@
             "OpenLogi"
         ]
     ],
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $app_paths = @(",
+        "        (Join-Path $env:USERPROFILE '.config\\openlogi'),",
+        "        (Join-Path $env:APPDATA 'openlogi'),",
+        "        (Join-Path $env:LocalAppData 'openlogi')",
+        "    )",
+        "    foreach ($app_path in $app_paths) {",
+        "        if (Test-Path $app_path) {",
+        "            Write-Host \"Purging openlogi data: $app_path\"",
+        "            Remove-Item -Recurse -Force $app_path",
+        "        }",
+        "    }",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/AprilNEA/OpenLogi"
     },
