@@ -13,12 +13,12 @@ Run the Scoop formatter after changing manifests:
 
 For `deprecated/*.json`, call Scoop's formatter directly with `-Dir deprecated`.
 
-Use 4 spaces for manifest indentation. PowerShell script lines inside manifest
-script fields must also use 4-space indentation levels, with no tabs. This
-applies to `pre_install`, `post_install`, `pre_uninstall`, `post_uninstall`,
-and nested `script` arrays such as `installer.script`, `uninstaller.script`, and
-`checkver.script`. Do not reindent prose-only fields such as `notes` just
-because they contain aligned text.
+Use 4 spaces for JSON indentation in every manifest. PowerShell script lines
+inside manifest script fields must also use 4-space indentation levels, with no
+tabs. This applies to `pre_install`, `post_install`, `pre_uninstall`,
+`post_uninstall`, and nested `script` arrays such as `installer.script`,
+`uninstaller.script`, and `checkver.script`. Do not reindent prose-only fields
+such as `notes` just because they contain aligned text.
 
 ### Key Order
 
@@ -131,3 +131,27 @@ hash extraction: url, mode, jsonpath, jp, xpath, regex, find, type
 license: identifier, url
 psmodule: name
 ```
+
+### Persist Initialization
+
+Every manifest with `persist` must initialize persisted items from
+`installer.script` before Scoop links persisted data.
+
+Use these helpers for the common initialization logic:
+
+```powershell
+& "$bucketsdir\jade\scripts\persist_file.ps1" 'config.json' 'settings.json'
+& "$bucketsdir\jade\scripts\persist_dir.ps1" 'data' 'cache'
+```
+
+The helpers accept any number of persisted item paths as positional arguments.
+Pass items directly as positional arguments; do not create `@(...)` arrays only
+to pass item lists to these helpers. For long item lists, split the command over
+multiple script lines with PowerShell line continuation.
+
+Both helpers must ensure `$persist_dir` exists. For each persisted file, if the
+target file in `$persist_dir` does not exist, `persist_file.ps1` must move the
+package copy from `$dir` when present; otherwise it must create an empty file in
+`$persist_dir`. For each persisted directory, if the target directory in
+`$persist_dir` does not exist, `persist_dir.ps1` must move the package copy from
+`$dir` when present; otherwise it must create the directory in `$persist_dir`.

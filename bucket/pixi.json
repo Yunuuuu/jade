@@ -13,6 +13,9 @@
             "hash": "826d9c588092351d5b15d485fca02cb7df984dbee647bb8a62e1b93c58cdf15d"
         }
     },
+    "installer": {
+        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" '.pixi' '.cache'"
+    },
     "bin": "pixi.exe",
     "env_add_path": ".pixi\\bin",
     "env_set": {

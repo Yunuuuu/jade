@@ -17,6 +17,9 @@
             "hash": "sha1:0fd3d3ef4cb7213faf3be7ba02a3985ecfe838b6"
         }
     },
+    "installer": {
+        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" 'portable_config'"
+    },
     "bin": "mpv.com",
     "shortcuts": [
         [

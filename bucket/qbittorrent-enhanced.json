@@ -17,6 +17,9 @@
         "    Remove-Item \"$dir\\uninst.exe\"  -Force",
         "}"
     ],
+    "installer": {
+        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" 'profile'"
+    },
     "shortcuts": [
         [
             "qbittorrent.exe",

@@ -5,6 +5,9 @@
     "license": "GPL-3.0-or-later",
     "url": "https://github.com/QL-Win/QuickLook/releases/download/4.5.0/QuickLook-4.5.0.7z",
     "hash": "d1d578deb75b83ea09255b89382b088d35d38125c0c2b309825b1e20ac962b91",
+    "installer": {
+        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" 'UserData'"
+    },
     "bin": "QuickLook.exe",
     "shortcuts": [
         [

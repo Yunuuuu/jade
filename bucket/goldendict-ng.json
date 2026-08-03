@@ -6,6 +6,9 @@
     "url": "https://github.com/xiaoyifang/goldendict-ng/releases/download/v26.6.2/GoldenDict-ng-26.6.2-Qt6.10.3-Windows.7z",
     "hash": "691833b11f33f98fec489e5ab3d30bfbd8bf36f08bcb674a5be880c42ddaa274",
     "extract_dir": "GoldenDict-ng-26.6.2-Qt6.10.3",
+    "installer": {
+        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" 'portable' 'content'"
+    },
     "bin": "GoldenDict.exe",
     "shortcuts": [
         [

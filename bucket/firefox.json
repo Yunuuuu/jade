@@ -18,6 +18,9 @@
         }
     },
     "extract_dir": "core",
+    "installer": {
+        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" 'distribution' 'profile'"
+    },
     "bin": "firefox.exe",
     "shortcuts": [
         [

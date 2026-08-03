@@ -40,6 +40,7 @@
     },
     "installer": {
         "script": [
+            "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" '.rustup' '.cargo'",
             "$host_arch = switch ($architecture) { '64bit' { 'x86_64' } '32bit' { 'i686' } 'arm64' { 'arm64' } }",
             "$rustupArgs = @(",
             "    '-q'",

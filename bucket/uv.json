@@ -17,6 +17,9 @@
             "hash": "9bc7c18e616230fa2dc6fb24bc3afde18a95c2b5c9433de747e9502c66041568"
         }
     },
+    "installer": {
+        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" '.uv' '.cache'"
+    },
     "bin": [
         "uv.exe",
         "uvx.exe",

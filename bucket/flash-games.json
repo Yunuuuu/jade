@@ -5,6 +5,9 @@
     "license": "MPL-2.0",
     "url": "https://github.com/Cnotech/flash-collector/releases/download/v1.13/Flash.Collector_1.13.0_win-x64.7z",
     "hash": "0a5aa926b5c44da1c17dde5d69a1a3bb776be1f8879f698690a2b3bae4078b33",
+    "installer": {
+        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" 'games'"
+    },
     "shortcuts": [
         [
             "flash-collector.exe",

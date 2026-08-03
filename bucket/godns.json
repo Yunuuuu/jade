@@ -18,18 +18,7 @@
         }
     },
     "installer": {
-        "script": [
-            "if (!(test-path $persist_dir)) { New-Item -type directory $persist_dir > $null }",
-            "$persist_item = Join-Path $persist_dir 'config.json'",
-            "if (!(Test-Path $persist_item)) {",
-            "    $source_item  = Join-Path $dir 'config.json'",
-            "    if (Test-Path $source_item) {",
-            "        Move-Item -Path $source_item -Destination $persist_item",
-            "    } else {",
-            "        New-Item -ItemType File -Path $persist_item | Out-Null",
-            "    }",
-            "}"
-        ]
+        "script": "& \"$bucketsdir\\jade\\scripts\\persist_file.ps1\" 'config.json'"
     },
     "bin": "godns.exe",
     "persist": "config.json",

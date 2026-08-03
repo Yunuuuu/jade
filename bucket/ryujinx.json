@@ -17,16 +17,18 @@
         }
     },
     "extract_dir": "publish",
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\")) {",
-        "    New-Item \"$persist_dir\\portable\" -ItemType Directory | Out-Null",
-        "    if (Test-Path \"$env:APPDATA\\Ryujinx\") {",
-        "        Write-host \"Migrating AppData...\" -ForegroundColor yellow",
-        "        Copy-Item -Path \"$env:APPDATA\\Ryujinx\\*\" -Destination \"$persist_dir\\portable\" -Recurse",
-        "        Remove-Item -Path \"$env:APPDATA\\Ryujinx\" -Recurse",
-        "    }",
-        "}"
-    ],
+    "installer": {
+        "script": [
+            "$first_install = !(Test-Path $persist_dir)",
+            "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" 'portable'",
+            "$portable_persist_item = Join-Path $persist_dir 'portable'",
+            "if ($first_install -and (Test-Path \"$env:APPDATA\\Ryujinx\")) {",
+            "    Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+            "    Copy-Item -Path \"$env:APPDATA\\Ryujinx\\*\" -Destination $portable_persist_item -Recurse",
+            "    Remove-Item -Path \"$env:APPDATA\\Ryujinx\" -Recurse",
+            "}"
+        ]
+    },
     "bin": "Ryujinx.exe",
     "shortcuts": [
         [

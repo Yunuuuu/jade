@@ -31,7 +31,8 @@
             "    }",
             "}",
             "CreateFolder 'tmp'",
-            "CreateFolder 'dev'"
+            "CreateFolder 'dev'",
+            "& \"$bucketsdir\\jade\\scripts\\persist_file.ps1\" 'mingw32.ini' 'mingw64.ini' 'ucrt64.ini' 'msys2.ini'"
         ]
     },
     "shortcuts": [

@@ -17,6 +17,9 @@
             "hash": "11092b68fb518ce5136fd84e727bf41fd6bc179ee59283a6660249e83e6237ec"
         }
     },
+    "installer": {
+        "script": "& \"$bucketsdir\\jade\\scripts\\persist_file.ps1\" 'config.json'"
+    },
     "bin": "v2ray.exe",
     "persist": "config.json",
     "checkver": {

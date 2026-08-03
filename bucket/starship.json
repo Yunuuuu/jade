@@ -21,6 +21,9 @@
             "hash": "52e60a2182aed66af225401d8906b2eb8cd2a08d206c7304d503c2cf44345f77"
         }
     },
+    "installer": {
+        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" '.cache'"
+    },
     "bin": "starship.exe",
     "env_set": {
         "STARSHIP_CACHE": "$persist_dir\\.cache"

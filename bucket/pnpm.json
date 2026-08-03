@@ -13,6 +13,9 @@
             "hash": "280fea20d193319d38a4858e5800503c73f74ee1b47e1717179fbeb866786419"
         }
     },
+    "installer": {
+        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" 'home'"
+    },
     "bin": [
         "pnpm.exe",
         [

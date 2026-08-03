@@ -17,6 +17,9 @@
             "hash": "ada1715aa109f302f6812e55d1bcd7e09362000030cf1117b834217ca6ddfbb1"
         }
     },
+    "installer": {
+        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" 'data'"
+    },
     "shortcuts": [
         [
             "code.exe",

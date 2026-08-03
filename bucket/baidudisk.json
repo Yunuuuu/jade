@@ -19,6 +19,9 @@
         "    }",
         "}"
     ],
+    "installer": {
+        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" 'users'"
+    },
     "shortcuts": [
         [
             "BaiduNetdisk.exe",
