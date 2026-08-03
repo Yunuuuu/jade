@@ -52,17 +52,10 @@
     ],
     "post_uninstall": [
         "if ($purge) {",
-        "    $app_paths = @(",
-        "        (Join-Path $env:APPDATA 'calibre'),",
-        "        (Join-Path $env:APPDATA 'calibre-ebook.com'),",
+        "    & \"$bucketsdir\\jade\\scripts\\purge.ps1\" `",
+        "        (Join-Path $env:APPDATA 'calibre') `",
+        "        (Join-Path $env:APPDATA 'calibre-ebook.com') `",
         "        (Join-Path $env:LOCALAPPDATA 'calibre-cache')",
-        "    )",
-        "    foreach ($app_path in $app_paths) {",
-        "        if (Test-Path $app_path) {",
-        "            Write-Host \"Purging Calibre data: $app_path\"",
-        "            Remove-Item -Recurse -Force $app_path",
-        "        }",
-        "    }",
         "}"
     ],
     "checkver": {

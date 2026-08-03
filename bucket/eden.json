@@ -26,14 +26,7 @@
         }
     },
     "installer": {
-        "script": [
-            "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" 'user' 'plugins'",
-            "if (Test-Path \"$env:APPDATA\\eden\") {",
-            "    Write-host \"Migrating AppData...\" -ForegroundColor yellow",
-            "    Copy-Item -Path \"$env:APPDATA\\eden\\*\" -Destination $user_persist_item -Recurse",
-            "    Remove-Item -Path \"$env:APPDATA\\eden\" -Recurse",
-            "}"
-        ]
+        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" 'user' 'plugins'"
     },
     "bin": "eden-cli.exe",
     "shortcuts": [

@@ -19,16 +19,9 @@
     "post_uninstall": [
         "if ($purge) {",
         "    # For QuickLook 3.6.9 or older",
-        "    $app_paths = @(",
-        "        (Join-Path $env:APPDATA 'pooi.moe\\QuickLook'),",
+        "    & \"$bucketsdir\\jade\\scripts\\purge.ps1\" `",
+        "        (Join-Path $env:APPDATA 'pooi.moe\\QuickLook') `",
         "        (Join-Path $env:LOCALAPPDATA 'pooi.moe\\QuickLook')",
-        "    )",
-        "    foreach ($app_path in $app_paths) {",
-        "        if (Test-Path $app_path) {",
-        "            Write-Host \"Purging QuickLook data: $app_path\"",
-        "            Remove-Item -Recurse -Force $app_path",
-        "        }",
-        "    }",
         "}"
     ],
     "checkver": "github",

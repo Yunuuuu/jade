@@ -24,16 +24,9 @@
     ],
     "post_uninstall": [
         "if ($purge) {",
-        "    $app_paths = @(",
-        "        (Join-Path $env:APPDATA 'yesplaymusic'),",
+        "    & \"$bucketsdir\\jade\\scripts\\purge.ps1\" `",
+        "        (Join-Path $env:APPDATA 'yesplaymusic') `",
         "        (Join-Path $env:LOCALAPPDATA 'yesplaymusic')",
-        "    )",
-        "    foreach ($app_path in $app_paths) {",
-        "        if (Test-Path $app_path) {",
-        "            Write-Host \"Purging yesplaymusic data: $app_path\"",
-        "            Remove-Item -Recurse -Force $app_path",
-        "        }",
-        "    }",
         "}"
     ],
     "checkver": {

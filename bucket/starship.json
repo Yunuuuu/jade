@@ -31,18 +31,9 @@
     "persist": ".cache",
     "post_uninstall": [
         "if ($purge) {",
-        "    $app_paths = @(",
-        "        (Join-Path $env:USERPROFILE '.config\\starship.toml'),",
-        "        (Join-Path $env:USERPROFILE '.cache\\starship'),",
-        "        (Join-Path $env:APPDATA 'starship'),",
+        "    & \"$bucketsdir\\jade\\scripts\\purge.ps1\" `",
+        "        (Join-Path $env:APPDATA 'starship') `",
         "        (Join-Path $env:LOCALAPPDATA 'starship')",
-        "    )",
-        "    foreach ($app_path in $app_paths) {",
-        "        if (Test-Path $app_path) {",
-        "            Write-Host \"Purging starship: $app_path\"",
-        "            Remove-Item -Recurse -Force $app_path",
-        "        }",
-        "    }",
         "}"
     ],
     "checkver": {

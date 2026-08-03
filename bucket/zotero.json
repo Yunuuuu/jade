@@ -15,17 +15,10 @@
     ],
     "post_uninstall": [
         "if ($purge) {",
-        "    $zotero_paths = @(",
-        "        (Join-Path $env:APPDATA 'Zotero'),",
-        "        (Join-Path $env:LOCALAPPDATA 'Zotero'),",
+        "    & \"$bucketsdir\\jade\\scripts\\purge.ps1\" `",
+        "        (Join-Path $env:APPDATA 'Zotero') `",
+        "        (Join-Path $env:LOCALAPPDATA 'Zotero') `",
         "        (Join-Path $env:USERPROFILE 'Zotero')",
-        "    )",
-        "    foreach ($zotero_path in $zotero_paths) {",
-        "        if (Test-Path $zotero_path) {",
-        "            Write-Host \"Purging Zotero data: $zotero_path\"",
-        "            Remove-Item -Recurse -Force $zotero_path",
-        "        }",
-        "    }",
         "}"
     ],
     "checkver": {

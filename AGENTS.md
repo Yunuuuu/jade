@@ -155,3 +155,45 @@ package copy from `$dir` when present; otherwise it must create an empty file in
 `$persist_dir`. For each persisted directory, if the target directory in
 `$persist_dir` does not exist, `persist_dir.ps1` must move the package copy from
 `$dir` when present; otherwise it must create the directory in `$persist_dir`.
+
+### Default Data Purge
+
+Do not copy or move data from default user-data locations outside Scoop into
+`$persist_dir`. Treat Scoop purge as a zap-like deep cleanup of data created by
+this package, but do not manually purge paths already made portable through
+Scoop `persist`; Scoop purge handles persisted data itself.
+
+Some apps can only be made partially portable. If the app still automatically
+creates unportable data outside Scoop, especially under `%APPDATA%` or
+`%LOCALAPPDATA%`, remove those known app-created locations from
+`post_uninstall` guarded by Scoop's `$purge` behavior. Purge paths may include
+default profile, config, cache, credential, log, state, or updater directories.
+
+Avoid broad parent directories unless they are removed only when empty. Do not
+purge user-created documents, download folders, project workspaces, libraries,
+or other paths that are not clearly app-created by this package.
+
+Use this helper for common purge cleanup:
+
+```powershell
+if ($purge) {
+    & "$bucketsdir\jade\scripts\purge.ps1" (Join-Path $env:APPDATA 'Example')
+}
+```
+
+`purge.ps1` accepts any number of positional paths and removes them directly.
+It must not check `$purge` internally; callers must invoke it only from an
+`if ($purge)` block. Pass paths directly as positional arguments; do not create
+`@(...)` arrays only for the helper path list.
+
+When purging nested app data can leave empty vendor or XDG parent directories,
+remove those parents with:
+
+```powershell
+if ($purge) {
+    & "$bucketsdir\jade\scripts\purge_empty_dir.ps1" (Join-Path $env:APPDATA 'Vendor')
+}
+```
+
+`purge_empty_dir.ps1` follows the same caller-guarded `$purge` rule and must
+remove only existing empty directories.

@@ -43,16 +43,9 @@
     ],
     "post_uninstall": [
         "if ($purge) {",
-        "    $app_paths = @(",
-        "        (Join-Path $env:APPDATA 'uv'),",
-        "        (Join-Path $env:LocalAppData 'uv')",
-        "    )",
-        "    foreach ($app_path in $app_paths) {",
-        "        if (Test-Path $app_path) {",
-        "            Write-Host \"Purging uv data: $app_path\"",
-        "            Remove-Item -Recurse -Force $app_path",
-        "        }",
-        "    }",
+        "    & \"$bucketsdir\\jade\\scripts\\purge.ps1\" `",
+        "        (Join-Path $env:APPDATA 'uv') `",
+        "        (Join-Path $env:LOCALAPPDATA 'uv')",
         "}"
     ],
     "checkver": {
