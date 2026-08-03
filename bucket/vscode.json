@@ -17,19 +17,27 @@
             "hash": "ada1715aa109f302f6812e55d1bcd7e09362000030cf1117b834217ca6ddfbb1"
         }
     },
+    "shortcuts": [
+        [
+            "code.exe",
+            "Visual Studio Code"
+        ]
+    ],
+    "env_add_path": "bin",
+    "persist": "data",
     "post_install": [
         "$dirpath = \"$dir\".Replace('\\', '\\\\')",
         "$exepath = \"$dir\\Code.exe\".Replace('\\', '\\\\')",
         "'install-associations', 'uninstall-associations', 'install-context', 'uninstall-context' | ForEach-Object {",
-        "  if (Test-Path \"$bucketsdir\\jade\\config\\vscode\\$_.reg\") {",
+        "    if (Test-Path \"$bucketsdir\\jade\\config\\vscode\\$_.reg\") {",
         "    $content = Get-Content \"$bucketsdir\\jade\\config\\vscode\\$_.reg\"",
         "    $content = $content.Replace('$codedir', $dirpath)",
         "    $content = $content.Replace('$code', $exepath)",
         "    if ($global) {",
-        "      $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "        $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
         "    }",
         "    $content | Set-Content -Path \"$dir\\$_.reg\"",
-        "  }",
+        "    }",
         "}",
         "if (!(Test-Path \"$dir\\data\\extensions\") -and (Test-Path \"$env:USERPROFILE\\.vscode\\extensions\")) {",
         "    info '[Portable Mode] Copying extensions...'",
@@ -41,14 +49,6 @@
         "}",
         "reg import \"$dir\\install-context.reg\""
     ],
-    "env_add_path": "bin",
-    "shortcuts": [
-        [
-            "code.exe",
-            "Visual Studio Code"
-        ]
-    ],
-    "persist": "data",
     "uninstaller": {
         "script": [
             "if (Test-Path \"$dir\\uninstall-context.reg\") {",

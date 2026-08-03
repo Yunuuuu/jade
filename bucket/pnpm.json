@@ -30,11 +30,11 @@
             "dlx"
         ]
     ],
-    "persist": "home",
+    "env_add_path": "home\\bin",
     "env_set": {
         "PNPM_HOME": "$dir\\home"
     },
-    "env_add_path": "home\\bin",
+    "persist": "home",
     "post_uninstall": [
         "if ($purge) {",
         "    $app_paths = @(",

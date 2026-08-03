@@ -11,10 +11,10 @@
     },
     "pre_install": [
         "if (Test-Path -PathType Container \"$dir\\`$PLUGINSDIR\") {",
-        "   Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+        "    Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
         "}",
         "if (Test-Path -PathType Leaf \"$dir\\uninst.exe\") {",
-        "   Remove-Item \"$dir\\uninst.exe\"  -Force",
+        "    Remove-Item \"$dir\\uninst.exe\"  -Force",
         "}"
     ],
     "shortcuts": [

@@ -22,9 +22,9 @@
         "uvx.exe",
         "uvw.exe"
     ],
-    "persist": [
-        ".uv",
-        ".cache"
+    "env_add_path": [
+        ".uv\\python\\bin",
+        ".uv\\tools\\bin"
     ],
     "env_set": {
         "UV_CACHE_DIR": "$persist_dir\\.cache",
@@ -34,9 +34,9 @@
         "UV_TOOL_DIR": "$persist_dir\\.uv\\tools\\envs",
         "UV_TOOL_BIN_DIR": "$persist_dir\\.uv\\tools\\bin"
     },
-    "env_add_path": [
-        ".uv\\python\\bin",
-        ".uv\\tools\\bin"
+    "persist": [
+        ".uv",
+        ".cache"
     ],
     "post_uninstall": [
         "if ($purge) {",

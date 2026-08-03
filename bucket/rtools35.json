@@ -1,7 +1,7 @@
 {
     "version": "3.5.0.4",
-    "homepage": "https://cloud.r-project.org/bin/windows/Rtools",
     "description": "Tools for building packages for R under Microsoft Windows, or for building R itself. (R 3.3.x - R 3.6.x)",
+    "homepage": "https://cloud.r-project.org/bin/windows/Rtools",
     "license": "BSD-3-Clause",
     "notes": [
         "For R-3.3.x to R-3.6.x, please use 'jade/rtools35';",

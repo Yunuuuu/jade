@@ -19,6 +19,13 @@
         "    }",
         "}"
     ],
+    "shortcuts": [
+        [
+            "BaiduNetdisk.exe",
+            "Baidu Netdisk"
+        ]
+    ],
+    "persist": "users",
     "post_install": [
         "# turn off autoupdate",
         "$path = Join-Path $dir 'AutoUpdate\\config.ini'",
@@ -122,13 +129,6 @@
         "}",
         "Set-Content -LiteralPath $path -Value ($out -join \"`n\")"
     ],
-    "shortcuts": [
-        [
-            "BaiduNetdisk.exe",
-            "Baidu Netdisk"
-        ]
-    ],
-    "persist": "users",
     "pre_uninstall": [
         "Get-Process YunDetectService -ErrorAction SilentlyContinue | ForEach-Object {",
         "    Write-Host \"[BaiduNetdisk] killing YunDetectService process PID=$($_.Id)\"",

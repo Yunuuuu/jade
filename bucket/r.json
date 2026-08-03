@@ -21,7 +21,7 @@
                 "$version_42 = [Version]\"4.2.0\"",
                 "$check_version = $version_cur -ge $version_42",
                 "if (-not $check_version) {",
-                "   Rename-Item \"$dir\\bin\\R,2.exe\" 'R.exe'",
+                "    Rename-Item \"$dir\\bin\\R,2.exe\" 'R.exe'",
                 "}"
             ],
             "bin": [
@@ -44,7 +44,7 @@
                 "$version_42 = [Version]\"4.2.0\"",
                 "$check_version = $version_cur -ge $version_42",
                 "if (-not $check_version) {",
-                "   Rename-Item \"$dir\\bin\\R,1.exe\" 'R.exe'",
+                "    Rename-Item \"$dir\\bin\\R,1.exe\" 'R.exe'",
                 "}"
             ],
             "bin": [

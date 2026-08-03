@@ -68,7 +68,7 @@
         "    $main_content = $main_content.Replace('$app_dir', $app_dir)",
         "    Set-Content -Path \"$persist_dir\\ini\\mame.ini\" -value $main_content",
         "}",
-        "if (!(test-path \"$persist_dir\\ini\\ui.ini\")) { ",
+        "if (!(test-path \"$persist_dir\\ini\\ui.ini\")) {",
         "    $ui_content = Get-Content \"$bucketsdir\\jade\\config\\mame\\ui.ini\"",
         "    $ui_content = $ui_content.Replace('$app_dir', $app_dir)",
         "    Set-Content -Path \"$persist_dir\\ini\\ui.ini\" -value $ui_content",

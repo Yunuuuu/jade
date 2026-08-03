@@ -12,9 +12,7 @@
     "innosetup": true,
     "architecture": {
         "64bit": {
-            "pre_install": [
-                "Rename-Item \"$dir\\bin\\R,2.exe\" 'R.exe'"
-            ],
+            "pre_install": "Rename-Item \"$dir\\bin\\R,2.exe\" 'R.exe'",
             "bin": [
                 "bin\\x64\\R.exe",
                 "bin\\x64\\Rcmd.exe",
@@ -30,9 +28,7 @@
             ]
         },
         "32bit": {
-            "pre_install": [
-                "Rename-Item \"$dir\\bin\\R,1.exe\" 'R.exe'"
-            ],
+            "pre_install": "Rename-Item \"$dir\\bin\\R,1.exe\" 'R.exe'",
             "bin": [
                 "bin\\i386\\R.exe",
                 "bin\\i386\\Rcmd.exe",
@@ -66,7 +62,6 @@
         "    }",
         "    [IO.File]::WriteAllLines(\"$dir\\etc\\Renviron.site\", $pathenv)",
         "}",
-
         "$original_dir_path = \"$original_dir\".Replace('\\', '\\\\')",
         "'install-context', 'uninstall-context' | ForEach-Object {",
         "    if (Test-Path \"$bucketsdir\\jade\\config\\R\\$_.reg\") {",

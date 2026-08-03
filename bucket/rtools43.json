@@ -21,17 +21,14 @@
     "installer": {
         "script": [
             "function CreateFolder([String] $FolderName) {",
-            "   if (-not (Test-Path $dir\\$FolderName)) {",
-            "       Write-Host \"Creating Folder $FolderName\"",
-            "       New-Item $dir\\$FolderName -ItemType Directory",
-            "   }",
+            "    if (-not (Test-Path $dir\\$FolderName)) {",
+            "        Write-Host \"Creating Folder $FolderName\"",
+            "        New-Item $dir\\$FolderName -ItemType Directory",
+            "    }",
             "}",
             "CreateFolder 'tmp'",
             "CreateFolder 'dev'"
         ]
-    },
-    "env_set": {
-        "RTOOLS43_HOME": "$dir"
     },
     "shortcuts": [
         [
@@ -47,6 +44,9 @@
             "Rtools43/Rtools43 UCRT 64-bit"
         ]
     ],
+    "env_set": {
+        "RTOOLS43_HOME": "$dir"
+    },
     "persist": [
         "mingw32.ini",
         "mingw64.ini",

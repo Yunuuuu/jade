@@ -1,7 +1,7 @@
 {
     "version": "3.1.0",
-    "homepage": "https://github.com/BeyondDimension/SteamTools/",
     "description": "Watt Toolkit, 原名 Steam++, 是一个开源跨平台的多功能游戏工具箱, 此工具的大部分功能都是需要您下载安装 Steam 才能使用。",
+    "homepage": "https://github.com/BeyondDimension/SteamTools/",
     "license": "GPL-3.0-only",
     "url": "https://github.com/BeyondDimension/SteamTools/releases/download/3.1.0/Steam%2B%2B_v3.1.0_win_x64.7z",
     "hash": "74d0eb1fd67e8eb0914a9962244fc4251993061df77e6e6c0dfe8a4a899d5ae4",

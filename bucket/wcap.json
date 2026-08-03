@@ -51,8 +51,6 @@
     ],
     "checkver": {
         "url": "https://api.github.com/repos/mmozeiko/wcap/actions/workflows/wcap.yml/runs?event=push&branch=main&status=success",
-        "regex": "^(?<run>[^ ]+) *(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})[^ ]+ *(?<suite>\\d+) *(?<artifact>\\d+) *(?<commit>[\\da-f]{7})(?<sha>[\\da-f]+)$",
-        "replace": "${run}-${year}${month}${day}-${commit}",
         "script": [
             "$sha = json_path $page $.workflow_runs[0].head_sha",
             "$runId = json_path $page $.workflow_runs[0].run_number",
@@ -62,7 +60,9 @@
             "$cont = (Invoke-WebRequest $artUrl).Content | ConvertFrom-Json",
             "$artId = $cont.artifacts[0].id",
             "Write-Output \"$runId $date $suiteId $artId $sha\""
-        ]
+        ],
+        "regex": "^(?<run>[^ ]+) *(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})[^ ]+ *(?<suite>\\d+) *(?<artifact>\\d+) *(?<commit>[\\da-f]{7})(?<sha>[\\da-f]+)$",
+        "replace": "${run}-${year}${month}${day}-${commit}"
     },
     "autoupdate": {
         "architecture": {

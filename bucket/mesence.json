@@ -1,12 +1,12 @@
 {
     "version": "2.2.1",
-    "homepage": "https://github.com/nesdev-org/MesenCE",
-    "license": "GPL-3.0",
     "description": [
         "Mesen is a multi-system emulator for Windows, Linux, and macOS. It supports NES, SNES, Game Boy (GB/SGB/GBC), Game Boy Advance, PC Engine, SMS/Game Gear, and WonderSwan (WS/WSC)",
         "",
         "MesenCE is a community-managed fork based on Mesen2, created to maintain and expand this emulator into the future."
     ],
+    "homepage": "https://github.com/nesdev-org/MesenCE",
+    "license": "GPL-3.0",
     "url": "https://github.com/nesdev-org/MesenCE/releases/download/2.2.1/Mesen_2.2.1_Windows.zip",
     "hash": "c19e10b3b3865eb0e86e4d01bf09a5027a4452081c04b5bd5b6cbbf76e346fd6",
     "installer": {

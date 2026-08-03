@@ -16,6 +16,7 @@
             "}"
         ]
     },
+    "bin": "Fiddler.exe",
     "shortcuts": [
         [
             "Fiddler.exe",
@@ -26,12 +27,9 @@
             "Fiddler ScriptEditor"
         ]
     ],
-    "bin": "Fiddler.exe",
     "persist": "Scripts",
     "uninstaller": {
-        "script": [
-            "Remove-Item 'HKCU:\\Software\\Microsoft\\Fiddler2' -Force -Recurse"
-        ]
+        "script": "Remove-Item 'HKCU:\\Software\\Microsoft\\Fiddler2' -Force -Recurse"
     },
     "post_uninstall": [
         "if ($purge) {",

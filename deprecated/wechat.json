@@ -17,6 +17,12 @@
         "    }",
         "}"
     ],
+    "shortcuts": [
+        [
+            "wechat.exe",
+            "WeChat"
+        ]
+    ],
     "post_install": [
         "$dir_path = \"$dir\".Replace('\\', '\\\\')",
         "$persist_path = \"$persist_dir\".Replace('\\', '\\\\')",
@@ -31,12 +37,6 @@
         "        $content | Set-Content -Path \"$dir\\$_.reg\"",
         "    }",
         "}"
-    ],
-    "shortcuts": [
-        [
-            "wechat.exe",
-            "WeChat"
-        ]
     ],
     "uninstaller": {
         "script": [

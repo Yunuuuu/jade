@@ -6,13 +6,13 @@
     "url": "https://github.com/QL-Win/QuickLook/releases/download/4.5.0/QuickLook-4.5.0.7z",
     "hash": "d1d578deb75b83ea09255b89382b088d35d38125c0c2b309825b1e20ac962b91",
     "bin": "QuickLook.exe",
-    "persist": "UserData",
     "shortcuts": [
         [
             "QuickLook.exe",
             "QuickLook"
         ]
     ],
+    "persist": "UserData",
     "post_uninstall": [
         "if ($purge) {",
         "    # For QuickLook 3.6.9 or older",

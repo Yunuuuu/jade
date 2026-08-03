@@ -48,9 +48,9 @@
             "64bit": {
                 "url": "https://download1.rstudio.org/electron/windows/RStudio-$version.zip",
                 "hash": {
+                    "url": "https://www.rstudio.com/wp-content/downloads.json",
                     "mode": "json",
-                    "jsonpath": ".rstudio['open_source'].stable.desktop.archive.windows.sha256",
-                    "url": "https://www.rstudio.com/wp-content/downloads.json"
+                    "jsonpath": ".rstudio['open_source'].stable.desktop.archive.windows.sha256"
                 }
             }
         }
