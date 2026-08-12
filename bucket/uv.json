@@ -18,30 +18,60 @@
         }
     },
     "installer": {
-        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" '.uv' '.cache'"
+        "script": [
+            "$persist_items = @()",
+            "if ([string]::IsNullOrWhiteSpace((Get-EnvVar -Name 'UV_CACHE_DIR' -Global:$global))) {",
+            "    $persist_items += '.cache'",
+            "    Set-EnvVar -Name 'UV_CACHE_DIR' -Value \"$persist_dir\\.cache\" -Global:$global",
+            "}",
+            "$needs_uv_persist = $false",
+            "if ([string]::IsNullOrWhiteSpace((Get-EnvVar -Name 'UV_CREDENTIALS_DIR' -Global:$global))) {",
+            "    $needs_uv_persist = $true",
+            "    Set-EnvVar -Name 'UV_CREDENTIALS_DIR' -Value \"$persist_dir\\.uv\\credentials\" -Global:$global",
+            "}",
+            "if ([string]::IsNullOrWhiteSpace((Get-EnvVar -Name 'UV_PYTHON_INSTALL_DIR' -Global:$global))) {",
+            "    $needs_uv_persist = $true",
+            "    Set-EnvVar -Name 'UV_PYTHON_INSTALL_DIR' -Value \"$persist_dir\\.uv\\python\\versions\" -Global:$global",
+            "}",
+            "if ([string]::IsNullOrWhiteSpace((Get-EnvVar -Name 'UV_PYTHON_BIN_DIR' -Global:$global))) {",
+            "    $needs_uv_persist = $true",
+            "    Set-EnvVar -Name 'UV_PYTHON_BIN_DIR' -Value \"$persist_dir\\.uv\\python\\bin\" -Global:$global",
+            "}",
+            "if ([string]::IsNullOrWhiteSpace((Get-EnvVar -Name 'UV_TOOL_DIR' -Global:$global))) {",
+            "    $needs_uv_persist = $true",
+            "    Set-EnvVar -Name 'UV_TOOL_DIR' -Value \"$persist_dir\\.uv\\tools\\envs\" -Global:$global",
+            "}",
+            "if ([string]::IsNullOrWhiteSpace((Get-EnvVar -Name 'UV_TOOL_BIN_DIR' -Global:$global))) {",
+            "    $needs_uv_persist = $true",
+            "    Set-EnvVar -Name 'UV_TOOL_BIN_DIR' -Value \"$persist_dir\\.uv\\tools\\bin\" -Global:$global",
+            "}",
+            "if ($needs_uv_persist) {",
+            "    $persist_items += '.uv'",
+            "}",
+            "$Manifest.persist = $persist_items",
+            "Add-Path -Path '%UV_PYTHON_BIN_DIR%' -Global:$global",
+            "Add-Path -Path '%UV_TOOL_BIN_DIR%' -Global:$global"
+        ]
     },
     "bin": [
         "uv.exe",
         "uvx.exe",
         "uvw.exe"
     ],
-    "env_add_path": [
-        ".uv\\python\\bin",
-        ".uv\\tools\\bin"
-    ],
-    "env_set": {
-        "UV_CACHE_DIR": "$persist_dir\\.cache",
-        "UV_CREDENTIALS_DIR": "$persist_dir\\.uv\\credentials",
-        "UV_PYTHON_INSTALL_DIR": "$persist_dir\\.uv\\python\\versions",
-        "UV_PYTHON_BIN_DIR": "$persist_dir\\.uv\\python\\bin",
-        "UV_TOOL_DIR": "$persist_dir\\.uv\\tools\\envs",
-        "UV_TOOL_BIN_DIR": "$persist_dir\\.uv\\tools\\bin"
-    },
-    "persist": [
-        ".uv",
-        ".cache"
-    ],
     "post_uninstall": [
+        "function Remove-EnvIfDefault([string]$Name, [string]$DefaultValue) {",
+        "    if ((Get-EnvVar -Name $Name -Global:$global) -eq $DefaultValue) {",
+        "        Set-EnvVar -Name $Name -Value $null -Global:$global",
+        "    }",
+        "}",
+        "Remove-Path -Path '%UV_PYTHON_BIN_DIR%' -Global:$global",
+        "Remove-Path -Path '%UV_TOOL_BIN_DIR%' -Global:$global",
+        "Remove-EnvIfDefault 'UV_CACHE_DIR' \"$persist_dir\\.cache\"",
+        "Remove-EnvIfDefault 'UV_CREDENTIALS_DIR' \"$persist_dir\\.uv\\credentials\"",
+        "Remove-EnvIfDefault 'UV_PYTHON_INSTALL_DIR' \"$persist_dir\\.uv\\python\\versions\"",
+        "Remove-EnvIfDefault 'UV_PYTHON_BIN_DIR' \"$persist_dir\\.uv\\python\\bin\"",
+        "Remove-EnvIfDefault 'UV_TOOL_DIR' \"$persist_dir\\.uv\\tools\\envs\"",
+        "Remove-EnvIfDefault 'UV_TOOL_BIN_DIR' \"$persist_dir\\.uv\\tools\\bin\"",
         "if ($purge) {",
         "    & \"$bucketsdir\\jade\\scripts\\purge.ps1\" `",
         "        (Join-Path $env:APPDATA 'uv') `",

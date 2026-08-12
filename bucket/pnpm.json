@@ -14,7 +14,15 @@
         }
     },
     "installer": {
-        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" 'home'"
+        "script": [
+            "$persist_items = @()",
+            "if ([string]::IsNullOrWhiteSpace((Get-EnvVar -Name 'PNPM_HOME' -Global:$global))) {",
+            "    $persist_items += 'home'",
+            "    Set-EnvVar -Name 'PNPM_HOME' -Value \"$persist_dir\\home\" -Global:$global",
+            "}",
+            "$Manifest.persist = $persist_items",
+            "Add-Path -Path '%PNPM_HOME%\\bin' -Global:$global"
+        ]
     },
     "bin": [
         "pnpm.exe",
@@ -33,12 +41,14 @@
             "dlx"
         ]
     ],
-    "env_add_path": "home\\bin",
-    "env_set": {
-        "PNPM_HOME": "$dir\\home"
-    },
-    "persist": "home",
     "post_uninstall": [
+        "function Remove-EnvIfDefault([string]$Name, [string]$DefaultValue) {",
+        "    if ((Get-EnvVar -Name $Name -Global:$global) -eq $DefaultValue) {",
+        "        Set-EnvVar -Name $Name -Value $null -Global:$global",
+        "    }",
+        "}",
+        "Remove-Path -Path '%PNPM_HOME%\\bin' -Global:$global",
+        "Remove-EnvIfDefault 'PNPM_HOME' \"$persist_dir\\home\"",
         "if ($purge) {",
         "    & \"$bucketsdir\\jade\\scripts\\purge.ps1\" `",
         "        (Join-Path $env:APPDATA 'pnpm') `",

@@ -14,19 +14,30 @@
         }
     },
     "installer": {
-        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" '.pixi' '.cache'"
+        "script": [
+            "$persist_items = @()",
+            "if ([string]::IsNullOrWhiteSpace((Get-EnvVar -Name 'PIXI_HOME' -Global:$global))) {",
+            "    $persist_items += '.pixi'",
+            "    Set-EnvVar -Name 'PIXI_HOME' -Value \"$persist_dir\\.pixi\" -Global:$global",
+            "}",
+            "Add-Path -Path '%PIXI_HOME%\\bin' -Global:$global",
+            "if ([string]::IsNullOrWhiteSpace((Get-EnvVar -Name 'PIXI_CACHE_DIR' -Global:$global))) {",
+            "    $persist_items += '.cache'",
+            "    Set-EnvVar -Name 'PIXI_CACHE_DIR' -Value \"$persist_dir\\.cache\" -Global:$global",
+            "}",
+            "$Manifest.persist = $persist_items"
+        ]
     },
     "bin": "pixi.exe",
-    "env_add_path": ".pixi\\bin",
-    "env_set": {
-        "PIXI_CACHE_DIR": "$persist_dir\\.cache",
-        "PIXI_HOME": "$persist_dir\\.pixi"
-    },
-    "persist": [
-        ".pixi",
-        ".cache"
-    ],
     "post_uninstall": [
+        "function Remove-EnvIfDefault([string]$Name, [string]$DefaultValue) {",
+        "    if ((Get-EnvVar -Name $Name -Global:$global) -eq $DefaultValue) {",
+        "        Set-EnvVar -Name $Name -Value $null -Global:$global",
+        "    }",
+        "}",
+        "Remove-Path -Path '%PIXI_HOME%\\bin' -Global:$global",
+        "Remove-EnvIfDefault 'PIXI_HOME' \"$persist_dir\\.pixi\"",
+        "Remove-EnvIfDefault 'PIXI_CACHE_DIR' \"$persist_dir\\.cache\"",
         "if ($purge) {",
         "    & \"$bucketsdir\\jade\\scripts\\purge.ps1\" `",
         "        (Join-Path $env:APPDATA 'pixi') `",

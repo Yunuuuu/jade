@@ -22,14 +22,23 @@
         }
     },
     "installer": {
-        "script": "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" '.cache'"
+        "script": [
+            "$persist_items = @()",
+            "if ([string]::IsNullOrWhiteSpace((Get-EnvVar -Name 'STARSHIP_CACHE' -Global:$global))) {",
+            "    $persist_items += '.cache'",
+            "    Set-EnvVar -Name 'STARSHIP_CACHE' -Value \"$persist_dir\\.cache\" -Global:$global",
+            "}",
+            "$Manifest.persist = $persist_items"
+        ]
     },
     "bin": "starship.exe",
-    "env_set": {
-        "STARSHIP_CACHE": "$persist_dir\\.cache"
-    },
-    "persist": ".cache",
     "post_uninstall": [
+        "function Remove-EnvIfDefault([string]$Name, [string]$DefaultValue) {",
+        "    if ((Get-EnvVar -Name $Name -Global:$global) -eq $DefaultValue) {",
+        "        Set-EnvVar -Name $Name -Value $null -Global:$global",
+        "    }",
+        "}",
+        "Remove-EnvIfDefault 'STARSHIP_CACHE' \"$persist_dir\\.cache\"",
         "if ($purge) {",
         "    & \"$bucketsdir\\jade\\scripts\\purge.ps1\" `",
         "        (Join-Path $env:APPDATA 'starship') `",

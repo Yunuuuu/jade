@@ -40,7 +40,23 @@
     },
     "installer": {
         "script": [
-            "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" '.rustup' '.cargo'",
+            "$persist_items = @()",
+            "$rustup_home = Get-EnvVar -Name 'RUSTUP_HOME' -Global:$global",
+            "if ([string]::IsNullOrWhiteSpace($rustup_home)) {",
+            "    $persist_items += '.rustup'",
+            "    $rustup_home = \"$persist_dir\\.rustup\"",
+            "    Set-EnvVar -Name 'RUSTUP_HOME' -Value $rustup_home -Global:$global",
+            "    $env:RUSTUP_HOME = $rustup_home",
+            "}",
+            "$cargo_home = Get-EnvVar -Name 'CARGO_HOME' -Global:$global",
+            "if ([string]::IsNullOrWhiteSpace($cargo_home)) {",
+            "    $persist_items += '.cargo'",
+            "    $cargo_home = \"$persist_dir\\.cargo\"",
+            "    Set-EnvVar -Name 'CARGO_HOME' -Value $cargo_home -Global:$global",
+            "    $env:CARGO_HOME = $cargo_home",
+            "}",
+            "$Manifest.persist = $persist_items",
+            "Add-Path -Path '%CARGO_HOME%\\bin' -Global:$global",
             "$host_arch = switch ($architecture) { '64bit' { 'x86_64' } '32bit' { 'i686' } 'arm64' { 'arm64' } }",
             "$rustupArgs = @(",
             "    '-q'",
@@ -52,19 +68,18 @@
             "    '--no-update-default-toolchain'",
             "    '--no-modify-path'",
             ")",
-            "[Environment]::SetEnvironmentVariable('RUSTUP_HOME', \"$persist_dir\\.rustup\", 'Process')",
-            "[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
             "Invoke-ExternalCommand \"$dir\\rustup-init.exe\" $rustupArgs | Out-Null"
         ]
     },
-    "env_add_path": ".cargo\\bin",
-    "env_set": {
-        "RUSTUP_HOME": "$persist_dir\\.rustup",
-        "CARGO_HOME": "$persist_dir\\.cargo"
-    },
-    "persist": [
-        ".rustup",
-        ".cargo"
+    "post_uninstall": [
+        "function Remove-EnvIfDefault([string]$Name, [string]$DefaultValue) {",
+        "    if ((Get-EnvVar -Name $Name -Global:$global) -eq $DefaultValue) {",
+        "        Set-EnvVar -Name $Name -Value $null -Global:$global",
+        "    }",
+        "}",
+        "Remove-Path -Path '%CARGO_HOME%\\bin' -Global:$global",
+        "Remove-EnvIfDefault 'RUSTUP_HOME' \"$persist_dir\\.rustup\"",
+        "Remove-EnvIfDefault 'CARGO_HOME' \"$persist_dir\\.cargo\""
     ],
     "checkver": {
         "url": "https://sh.rustup.rs",
