@@ -104,7 +104,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/mamedev/mame/releases/download/$version/$versionb_64bit.exe#/dl.7z",
+                "url": "https://github.com/mamedev/mame/releases/download/$version/$versionb_x64.exe#/dl.7z",
                 "hash": {
                     "url": "https://github.com/mamedev/mame/releases/download/$version/SHA256SUMS",
                     "find": "([a-fA-F0-9]{64})\\s*\\*$versionb_arm64.exe"
