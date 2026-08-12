@@ -55,7 +55,7 @@
             "    Set-EnvVar -Name 'CARGO_HOME' -Value $cargo_home -Global:$global",
             "    $env:CARGO_HOME = $cargo_home",
             "}",
-            "$Manifest.persist = $persist_items",
+            "$Manifest | Add-Member -MemberType NoteProperty -Name 'persist' -Value $persist_items -Force",
             "Add-Path -Path '%CARGO_HOME%\\bin' -Global:$global",
             "$host_arch = switch ($architecture) { '64bit' { 'x86_64' } '32bit' { 'i686' } 'arm64' { 'arm64' } }",
             "$rustupArgs = @(",
@@ -79,7 +79,14 @@
         "}",
         "Remove-Path -Path '%CARGO_HOME%\\bin' -Global:$global",
         "Remove-EnvIfDefault 'RUSTUP_HOME' \"$persist_dir\\.rustup\"",
-        "Remove-EnvIfDefault 'CARGO_HOME' \"$persist_dir\\.cargo\""
+        "Remove-EnvIfDefault 'CARGO_HOME' \"$persist_dir\\.cargo\"",
+        "if ($purge) {",
+        "    & \"$bucketsdir\\jade\\scripts\\purge.ps1\" `",
+        "        (Join-Path $env:APPDATA 'rustup') `",
+        "        (Join-Path $env:LOCALAPPDATA 'rustup') `",
+        "        (Join-Path $env:APPDATA 'cargo') `",
+        "        (Join-Path $env:LOCALAPPDATA 'cargo')",
+        "}"
     ],
     "checkver": {
         "url": "https://sh.rustup.rs",

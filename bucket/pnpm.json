@@ -17,10 +17,10 @@
         "script": [
             "$persist_items = @()",
             "if ([string]::IsNullOrWhiteSpace((Get-EnvVar -Name 'PNPM_HOME' -Global:$global))) {",
-            "    $persist_items += 'home'",
-            "    Set-EnvVar -Name 'PNPM_HOME' -Value \"$persist_dir\\home\" -Global:$global",
+            "    $persist_items += '.pnpm'",
+            "    Set-EnvVar -Name 'PNPM_HOME' -Value \"$persist_dir\\.pnpm\" -Global:$global",
             "}",
-            "$Manifest.persist = $persist_items",
+            "$Manifest | Add-Member -MemberType NoteProperty -Name 'persist' -Value $persist_items -Force",
             "Add-Path -Path '%PNPM_HOME%\\bin' -Global:$global"
         ]
     },
@@ -48,14 +48,14 @@
         "    }",
         "}",
         "Remove-Path -Path '%PNPM_HOME%\\bin' -Global:$global",
-        "Remove-EnvIfDefault 'PNPM_HOME' \"$persist_dir\\home\"",
+        "Remove-EnvIfDefault 'PNPM_HOME' \"$persist_dir\\.pnpm\"",
         "if ($purge) {",
-        "    & \"$bucketsdir\\jade\\scripts\\purge.ps1\" `",
-        "        (Join-Path $env:APPDATA 'pnpm') `",
-        "        (Join-Path $env:LOCALAPPDATA 'pnpm')",
         "    if ($global) {",
         "        & \"$bucketsdir\\jade\\scripts\\purge.ps1\" (Join-Path $env:ProgramData 'pnpm')",
         "    }",
+        "    & \"$bucketsdir\\jade\\scripts\\purge.ps1\" `",
+        "        (Join-Path $env:APPDATA 'pnpm') `",
+        "        (Join-Path $env:LOCALAPPDATA 'pnpm')",
         "}"
     ],
     "checkver": {

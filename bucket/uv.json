@@ -48,7 +48,7 @@
             "if ($needs_uv_persist) {",
             "    $persist_items += '.uv'",
             "}",
-            "$Manifest.persist = $persist_items",
+            "$Manifest | Add-Member -MemberType NoteProperty -Name 'persist' -Value $persist_items -Force",
             "Add-Path -Path '%UV_PYTHON_BIN_DIR%' -Global:$global",
             "Add-Path -Path '%UV_TOOL_BIN_DIR%' -Global:$global"
         ]

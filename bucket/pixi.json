@@ -25,7 +25,7 @@
             "    $persist_items += '.cache'",
             "    Set-EnvVar -Name 'PIXI_CACHE_DIR' -Value \"$persist_dir\\.cache\" -Global:$global",
             "}",
-            "$Manifest.persist = $persist_items"
+            "$Manifest | Add-Member -MemberType NoteProperty -Name 'persist' -Value $persist_items -Force"
         ]
     },
     "bin": "pixi.exe",
