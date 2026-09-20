@@ -1,16 +1,16 @@
 {
-    "version": "2.5.2",
+    "version": "2.5.4",
     "description": "Continuation of Clash Verge - A Clash Meta GUI based on Tauri.",
     "homepage": "https://github.com/clash-verge-rev/clash-verge-rev",
     "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v2.5.2/Clash.Verge_2.5.2_x64-setup.exe#/dl.7z",
-            "hash": "sha1:ca1b5064eafcb90ecea4ead35959b85d18760035"
+            "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v2.5.4/Clash.Verge_2.5.4_x64-setup.exe#/dl.7z",
+            "hash": "sha1:6d698cab85dced01e7f8b4448c1059dc8e483877"
         },
         "arm64": {
-            "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v2.5.2/Clash.Verge_2.5.2_arm64-setup.exe#/dl.7z",
-            "hash": "sha1:b5062df3ade4bc6e9e3fc06f07f015d90637e4f5"
+            "url": "https://downloads.sourceforge.net/projects/clash-verge-rev.mirror/files/v2.5.4/Clash.Verge_2.5.4_arm64-setup.exe#/dl.7z",
+            "hash": "sha1:9486a8063a80741889752ab2c2d9788cff4dce36"
         }
     },
     "pre_install": [
