@@ -1,5 +1,5 @@
 {
-    "version": "876-20260920-aadeb2d",
+    "version": "882-20260921-0636c26",
     "description": [
         "Mesen is a multi-system emulator for Windows, Linux, and macOS. It supports NES, SNES, Game Boy (GB/SGB/GBC), Game Boy Advance, PC Engine, SMS/Game Gear, and WonderSwan (WS/WSC)",
         "",
@@ -8,8 +8,8 @@
     "homepage": "https://github.com/nesdev-org/MesenCE",
     "license": "GPL-3.0",
     "notes": "MesenCE requires the DotNet Runtime 6.0: `winget install --id Microsoft.DotNet.Runtime.6`",
-    "url": "https://nightly.link/nesdev-org/MesenCE/suites/96144058955/artifacts/10604067858",
-    "hash": "c6c45fd644da7853d2b8257c233415967e101fea21cf11b1c615541377db5094",
+    "url": "https://nightly.link/nesdev-org/MesenCE/suites/96262644945/artifacts/10619934184",
+    "hash": "583f04bdc67867924f68d01607646860fdc341d4154c46a91ec9d53d0c6f83e7",
     "installer": {
         "script": [
             "& \"$bucketsdir\\jade\\scripts\\persist_dir.ps1\" `",
