@@ -1,16 +1,16 @@
 {
-    "version": "26.10.31",
+    "version": "26.11.9",
     "description": "A platform for building proxies to bypass network restrictions",
     "homepage": "https://github.com/XTLS/Xray-core",
     "license": "MPL-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/projects/xray-core.mirror/files/v26.10.31/Xray-windows-64.zip",
-            "hash": "sha1:cf4b5b412e93209e050be84ef09ef4bd6e0d0bb0"
+            "url": "https://downloads.sourceforge.net/projects/xray-core.mirror/files/v26.11.9/Xray-windows-64.zip",
+            "hash": "sha1:699430f472dc59127abcb6695fb69ecf1b6a1f2c"
         },
         "32bit": {
-            "url": "https://downloads.sourceforge.net/projects/xray-core.mirror/files/v26.10.31/Xray-windows-32.zip",
-            "hash": "sha1:1015c3099ad91aa3c938f5f8cefa7d15fbe014e8"
+            "url": "https://downloads.sourceforge.net/projects/xray-core.mirror/files/v26.11.9/Xray-windows-32.zip",
+            "hash": "sha1:a155c42db10f48a69ab26552f57405ea590275c1"
         }
     },
     "installer": {
